@@ -9,3 +9,8 @@ no sé cómo mostrar el nombre con solo el ID en los registros
 ----------------------------------------------------------------------------------------------
 
 mostrar en el modal de registros nombre + id de luchador + puntuaciones | sin modal solo nombre
+
+
+add . = hace el paquete
+commit -m "NOMBRE" = le pone nombre
+push = lo sube
