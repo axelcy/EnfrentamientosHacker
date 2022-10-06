@@ -8,9 +8,7 @@ no sé cómo mostrar el nombre con solo el ID en los registros
 
 mostrar en el modal de registros nombre + id de luchador + puntuaciones | sin modal solo nombre
 
-
-
-
+centrar foto y victorias
 
 ----------------------------------------------------------------------------------------------
 
