@@ -1,8 +1,154 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    int i = 1;
 }
+<body background="/img/fondo1.jpg">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row"> 
+    <h1 class="display-4" style="text-align: center;">Bienvenido a: <span class="glow">Enfrentamientos "<b>El Hacker</b>"</span></h1>
+</div>
+<div class="row">
+    <div class="col-8 col-lista">
+        <h4 style="text-align: center;">Lista de Luchadores</h4>
+        <div style="max-height: 75vh; overflow-y: scroll;">
+          <table class="table table-success table-striped tabla-col-fijas">
+            
+          <thead class="table-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Fecha Nacimiento</th>
+                <th scope="col">Acciones</th>
+              </tr>
+          </thead>
+          
+          <tbody>
+            
+              @foreach (Luchador item in ViewBag.ListaLuchadores)
+              {
+                  <tr class="tr1">
+                      <th scope="row">@i</th>
+                      <td>@item.Nombre</td>
+                      <td>@item.FechaNacimiento.ToShortDateString()</td>
+                      <td>
+                          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador" onclick="DetalleLuchador(@item.IdLuchador)">Ver Detalle</button>
+                          <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalConfirmarEliminar" onclick="ConfirmarEliminar(@item.IdLuchador)">Eliminar</button>
+                      </td>
+                  </tr>
+                  i += 1;
+              }
+              @if (ViewBag.ListaLuchadores.Count == 0)
+              {
+                <tr class="tr1">
+                      <th scope="row">0</th>
+                      <td ><b>No hay luchadores!</b></td>
+                      <td><b>-</b></td>
+                      <td>
+                          <button class="btn btn-primary disabled">Ver Detalle</button>
+                          <button class="btn btn-danger disabled">Eliminar</button>
+                      </td>
+                  </tr>
+              }
+          </tbody>
+          </table>
+        </div>
+    </div>
+
+    <div class="col-4 contenedor1">
+        <button class="lista-vertical">Iniciar Enfrentamiento</button>
+        <button class="lista-vertical">Agregar Luchador</button>
+        <a class="lista-vertical" onclick="" href='@Url.Action("Registros")'>Ver Registro de Luchas</a>
+        <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalReiniciarJuego">Reiniciar Juego</button>
+        <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalElimiarListaLuchadores">Eliminar Todos Los Luchadores</button>
+    </div>
+</div>
+
+</body>
+
+
+<div class="modal fade" tabindex="-1" id="ModalDetalleLuchador">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloDetalleLuchador">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img id="Foto" style="max-width: 100%; max-height: 40vh;" class="centrado"><br>
+        <span id="Victorias"></span><br>
+        <span id="FechaNacimiento" style="text-align: center;"></span><br>
+        <span id="FechaNacimiento"></span>
+        <span style="text-align: center;">
+            <b>─────────────────────────────────────</b><br>
+            <u>ESTADÍSTICAS</u><br>
+        </span>
+        <span id="IQ"></span><br>
+        <span id="Fuerza"></span><br>
+        <span id="Velocidad"></span><br>
+        <span id="Resistencia"></span><br>
+        <span id="BattleIQ"></span><br>
+        <span id="PoderDestructivo"></span><br>
+        <span id="Experiencia"></span><br>
+        <span id="Transformaciones"></span><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Modificar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="ModalConfirmarEliminar">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ce-titulo">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="ce-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <a class="btn btn-danger" id="ConfirmarEliminar">Eliminar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="ModalReiniciarJuego">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><b>¡Estás a punto de reiniciar el juego!</b></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">Al reiniciar se perderán:<br>Las Victorias<br>Los Personajes creados por el usuario.<br><br><u>No se perderán los registros</u><br><br>
+      También podés añadir los 8 luchadores del roster inicial a la lista de luchadores sin necesidad de perder nada.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <a class="btn btn-warning" asp-area="" asp-controller="Home" asp-action="DuplicarRoster">Añadir roster a la lista</a>
+        <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="ReiniciarJuego">Reiniciar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="ModalElimiarListaLuchadores">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><b>¡Estás a punto de eliminar todos los luchadores!</b></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Seguro que quiere elimiar toda la lista de luchadores?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="ElimiarListaLuchadores">Eliminar</a>
+      </div>
+    </div>
+  </div>
 </div>

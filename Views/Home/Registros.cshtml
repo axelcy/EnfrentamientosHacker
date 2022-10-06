@@ -1,0 +1,68 @@
+@{
+    ViewData["Title"] = "Registros";
+}
+<body background="/img/fondo1.jpg">
+
+<div class="row row-registros">
+    <div class="col-12 col-lista">
+        <h4 style="text-align: center;">Lista de Registros</h4>
+        <div style="max-height: 75vh; overflow-y: scroll;">
+          <table class="table table-success table-striped tabla-col-fijas">
+            
+          <thead class="table-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Luchador 1</th>
+                <th scope="col">Puntuación</th>
+                <th scope="col">Luchador 2</th>
+                <th scope="col">Puntuación</th>
+                <th scope="col">Diff</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Acciones</th>
+              </tr>
+          </thead>
+          
+          <tbody>
+            
+              @foreach (Registro item in ViewBag.ListaRegistros)
+              {
+                  <tr class="tr1">
+                      <th scope="row">ID: @item.IdRegistro</th>
+                      <td>@item.IdLuchador1</td>
+                      <td>@item.Puntuacion1</td>
+                      <td>@item.IdLuchador2</td>
+                      <td>@item.Puntuacion2</td>
+                      <td>@item.Diff</td>
+                      <td>@item.Fecha.ToShortDateString()</td>
+                      <td><button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador" onclick="DetalleLuchador(@item.IdLuchador1)">Ver info en modal</button></td>
+                  </tr>
+              }
+              @{
+                /*
+                    <td>axel</td>
+                    <td>999🥵😈</td>
+                    <td>queisis</td>
+                    <td>1 🥶😰</td>
+                    <td>Extreme</td>
+                    <td>2022/10/5</td>
+                */
+              }
+              @if (ViewBag.ListaRegistros.Count == 0)
+              {
+                  <tr class="tr1">
+                      <th scope="row">No hay Registros aún!</th>
+                      <td><b>-</b></td>  
+                      <td><b>-</b></td>  
+                      <td><b>-</b></td>
+                      <td><b>-</b></td>
+                      <td><b>-</b></td>
+                      <td><b>-</b></td>
+                      <td><button class="btn btn-secondary disabled" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador">Ver info en modal</button></td>
+                  </tr>
+              }
+          </tbody>
+          </table>
+        </div>
+    </div>
+</div>
+</body>
