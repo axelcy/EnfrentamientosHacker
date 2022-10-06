@@ -3,39 +3,65 @@
 }
 <body background="/img/fondo1.jpg">
 <h2> Temporalmente esta página tiene lo que debería tener el modal de Agregar Luchador</h2><br>
-
+<!-- PONER NOMBRE Y FECHA DE NACIMIENTO EN LA MISMA LÍNEA, ABAJO PONER EL INPUT DE LA FOTO Y ABAJO LAS ESTADÍSTICAS -->
 <form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">NOMBRE</label>
-    <input type="text" class="form-control">
-    <div class="form-text">We'll never share your email with anyone else.</div>
-  </div>
+<h4 style="text-align: center;">DATOS DEL LUCHADOR</h4>
+<div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Nombre</span>
+      <input type="text" class="form-control" placeholder="Ej.: axel1234" aria-label="Username" aria-describedby="basic-addon1">
+      <span class="input-group-text" id="basic-addon1">FechaNacimiento</span>
+      <input type="Date" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
 
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">FechaNacimiento</label>
-    <input type="Date" class="form-control">
-    <div class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-
-
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Foto</label>
+    <div class="input-group mb-3">
     <input type="file" class="form-control">
-  </div>
+    </div>
 
-<!-- CAMBIAR PLACEHOLDER POR UN COSITO COMO EL DEL TYPE FORM AL PRINCIPIO-->
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">ESTADÍSTICAS</label>
-    <input type="text" class="form-control" placeholder="IQ">
-    <input type="text" class="form-control" placeholder="Fuerza">
-    <input type="text" class="form-control" placeholder="Velocidad">
-    <input type="text" class="form-control" placeholder="Resistencia">
-    <input type="text" class="form-control" placeholder="BattleIQ">
-    <input type="text" class="form-control" placeholder="PoderDestructivo">
-    <input type="text" class="form-control" placeholder="Experiencia">
-    <input type="text" class="form-control" placeholder="Transformaciones">
-  </div>
 
+<!-- ALINEAR TODOS LOS INPUTS -->
+<h4 style="text-align: center;">ESTADÍSTICAS</h4>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">IQ</span>
+      <input type="text" class="form-control" placeholder="min" aria-label="Username" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="max" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Fuerza</span>
+      <input type="text" class="form-control" placeholder="min" aria-label="Username" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="max" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Velocidad</span>
+      <input type="text" class="form-control" placeholder="min" aria-label="Username" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="max" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Resistencia</span>
+      <input type="text" class="form-control" placeholder="min" aria-label="Username" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="max" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">BattleIQ</span>
+      <input type="text" class="form-control" placeholder="min" aria-label="Username" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="max" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">PoderDestructivo</span>
+      <input type="text" class="form-control" placeholder="min" aria-label="Username" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="max" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Experiencia</span>
+      <input type="text" class="form-control" placeholder="min" aria-label="Username" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="max" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Transformaciones</span>
+      <input type="text" class="form-control" placeholder="min" aria-label="Username" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="max" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+
+<!-- QUE EL BOTON DE SUBMIT SEA EL Q ESTÁ EN EL MODAL ABAJO A LA DERECHA-->
   <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
@@ -44,9 +70,9 @@
 </form>
 
 </body>
+<!-- q sea uno de los de archivo con iq, y uno de iq min y al lado un iqmax -->
 
-
-<!-- PARA ELEGIR 2 LUCHADORES PARA LA PELEA
+<!-- PARA ELEGIR 2 LUCHADORES PARA LA PELEA 
 
 <select class="form-select" aria-label="Default select example">
   <option selected>Open this select menu</option>
