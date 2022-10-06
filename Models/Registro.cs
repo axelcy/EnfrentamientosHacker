@@ -2,7 +2,7 @@ namespace EnfrentamientosHacker.Models;
 
 public class Registro
 {
-    private int _idRegistro; 
+    private int _idRegistro;
     private int _idLuchador1;
     private int _puntuacion1;
     private int _idLuchador2;

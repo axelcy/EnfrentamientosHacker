@@ -58,4 +58,3 @@ function ConfirmarEliminar(IdLuchador)
         }
     );
 }
-

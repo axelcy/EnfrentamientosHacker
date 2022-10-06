@@ -38,14 +38,14 @@ public class HomeController : Controller
         BD.EliminarLuchador(IdLuchador);
         return RedirectToAction("Index");
     }
+    public IActionResult AgregarLuchador(Luchador luchador)
+    {
+        BD.AgregarLuchador(luchador);
+        return RedirectToAction("Index");
+    }
     public IActionResult Registros()
     {
         List<Registro> ListaRegistros = BD.ListarRegistros();
-        List<Luchador> LuchadoresRegistro = new List<Luchador>();
-        foreach (Registro item in ListaRegistros)
-        {
-            //if (item.IdLuchador1 )
-        }
 
         ViewBag.ListaRegistros = ListaRegistros;
         return View();

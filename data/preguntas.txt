@@ -1,7 +1,5 @@
 el texto de victorias no se me centra en el modal
 
-el ToShortDateString(); no funca en el modal
-
 el link no se ve como boton
 
 no sé cómo mostrar el nombre con solo el ID en los registros
@@ -11,6 +9,14 @@ no sé cómo mostrar el nombre con solo el ID en los registros
 mostrar en el modal de registros nombre + id de luchador + puntuaciones | sin modal solo nombre
 
 
-add . = hace el paquete
-commit -m "NOMBRE" = le pone nombre
-push = lo sube
+
+
+
+----------------------------------------------------------------------------------------------
+
+status              = ver estado
+
+add .               = hace el paquete
+commit -m "NOMBRE"  = le pone nombre
+push                = lo sube
+pull                = baja los cambios (es necesario si queres subir cambios hacer el pull para mantener actualizado)
