@@ -18,6 +18,10 @@ public class HomeController : Controller
         ViewBag.ListaLuchadores = BD.ListarLuchadores();
         return View();
     }
+    public IActionResult IniciarEnfrentamiento()
+    {
+        return View();
+    }
     public Luchador DevolverLuchador(int IdLuchador)
     {
         Luchador luchador = BD.VerInfoLuchador(IdLuchador);

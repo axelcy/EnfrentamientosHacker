@@ -74,7 +74,6 @@ body {
   max-height: 75vh;
 }
 
-
 .tabla-col-fijas thead th {
     position: sticky;
     top: 0px;
@@ -97,4 +96,10 @@ body {
 
 .tr1 {
   vertical-align: middle;
+}
+
+.centrado{
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }

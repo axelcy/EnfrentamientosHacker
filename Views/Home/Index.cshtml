@@ -57,7 +57,7 @@
     </div>
 
     <div class="col-4 contenedor1">
-        <button class="lista-vertical">Iniciar Enfrentamiento</button>
+        <a class="lista-vertical" href='@Url.Action("IniciarEnfrentamiento")'>Iniciar Enfrentamiento</a>
         <button class="lista-vertical">Agregar Luchador</button>
         <a class="lista-vertical" onclick="" href='@Url.Action("Registros")'>Ver Registro de Luchas</a>
         <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalReiniciarJuego">Reiniciar Juego</button>
@@ -67,6 +67,7 @@
 
 </body>
 
+<!-- --------------------------------------- MODAL DETALLE JUGADOR --------------------------------------- -->
 
 <div class="modal fade" tabindex="-1" id="ModalDetalleLuchador">
   <div class="modal-dialog">
@@ -76,13 +77,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="Foto" style="max-width: 100%; height: 12rem;" class="centrado"><br>
-        <span id="Victorias" class="centrado"></span><br>
-        <span id="FechaNacimiento" style="text-align: center;"></span><br>
-        <span id="FechaNacimiento"></span>
-        <span style="text-align: center;">
-            <b>─────────────────────────────────────</b><br>
-            <u>ESTADÍSTICAS</u><br>
+        <img id="Foto" style="max-width: 100%; height: 12rem;" class="centrado">
+        <span id="Victorias" class="centrado"></span>
+        <span id="FechaNacimiento"></span><br>
+        <span>
+            <b class="centrado">─────────────────────────────────────────</b>
+            <u class="centrado">ESTADÍSTICAS</u>
         </span>
         <span id="IQ"></span><br>
         <span id="Fuerza"></span><br>
@@ -100,6 +100,8 @@
   </div>
 </div>
 
+<!-- --------------------------------------- MODAL CONFIRMAR ELIMINAR --------------------------------------- -->
+
 <div class="modal fade" tabindex="-1" id="ModalConfirmarEliminar">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -116,6 +118,8 @@
     </div>
   </div>
 </div>
+
+<!-- --------------------------------------- MODAL REINICIAR JUEGO --------------------------------------- -->
 
 <div class="modal fade" tabindex="-1" id="ModalReiniciarJuego">
   <div class="modal-dialog">
@@ -136,6 +140,8 @@
   </div>
 </div>
 
+<!-- --------------------------------------- MODAL ELIMINAR LISTA LUCHADORES --------------------------------------- -->
+
 <div class="modal fade" tabindex="-1" id="ModalElimiarListaLuchadores">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -154,6 +160,7 @@
   </div>
 </div>
 
+<!-- --------------------------------------- MODAL AGREGAR JUGADOR (no terminado) --------------------------------------- -->
 
 <div class="modal fade" tabindex="-1" id="ModalAgregarJugador">
   <div class="modal-dialog">
