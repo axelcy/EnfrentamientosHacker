@@ -58,7 +58,7 @@
 
     <div class="col-4 contenedor1">
         <a class="lista-vertical" href='@Url.Action("IniciarEnfrentamiento")'>Iniciar Enfrentamiento</a>
-        <button class="lista-vertical">Agregar Luchador</button>
+        <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalAgregarJugador">Agregar Luchador</button>
         <a class="lista-vertical" onclick="" href='@Url.Action("Registros")'>Ver Registro de Luchas</a>
         <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalReiniciarJuego">Reiniciar Juego</button>
         <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalElimiarListaLuchadores">Eliminar Todos Los Luchadores</button>
@@ -161,21 +161,103 @@
 </div>
 
 <!-- --------------------------------------- MODAL AGREGAR JUGADOR (no terminado) --------------------------------------- -->
-
+@* q se pueda scrollear adentro del modal *@
 <div class="modal fade" tabindex="-1" id="ModalAgregarJugador">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><b>Llene el formulario con los datos de su nuevo jugador</b></h5>
+        <h5 class="modal-title"><b>A un paso de crear tu luchador personalizado!</b></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <!-- FORM ACÁ -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="AgregarJugador">Confirmar</a>
-      </div>
+      <form>
+        <div class="modal-body">
+          <h4 style="text-align: center;">DATOS DEL LUCHADOR</h4>
+          <div class="input-group mb-3">
+            <span style="width: 11rem;" class="input-group-text" id="basic-addon1">Nombre</span>
+            <input type="text" class="form-control" placeholder="axel1234" aria-label="Username"
+              aria-describedby="basic-addon1">
+
+            </div>
+            <div class="input-group mb-3">
+              <span style="width: 11rem;" class="input-group-text" id="basic-addon1">Fecha de Nacimiento</span>
+              <input type="Date" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+
+            </div>
+
+
+            <div class="input-group mb-3">
+              <input type="file" class="form-control">
+            </div>
+
+
+          <!-- ALINEAR TODOS LOS INPUTS -->
+          <h4 style="text-align: center;">ESTADÍSTICAS</h4>
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">IQ</span>
+            <input type="text" class="form-control" placeholder="min" aria-label="Username"
+              aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="max" aria-label="Username"
+              aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Fuerza</span>
+            <input type="text" class="form-control" placeholder="min" aria-label="Username"
+              aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="max" aria-label="Username"
+              aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Velocidad</span>
+            <input type="text" class="form-control" placeholder="min" aria-label="Username"
+              aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="max" aria-label="Username"
+              aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Resistencia</span>
+            <input type="text" class="form-control" placeholder="min" aria-label="Username"
+              aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="max" aria-label="Username"
+              aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Battle IQ</span>
+            <input type="text" class="form-control" placeholder="min" aria-label="Username"
+              aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="max" aria-label="Username"
+              aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">PoderDestructivo</span>
+            <input type="text" class="form-control" placeholder="min" aria-label="Username"
+              aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="max" aria-label="Username"
+              aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Experiencia</span>
+            <input type="text" class="form-control" placeholder="min" aria-label="Username"
+              aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="max" aria-label="Username"
+              aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Transformaciones</span>
+            <input type="text" class="form-control" placeholder="min" aria-label="Username"
+              aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="max" aria-label="Username"
+              aria-describedby="basic-addon1">
+          </div>
+
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-success">Crear</button>
+        </div>
+
+      </form>
+
     </div>
   </div>
 </div>

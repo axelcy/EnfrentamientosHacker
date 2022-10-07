@@ -10,6 +10,9 @@ mostrar en el modal de registros nombre + id de luchador + puntuaciones | sin mo
 
 centrar foto y victorias
 
+q se pueda scrollear adentro del modal de agregar jugador
+
+hacer los rings en photoshop con queisis
 ----------------------------------------------------------------------------------------------
 
 status              = ver estado
@@ -18,3 +21,19 @@ add .               = hace el paquete
 commit -m "NOMBRE"  = le pone nombre
 push                = lo sube
 pull                = baja los cambios (es necesario si queres subir cambios hacer el pull para mantener actualizado)
+
+
+
+
+<!-- q sea uno de los de archivo con iq, y uno de iq min y al lado un iqmax -->
+
+<!-- PARA ELEGIR 2 LUCHADORES PARA LA PELEA 
+
+<select class="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+
+    -->
