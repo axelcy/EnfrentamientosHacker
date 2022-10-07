@@ -13,6 +13,8 @@ centrar foto y victorias
 q se pueda scrollear adentro del modal de agregar jugador
 
 hacer los rings en photoshop con queisis
+
+q diga foto en donde dice seleccionar archivo
 ----------------------------------------------------------------------------------------------
 
 status              = ver estado

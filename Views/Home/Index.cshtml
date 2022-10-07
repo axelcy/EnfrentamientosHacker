@@ -173,7 +173,7 @@
         <div class="modal-body" style="background-color: #e4e4e4;">
           <h4 style="text-align: center;">DATOS DEL LUCHADOR</h4>
           <div class="input-group mb-3">
-            <span style="width: 11rem;" class="input-group-text" id="basic-addon1" value="@jugador.FechaNacimiento">Nombre</span>
+            <span style="width: 11rem;" class="input-group-text" id="basic-addon1">Nombre</span> @* value="@jugador.FechaNacimiento" *@
             <input type="text" class="form-control" placeholder="axel1234" aria-label="Username"
               aria-describedby="basic-addon1">
 
@@ -185,7 +185,8 @@
             </div>
 
 
-            <div class="input-group mb-3">
+            <div class="mb-3">
+              <label for="formFile" class="form-label centrado" style="margin-bottom: 1vh;"><b>Subí tu propia foto!</b></label>
               <input type="file" class="form-control">
             </div>
 
