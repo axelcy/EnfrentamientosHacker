@@ -12,7 +12,7 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-
+    // ------------------------------------------------------------
     public IActionResult Index()
     {
         ViewBag.ListaLuchadores = BD.ListarLuchadores();
@@ -22,11 +22,12 @@ public class HomeController : Controller
     {
         return View();
     }
-    public Luchador DevolverLuchador(int IdLuchador)
+    public IActionResult Registros()
     {
-        Luchador luchador = BD.VerInfoLuchador(IdLuchador);
-        return luchador;
+        ViewBag.ListaRegistros = BD.ListarRegistros();
+        return View();
     }
+    // ------------------------------------------------------------
     public IActionResult ReiniciarJuego()
     {
         BD.ReiniciarJuego();
@@ -47,16 +48,34 @@ public class HomeController : Controller
         BD.AgregarLuchador(luchador);
         return RedirectToAction("Index");
     }
-    public IActionResult Registros()
-    {
-        List<Registro> ListaRegistros = BD.ListarRegistros();
-
-        ViewBag.ListaRegistros = ListaRegistros;
-        return View();
-    }
+    
     public IActionResult ElimiarListaLuchadores()
     {
         BD.ElimiarListaLuchadores();
+        return RedirectToAction("Index");
+    }
+    // ------------------------------------------------------------
+    public Luchador DevolverLuchador(int IdLuchador)
+    {
+        Luchador luchador = BD.VerInfoLuchador(IdLuchador);
+        return luchador;
+    }
+    // ------------------------------------------------------------
+    [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile)
+    {
+        /* if(MyFile.Length>0)
+        {
+            jugador.Foto = MyFile.FileName;
+            string wwwRootFile = this.Environment.ContentRootPath + @"\wwwroot\bd\fotos\" + MyFile.FileName;
+            using (var stream = System.IO.File.Create(wwwRootFile))
+            {
+                MyFile.CopyToAsync(stream);
+            }
+        }
+        BD.AgregarJugador(jugador);
+        return RedirectToAction("VerDetalleEquipo","Home", new {idEquipo = jugador.IdEquipo}); */
+        
+        
         return RedirectToAction("Index");
     }
 
