@@ -59,7 +59,7 @@ public class HomeController : Controller
         return luchador;
     }
     // ------------------------------------------------------------
-    [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile=null)
+    [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile)
     {
         // hacer un modal estatico con una funcion para comprobar si el luchador ingresado está correcto
         if(MyFile.Length>0)

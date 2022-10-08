@@ -18,3 +18,8 @@ sacar q por defecto aparezca 0 y q se vea el placeholder
 ---------------------------------------------------------------------
 
 PREGUNTAS:
+
+
+INSERT INTO Luchadores(
+    [Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max])
+    {luchador.Nombre}, {luchador.FechaNacimiento}, {luchador.Foto}, {luchador.Victorias}, {luchador.IQ_min}, {luchador.IQ_max}, {luchador.Fuerza_min}, {luchador.Fuerza_max}, {luchador.Velocidad_min}, {luchador.Velocidad_max}, {luchador.Resistencia_min}, {luchador.Resistencia_max}, {luchador.BattleIQ_min}, {luchador.BattleIQ_max}, {luchador.PoderDestructivo_min}, {luchador.PoderDestructivo_max}, {luchador.Experiencia_min}, {luchador.Experiencia_max}, {luchador.T

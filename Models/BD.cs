@@ -7,7 +7,7 @@ public static class BD
 {
     // Server=NombreMaquina\SQLEXPRESS;DataBase=NombreBase;Trusted_Connection=True
     private static string _connectionString = @"Server=localhost;DataBase=BD-Enfrentamientos;Trusted_Connection=True";
-    public static void AgregarLuchador(Luchador luchador)
+    public static void AgregarLuchador(Luchador luchador) // luchador.FechaNacimiento.ToShortDateString() = 23/10/2002 || CAST({luchador.FechaNacimiento.ToShortDateString()}' AS Date)
     {
         string sql = $"INSERT INTO Luchadores([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES({luchador.Nombre}, {luchador.FechaNacimiento}, {luchador.Foto}, {luchador.Victorias}, {luchador.IQ_min}, {luchador.IQ_max}, {luchador.Fuerza_min}, {luchador.Fuerza_max}, {luchador.Velocidad_min}, {luchador.Velocidad_max}, {luchador.Resistencia_min}, {luchador.Resistencia_max}, {luchador.BattleIQ_min}, {luchador.BattleIQ_max}, {luchador.PoderDestructivo_min}, {luchador.PoderDestructivo_max}, {luchador.Experiencia_min}, {luchador.Experiencia_max}, {luchador.Transformaciones_min}, {luchador.Transformaciones_max})";
         using (SqlConnection bd = new SqlConnection(_connectionString)) bd.Execute(sql);
