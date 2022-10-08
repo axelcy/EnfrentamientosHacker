@@ -5,6 +5,8 @@ hacer los rings con queisis
 
 agregar 1 luchador inicial más para q sean 10
 
+q no te deje crear si no está todo completo y q te salga el alert arriba del título "DATOS DEL LUCHADOR" en el mismo modal.
+o q se te recargue la página y q se abra el modal automáticamente y q no se guarde el luchador en la base de datos
 
 ---------------------------------------------------------------------
 

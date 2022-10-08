@@ -59,17 +59,17 @@ public class HomeController : Controller
         return luchador;
     }
     // ------------------------------------------------------------
-    [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile)
+    [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile=null)
     {
+        // hacer un modal estatico con una funcion para comprobar si el luchador ingresado está correcto
         if(MyFile.Length>0)
         {
             luchador.Foto = MyFile.FileName;
             string wwwRootFile = this._environment.WebRootPath + @"\img\luchadores\" + MyFile.FileName;
-            using (var stream = System.IO.File.Create(wwwRootFile))
-            {
-                MyFile.CopyToAsync(stream);
-            }
+            using (var stream = System.IO.File.Create(wwwRootFile)) MyFile.CopyToAsync(stream);
         }
+        else luchador.Foto = "no_profile_picture";
+
         BD.AgregarLuchador(luchador);
         return RedirectToAction("Index", new {mensaje = "Luchador agregado con éxito!"});
     }
