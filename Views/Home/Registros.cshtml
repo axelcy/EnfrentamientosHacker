@@ -34,7 +34,7 @@
                       <td>@item.Puntuacion2</td>
                       <td>@item.Diff</td>
                       <td>@item.Fecha.ToShortDateString()</td>
-                      <td><button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador" onclick="DetalleLuchador(@item.Luchador1)">Ver info en modal</button></td>
+                      <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador" onclick="DetalleLuchador(@item.Luchador1)">Eliminar</button></td>
                   </tr>
               }
               @{
@@ -57,7 +57,7 @@
                       <td><b>-</b></td>
                       <td><b>-</b></td>
                       <td><b>-</b></td>
-                      <td><button class="btn btn-secondary disabled" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador">Ver info en modal</button></td>
+                      <td><button class="btn btn-danger disabled" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador">Eliminar</button></td>
                   </tr>
               }
           </tbody>

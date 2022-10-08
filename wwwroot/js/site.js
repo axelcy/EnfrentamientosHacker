@@ -19,7 +19,7 @@ function DetalleLuchador(IdLuchador)
                 {
                     $("#TituloDetalleLuchador").html(response.nombre);
 
-                    $("#Foto").attr("src", "/img/luchadores/" + response.foto)
+                    $("#Foto").attr("src", "/img/luchadores_iniciales/" + response.foto)
                     $("#Victorias").html("Victorias - " + response.victorias) // div todo el ancho
                     $("#FechaNacimiento").html("Fecha de Nacimiento: " + response.fechaNacimiento.substr(0, 10)) //agarra los primeros 10 caracteres
 

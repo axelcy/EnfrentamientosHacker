@@ -103,3 +103,9 @@ body {
   justify-content: center;
   margin: auto;
 }
+
+#MensajeAlerta{
+  margin-top: 10px;
+  position: absolute;
+  bottom: 53px;
+}

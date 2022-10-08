@@ -7,15 +7,17 @@ namespace EnfrentamientosHacker.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private IWebHostEnvironment _environment;
+    public HomeController(ILogger<HomeController> logger, IWebHostEnvironment environment)
     {
         _logger = logger;
+        _environment = environment;
     }
     // ------------------------------------------------------------
-    public IActionResult Index()
+    public IActionResult Index(string mensaje = "")
     {
-        ViewBag.ListaLuchadores = BD.ListarLuchadores();
+        ViewBag.ListaLuchadores = BD.ListarLuchadores(); // String.Empty
+        ViewBag.mensaje = mensaje;
         return View();
     }
     public IActionResult IniciarEnfrentamiento()
@@ -31,28 +33,24 @@ public class HomeController : Controller
     public IActionResult ReiniciarJuego()
     {
         BD.ReiniciarJuego();
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", new {mensaje = "Juego reiniciado con éxito!"});
     }
     public IActionResult DuplicarRoster()
     {
         BD.DuplicarRoster();
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", new {mensaje = "Roster inicial duplicado con éxito!"});
     }
     public IActionResult EliminarLuchador(int IdLuchador)
     {
+        Luchador luchador = BD.VerInfoLuchador(IdLuchador);
         BD.EliminarLuchador(IdLuchador);
-        return RedirectToAction("Index");
-    }
-    public IActionResult AgregarLuchador(Luchador luchador)
-    {
-        BD.AgregarLuchador(luchador);
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", new {mensaje = $"Luchador <b>{luchador.Nombre}</b> eliminado éxito!"});
     }
     
     public IActionResult ElimiarListaLuchadores()
     {
         BD.ElimiarListaLuchadores();
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", new {mensaje = "Lista de luchadores eliminada con éxito!"});
     }
     // ------------------------------------------------------------
     public Luchador DevolverLuchador(int IdLuchador)
@@ -63,22 +61,20 @@ public class HomeController : Controller
     // ------------------------------------------------------------
     [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile)
     {
-        /* if(MyFile.Length>0)
+        if(MyFile.Length>0)
         {
-            jugador.Foto = MyFile.FileName;
-            string wwwRootFile = this.Environment.ContentRootPath + @"\wwwroot\bd\fotos\" + MyFile.FileName;
+            luchador.Foto = MyFile.FileName;
+            string wwwRootFile = this._environment.WebRootPath + @"\img\luchadores\" + MyFile.FileName;
             using (var stream = System.IO.File.Create(wwwRootFile))
             {
                 MyFile.CopyToAsync(stream);
             }
         }
-        BD.AgregarJugador(jugador);
-        return RedirectToAction("VerDetalleEquipo","Home", new {idEquipo = jugador.IdEquipo}); */
-        
-        
-        return RedirectToAction("Index");
+        BD.AgregarLuchador(luchador);
+        return RedirectToAction("Index", new {mensaje = "Luchador agregado con éxito!"});
     }
-
+    // ------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
