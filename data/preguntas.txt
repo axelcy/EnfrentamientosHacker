@@ -1,21 +1,19 @@
-el texto de victorias no se me centra en el modal
+.
+PREGUNTAS:
 
-el link no se ve como boton
 
-no sé cómo mostrar el nombre con solo el ID en los registros
 
 ----------------------------------------------------------------------------------------------
 
-centrar foto y victorias
-
-q se pueda scrollear adentro del modal de agregar jugador
+COSAS POR HACER:
 
 hacer los rings en photoshop con queisis
 
-q diga foto en donde dice seleccionar archivo
+Hacer el luchador inicial amongus en la BD y en las funciones de BD
 
-hacer una foto default q se la ponga a los q no tienen foto
 ----------------------------------------------------------------------------------------------
+
+COMANDOS DE GIT:
 
 status              = ver estado
 
@@ -23,19 +21,3 @@ add .               = hace el paquete
 commit -m "NOMBRE"  = le pone nombre
 push                = lo sube
 pull                = baja los cambios (es necesario si queres subir cambios hacer el pull para mantener actualizado)
-
-
-
-
-<!-- q sea uno de los de archivo con iq, y uno de iq min y al lado un iqmax -->
-
-<!-- PARA ELEGIR 2 LUCHADORES PARA LA PELEA 
-
-<select class="form-select" aria-label="Default select example">
-  <option selected>Open this select menu</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</select>
-
-    -->
