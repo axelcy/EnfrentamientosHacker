@@ -19,7 +19,7 @@ function DetalleLuchador(IdLuchador)
                 {
                     $("#TituloDetalleLuchador").html(response.nombre);
 
-                    $("#Foto").attr("src", "/img/luchadores_iniciales/" + response.foto)
+                    $("#Foto").attr("src", "/img/luchadores/" + response.foto)
                     $("#Victorias").html("Victorias - " + response.victorias)
                     $("#FechaNacimiento").html("Fecha de Nacimiento: " + response.fechaNacimiento.substr(0, 10))
 

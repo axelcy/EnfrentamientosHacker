@@ -7,11 +7,19 @@ public static class BD
 {
     // Server=NombreMaquina\SQLEXPRESS;DataBase=NombreBase;Trusted_Connection=True
     private static string _connectionString = @"Server=localhost;DataBase=BD-Enfrentamientos;Trusted_Connection=True";
-    public static void AgregarLuchador(Luchador luchador) // luchador.FechaNacimiento.ToShortDateString() = 23/10/2002 || CAST({luchador.FechaNacimiento.ToShortDateString()}' AS Date)
+    // private static SqlConnection bd = new SqlConnection(_connectionString);
+    public static int AgregarLuchador(Luchador luchador) // luchador.FechaNacimiento.ToShortDateString() = 23/10/2002 || CAST({luchador.FechaNacimiento.ToShortDateString()}' AS Date)
     {
-        string sql = $"INSERT INTO Luchadores([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES({luchador.Nombre}, {luchador.FechaNacimiento}, {luchador.Foto}, {luchador.Victorias}, {luchador.IQ_min}, {luchador.IQ_max}, {luchador.Fuerza_min}, {luchador.Fuerza_max}, {luchador.Velocidad_min}, {luchador.Velocidad_max}, {luchador.Resistencia_min}, {luchador.Resistencia_max}, {luchador.BattleIQ_min}, {luchador.BattleIQ_max}, {luchador.PoderDestructivo_min}, {luchador.PoderDestructivo_max}, {luchador.Experiencia_min}, {luchador.Experiencia_max}, {luchador.Transformaciones_min}, {luchador.Transformaciones_max})";
-        using (SqlConnection bd = new SqlConnection(_connectionString)) bd.Execute(sql);
-    }
+        string sql = $"INSERT INTO Luchadores([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES('{luchador.Nombre}', @FechaNacimiento, '{luchador.Foto}', {luchador.Victorias}, {luchador.IQ_min}, {luchador.IQ_max}, {luchador.Fuerza_min}, {luchador.Fuerza_max}, {luchador.Velocidad_min}, {luchador.Velocidad_max}, {luchador.Resistencia_min}, {luchador.Resistencia_max}, {luchador.BattleIQ_min}, {luchador.BattleIQ_max}, {luchador.PoderDestructivo_min}, {luchador.PoderDestructivo_max}, {luchador.Experiencia_min}, {luchador.Experiencia_max}, {luchador.Transformaciones_min}, {luchador.Transformaciones_max})";
+        int id = 0;
+        using (SqlConnection bd = new SqlConnection(_connectionString))
+        {
+            bd.Execute(sql, new {FechaNacimiento = luchador.FechaNacimiento});
+            sql = $"select top 1 IdLuchador from Luchadores where Nombre = {luchador.Nombre} order by IdLuchador desc";
+            id = bd.QueryFirstOrDefault<int>(sql);
+        }
+        return id;
+        }
     // TODAVÍA NO FUNCIONA | hacer el UPDATE - poner int id de parametro en vez de luchador
     public static void ModificarLuchador(Luchador luchador)
     {
@@ -70,7 +78,8 @@ public static class BD
         sql[7] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Wazaa', CAST(N'1992-01-30' AS Date), N'waza.jfif', N'0', N'40', 95, 70, 100, 70, 100, 70, 100, 75, 110, 70, 100, 95, 110, 100, 120)";
         sql[8] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Grom', CAST(N'2000-03-15' AS Date), N'grom.png', N'0', N'50', 90, 90, 110, 70, 80, 50, 75, 70, 120, 110, 140, 80, 90, 100, 125)";
         sql[9] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Among Us', CAST(N'2018-06-15' AS Date), N'amongus.png', N'0', N'80', 100, 70, 80, 55, 75, 50, 80, 50, 130, 55, 65, 60, 70, 90, 110)";
-        using (SqlConnection bd = new SqlConnection(_connectionString)) foreach (string item in sql) bd.Execute(item);        
+        using (SqlConnection bd = new SqlConnection(_connectionString)) bd.Execute(string.Join(";", sql));
+        // foreach (string item in sql) bd.Execute(item);
     }
     public static void DuplicarRoster()
     {
@@ -84,6 +93,6 @@ public static class BD
         sql[6] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Wazaa', CAST(N'1992-01-30' AS Date), N'waza.jfif', N'0', N'40', 95, 70, 100, 70, 100, 70, 100, 75, 110, 70, 100, 95, 110, 100, 120)";
         sql[7] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Grom', CAST(N'2000-03-15' AS Date), N'grom.png', N'0', N'50', 90, 90, 110, 70, 80, 50, 75, 70, 120, 110, 140, 80, 90, 100, 125)";
         sql[8] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Among Us', CAST(N'2018-06-15' AS Date), N'amongus.png', N'0', N'80', 100, 70, 80, 55, 75, 50, 80, 50, 130, 55, 65, 60, 70, 90, 110)";
-        using (SqlConnection bd = new SqlConnection(_connectionString)) foreach (string item in sql) bd.Execute(item);
+        using (SqlConnection bd = new SqlConnection(_connectionString)) bd.Execute(string.Join(";", sql));
     }
 }
