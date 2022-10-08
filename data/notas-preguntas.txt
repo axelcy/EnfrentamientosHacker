@@ -12,6 +12,9 @@ HACER Q AL ELIMINAR JUGADORES O REINICIAR, SE ELIMINEN LAS FOTOS GUARDADAS.
 
 dar la opción de subir imagen o link para la foto (una u la otra)
 
+poner un boton para llenar todas las stats de forma aleatoria (del 0 al 200), que sean múltiplos de 5 y q el min sea menor q el max
+sacar q por defecto aparezca 0 y q se vea el placeholder
+
 ---------------------------------------------------------------------
 
 PREGUNTAS:
