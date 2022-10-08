@@ -1,0 +1,7 @@
+status              = ver estado
+
+add .               = hace un paquete
+commit -m "NOMBRE"  = le pone nombre al paquete
+push                = sube el paquete al repositorio
+
+pull                = baja los cambios | no se puede hacer push si no tenés actualizado el repositorio de forma local

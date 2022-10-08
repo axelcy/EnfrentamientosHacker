@@ -59,7 +59,7 @@ public static class BD
     }
     public static void ReiniciarJuego()
     {
-        string[] sql = new string[9];
+        string[] sql = new string[10];
         sql[0] = "truncate table Luchadores";
         sql[1] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ], [Fuerza], [Velocidad], [Resistencia], [BattleIQ], [PoderDestructivo], [Experiencia], [Transformaciones]) VALUES (N'Tilín', CAST(N'2014-03-07' AS Date), N'tilin.jfif', N'0', N'75-90', N'75-90', N'90-140', N'60-80', N'90-125', N'55-65', N'65-75', N'110-170')";
         sql[2] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ], [Fuerza], [Velocidad], [Resistencia], [BattleIQ], [PoderDestructivo], [Experiencia], [Transformaciones]) VALUES (N'Osito Perú', CAST(N'1998-07-16' AS Date), N'osito_peru.jpeg', N'0', N'80-90', N'90-110', N'60-75', N'100-120', N'90-105', N'120-150', N'70-80', N'140-190')";
@@ -69,12 +69,13 @@ public static class BD
         sql[6] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ], [Fuerza], [Velocidad], [Resistencia], [BattleIQ], [PoderDestructivo], [Experiencia], [Transformaciones]) VALUES (N'Jesús', CAST(N'0001-12-24' AS Date), N'jesus.jpg', N'0', N'70-90', N'50-150', N'50-80', N'60-95', N'100-120', N'999-999', N'100-110', N'70-105')";
         sql[7] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ], [Fuerza], [Velocidad], [Resistencia], [BattleIQ], [PoderDestructivo], [Experiencia], [Transformaciones]) VALUES (N'Wazaa', CAST(N'1992-01-30' AS Date), N'waza.jfif', N'0', N'40-95', N'70-100', N'70-100', N'70-100', N'75-110', N'70-100', N'95-110', N'100-120')";
         sql[8] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ], [Fuerza], [Velocidad], [Resistencia], [BattleIQ], [PoderDestructivo], [Experiencia], [Transformaciones]) VALUES (N'Grom', CAST(N'2000-03-15' AS Date), N'grom.png', N'0', N'50-90', N'90-110', N'70-80', N'50-75', N'70-120', N'110-140', N'80-90', N'100-125')";
+        sql[9] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ], [Fuerza], [Velocidad], [Resistencia], [BattleIQ], [PoderDestructivo], [Experiencia], [Transformaciones]) VALUES (N'Among Us', CAST(N'2018-06-15' AS Date), N'amongus.png', N'0', N'80-100', N'70-80', N'55-75', N'50-80', N'50-130', N'55-65', N'60-70', N'90-110')";
         
         using (SqlConnection bd = new SqlConnection(_connectionString)) foreach (string item in sql) bd.Execute(item);        
     }
     public static void DuplicarRoster()
     {
-        string[] sql = new string[8];
+        string[] sql = new string[9];
         sql[0] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ], [Fuerza], [Velocidad], [Resistencia], [BattleIQ], [PoderDestructivo], [Experiencia], [Transformaciones]) VALUES (N'Tilín', CAST(N'2014-03-07' AS Date), N'tilin.jfif', N'0', N'75-90', N'75-90', N'90-140', N'60-80', N'90-125', N'55-65', N'65-75', N'110-170')";
         sql[1] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ], [Fuerza], [Velocidad], [Resistencia], [BattleIQ], [PoderDestructivo], [Experiencia], [Transformaciones]) VALUES (N'Osito Perú', CAST(N'1998-07-16' AS Date), N'osito_peru.jpeg', N'0', N'80-90', N'90-110', N'60-75', N'100-120', N'90-105', N'120-150', N'70-80', N'140-190')";
         sql[2] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ], [Fuerza], [Velocidad], [Resistencia], [BattleIQ], [PoderDestructivo], [Experiencia], [Transformaciones]) VALUES (N'El Pepe', CAST(N'2002-10-23' AS Date), N'elpepe.jfif', N'0', N'60-80', N'70-90', N'80-100', N'70-100', N'100-115', N'100-130', N'75-90', N'110-140')";
@@ -83,7 +84,7 @@ public static class BD
         sql[5] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ], [Fuerza], [Velocidad], [Resistencia], [BattleIQ], [PoderDestructivo], [Experiencia], [Transformaciones]) VALUES (N'Jesús', CAST(N'0001-12-24' AS Date), N'jesus.jpg', N'0', N'70-90', N'50-150', N'50-80', N'60-95', N'100-120', N'999-999', N'100-110', N'70-105')";
         sql[6] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ], [Fuerza], [Velocidad], [Resistencia], [BattleIQ], [PoderDestructivo], [Experiencia], [Transformaciones]) VALUES (N'Wazaa', CAST(N'1992-01-30' AS Date), N'waza.jfif', N'0', N'40-95', N'70-100', N'70-100', N'70-100', N'75-110', N'70-100', N'95-110', N'100-120')";
         sql[7] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ], [Fuerza], [Velocidad], [Resistencia], [BattleIQ], [PoderDestructivo], [Experiencia], [Transformaciones]) VALUES (N'Grom', CAST(N'2000-03-15' AS Date), N'grom.png', N'0', N'50-90', N'90-110', N'70-80', N'50-75', N'70-120', N'110-140', N'80-90', N'100-125')";
-        
+        sql[8] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ], [Fuerza], [Velocidad], [Resistencia], [BattleIQ], [PoderDestructivo], [Experiencia], [Transformaciones]) VALUES (N'Among Us', CAST(N'2018-06-15' AS Date), N'amongus.png', N'0', N'80-100', N'70-80', N'55-75', N'50-80', N'50-130', N'55-65', N'60-70', N'90-110')";
         using (SqlConnection bd = new SqlConnection(_connectionString)) foreach (string item in sql) bd.Execute(item);
     }
 }
