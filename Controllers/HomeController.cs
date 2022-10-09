@@ -61,17 +61,16 @@ public class HomeController : Controller
     // ------------------------------------------------------------
     [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile)
     {
-        // ver si el create tiene el . o no
-        string wwwRootPath = this._environment.WebRootPath;
-        string newName = "";
-
         if(MyFile != null) luchador.Foto = MyFile.FileName;
         else luchador.Foto = "no_profile_picture.png";
 
         int id = BD.AgregarLuchador(luchador);
-        
+
+        string wwwRootPath = this._environment.WebRootPath;
+        string newName = String.Empty;
         if(MyFile != null)
         {
+            //                  ver si el create tiene el . o no
             newName = id + System.IO.Path.GetExtension(MyFile.FileName); // ID + EXTENSIÓN DEL ARCHIVO INGRESADO
             using (var stream = System.IO.File.Create(wwwRootPath + @"\img\" + newName)) MyFile.CopyToAsync(stream);            
         }
@@ -79,12 +78,8 @@ public class HomeController : Controller
             newName = id + ".png";
             System.IO.File.Copy(wwwRootPath + @"\img\no_profile_picture.png", wwwRootPath + @"\img\luchadores\" + newName);
         }
-        //renonombrar foto a: id.*
-        //      tilin.jfif  --> 1.jfif
-        // funcion para renombrar en el bd
-
-        using (var stream = System.IO.File.Create(wwwRootPath + @"\img\luchadores\" + newName)) MyFile.CopyToAsync(stream);
-
+        luchador.Foto = newName;
+        BD.ActualizarLuchador(luchador);
         return RedirectToAction("Index", new {mensaje = "Luchador agregado con éxito!"});
     }
     // ------------------------------------------------------------------------------------------------------------
