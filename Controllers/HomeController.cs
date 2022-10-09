@@ -70,15 +70,16 @@ public class HomeController : Controller
         string newName = String.Empty;
         if(MyFile != null)
         {
-            //                  ver si el create tiene el . o no
-            newName = id + System.IO.Path.GetExtension(MyFile.FileName); // ID + EXTENSIÓN DEL ARCHIVO INGRESADO
-            using (var stream = System.IO.File.Create(wwwRootPath + @"\img\" + newName)) MyFile.CopyToAsync(stream);            
+            newName = id + System.IO.Path.GetExtension(MyFile.FileName); // = id.* = 12.png
+            using (var stream = System.IO.File.Create(wwwRootPath + @"\img\luchadores\" + newName)) MyFile.CopyToAsync(stream);            
         }
         else {
             newName = id + ".png";
             System.IO.File.Copy(wwwRootPath + @"\img\no_profile_picture.png", wwwRootPath + @"\img\luchadores\" + newName);
         }
+        luchador = BD.VerInfoLuchador(id);
         luchador.Foto = newName;
+        
         BD.ActualizarLuchador(luchador);
         return RedirectToAction("Index", new {mensaje = "Luchador agregado con éxito!"});
     }

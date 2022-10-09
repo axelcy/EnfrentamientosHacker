@@ -15,7 +15,7 @@ public static class BD
         using (SqlConnection bd = new SqlConnection(_connectionString))
         {
             bd.Execute(sql, new {FechaNacimiento = luchador.FechaNacimiento});
-            sql = $"select top 1 IdLuchador from Luchadores where Nombre = {luchador.Nombre} order by IdLuchador desc";
+            sql = $"select top 1 IdLuchador from Luchadores where Nombre = '{luchador.Nombre}' order by IdLuchador desc";
             id = bd.QueryFirstOrDefault<int>(sql);
         }
         return id;
