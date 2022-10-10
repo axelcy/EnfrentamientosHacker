@@ -42,9 +42,9 @@
                       <td>@item.Nombre</td>
                       <td>@item.FechaNacimiento.ToShortDateString()</td>
                       <td>
-                          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador" onclick="DetalleLuchador(@item.IdLuchador)">Ver Detalles</button>
-                          <button class="btn btn-info"    data-bs-toggle="modal" data-bs-target="#ModalFormLuchador" onclick="ModificarJugador(@item.IdLuchador)">Modificar</button>
-                          <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#ModalConfirmarEliminar" onclick="ConfirmarEliminar(@item.IdLuchador)">Eliminar</button>
+                          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador" onclick="DetalleLuchador(@item.IdLuchador)"><i class="bi bi-person-fill"></i> Detalles</button>
+                          <button class="btn btn-info"    data-bs-toggle="modal" data-bs-target="#ModalFormLuchador" onclick="ModificarJugador(@item.IdLuchador)"><i class="bi bi-pencil-square"></i></button>
+                          <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#ModalConfirmarEliminar" onclick="ConfirmarEliminar(@item.IdLuchador)"><i class="bi bi-trash"></i></button>
                       </td>
                   </tr>
                   i += 1;
@@ -214,7 +214,7 @@
             <input type="text" class="form-control" placeholder="max"
             name="luchador.IQ_max" id="mod-IQ_max" @* value="@luchador.IQ_max" *@ >
           </div>
-
+          
           <div class="input-group mb-3">
             <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Fuerza</span>
             <input type="text" class="form-control" placeholder="min"

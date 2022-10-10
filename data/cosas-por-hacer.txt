@@ -15,3 +15,8 @@ que sean múltiplos de 5 y q el valor min sea menor q el max.
 5. HACER LA VIEW DE INICIAR ENFRENTAMIENTO
 
 6. hacer la acción de enfrentamiento
+
+HACER Q FUNCIONE LO DE MODIFICAR LUCHADOR
+
+https://getbootstrap.com/docs/5.2/components/toasts/
+https://getbootstrap.com/docs/5.2/components/tooltips/
