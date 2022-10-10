@@ -18,5 +18,9 @@ que sean múltiplos de 5 y q el valor min sea menor q el max.
 
 HACER Q FUNCIONE LO DE MODIFICAR LUCHADOR
 
+-------------------------------------------------------------------
+
 https://getbootstrap.com/docs/5.2/components/toasts/
 https://getbootstrap.com/docs/5.2/components/tooltips/
+https://icons.getbootstrap.com/
+https://www.chartjs.org/docs/latest/getting-started/
