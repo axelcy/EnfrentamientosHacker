@@ -20,13 +20,24 @@ public class HomeController : Controller
         ViewBag.mensaje = mensaje;
         return View();
     }
-    public IActionResult IniciarEnfrentamiento()
+    public IActionResult IniciarEnfrentamiento(string mensaje = "")
     {
+        ViewBag.mensaje = mensaje;
         return View();
     }
     public IActionResult Registros()
     {
         ViewBag.ListaRegistros = BD.ListarRegistros();
+        return View();
+    }
+    public IActionResult Enfrentamiento(Luchador luchador1, Luchador luchador2, string ring = "Ring_1.png")
+    {
+        if(luchador1 == null || luchador2 == null){
+            return RedirectToAction("IniciarEnfrentamiento", new {mensaje = "Es obligatorio ingresar ambos luchadores!"});
+        }
+        ViewBag.Ring = ring;
+        ViewBag.luchador1 = luchador1;
+        ViewBag.luchador2 = luchador2;
         return View();
     }
     // ------------------------------------------------------------
