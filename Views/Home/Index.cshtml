@@ -43,7 +43,7 @@
                       <td>@item.FechaNacimiento.ToShortDateString()</td>
                       <td>
                           <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador" onclick="DetalleLuchador(@item.IdLuchador)">Ver Detalles</button>
-                          <button class="btn btn-info"    data-bs-toggle="modal" data-bs-target="#ModalModificarLuchador">Modificar</button>
+                          <button class="btn btn-info"    data-bs-toggle="modal" data-bs-target="#ModalFormLuchador" onclick="ModificarJugador(@item.IdLuchador)">Modificar</button>
                           <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#ModalConfirmarEliminar" onclick="ConfirmarEliminar(@item.IdLuchador)">Eliminar</button>
                       </td>
                   </tr>
@@ -72,7 +72,7 @@
     <div class="col-4 contenedor1">
 
       <a class="lista-vertical" href='@Url.Action("IniciarEnfrentamiento")'>Iniciar Enfrentamiento</a>
-      <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalAgregarLuchador">Agregar Luchador</button>
+      <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalFormLuchador" onclick="AgregarJugador()">Agregar Luchador</button>
       <a class="lista-vertical" href='@Url.Action("Registros")'>Ver Registro de Luchas</a>
       <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalReiniciarJuego">Reiniciar Juego</button>
       <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalElimiarListaLuchadores">Eliminar Todos Los Luchadores</button>
@@ -143,7 +143,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">Al reiniciar se perderán:<br> • Las Victorias<br> • Los Personajes creados por el usuario<br><br><u>No se perderán los registros</u><br><br>
-      También podés añadir los 8 luchadores del roster inicial a la lista de luchadores sin necesidad de perder nada.
+      También podés añadir los 10 luchadores del roster inicial a la lista de luchadores sin necesidad de perder nada.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -177,11 +177,11 @@
 <!-- --------------------------------------- MODAL AGREGAR LUCHADOR (no terminado) --------------------------------------- -->
 
 <form method="post" action='@Url.Action("GuardarLuchador", "Home")' enctype="multipart/form-data">
-<div class="modal fade" tabindex="-1" id="ModalAgregarLuchador">
+<div class="modal fade" tabindex="-1" id="ModalFormLuchador">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><b>A un paso de crear tu luchador personalizado!</b></h5>
+        <h5 class="modal-title" id="mod-title"> @* <b>A un paso de crear tu luchador personalizado!</b> *@ </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
         <div class="modal-body" style="background-color: #e4e4e4;">
@@ -190,19 +190,19 @@
           <div class="input-group mb-3">
             <span style="width: 11rem;" class="input-group-text" id="basic-addon1">Nombre</span>
             <input type="text" class="form-control" placeholder="axel1234"
-            name="luchador.Nombre" @* value="@luchador.Nombre" *@ >
+            name="luchador.Nombre" id="mod-Nombre" @* value="@luchador.Nombre" *@ >
             </div>
 
             <div class="input-group mb-3">
               <span style="width: 11rem;" class="input-group-text" id="basic-addon1">Fecha de Nacimiento</span>
               <input type="Date" class="form-control"
-              name="luchador.FechaNacimiento" @* value="@luchador.FechaNacimiento" *@ >
+              name="luchador.FechaNacimiento" id="mod-FechaNacimiento" @* value="@luchador.FechaNacimiento" *@ >
             </div>
 
             <div class="mb-3">
               <label for="formFile" class="form-label centrado" style="margin-bottom: 1vh;"><b>Subí tu propia foto!</b></label>
               <input type="file" class="form-control"
-              name="MyFile" @* value="@luchador.Foto" *@ >
+              name="MyFile" id="mod-MyFile" @* value="@luchador.Foto" *@ >
             </div>
             @* ----------------------------------- ESTADÍSTICAS ----------------------------------- *@
           <h4 style="text-align: center;">ESTADÍSTICAS</h4>
@@ -210,65 +210,65 @@
           <div class="input-group mb-3">
             <span style="width: 9rem;" class="input-group-text" id="basic-addon1">IQ</span>
             <input type="text" class="form-control" placeholder="min"
-            name="luchador.IQ_min" @* value="@luchador.IQ_min" *@ >
+            name="luchador.IQ_min" id="mod-IQ_min" @* value="@luchador.IQ_min" *@ >
             <input type="text" class="form-control" placeholder="max"
-            name="luchador.IQ_max" @* value="@luchador.IQ_max" *@ >
+            name="luchador.IQ_max" id="mod-IQ_max" @* value="@luchador.IQ_max" *@ >
           </div>
 
           <div class="input-group mb-3">
             <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Fuerza</span>
             <input type="text" class="form-control" placeholder="min"
-            name="luchador.Fuerza_min" @* value="@luchador.Fuerza_min" *@ >
+            name="luchador.Fuerza_min" id="mod-Fuerza_min" @* value="@luchador.Fuerza_min" *@ >
             <input type="text" class="form-control" placeholder="max"
-            name="luchador.Fuerza_max" @* value="@luchador.Fuerza_max" *@ >
+            name="luchador.Fuerza_max" id="mod-Fuerza_max" @* value="@luchador.Fuerza_max" *@ >
           </div>
 
           <div class="input-group mb-3">
             <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Velocidad</span>
             <input type="text" class="form-control" placeholder="min"
-            name="luchador.Velocidad_min" @* value="@luchador.Velocidad_min" *@ >
+            name="luchador.Velocidad_min" id="mod-Velocidad_min" @* value="@luchador.Velocidad_min" *@ >
             <input type="text" class="form-control" placeholder="max"
-            name="luchador.Velocidad_max" @* value="@luchador.Velocidad_max" *@ >
+            name="luchador.Velocidad_max" id="mod-Velocidad_max" @* value="@luchador.Velocidad_max" *@ >
           </div>
 
           <div class="input-group mb-3">
             <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Resistencia</span>
             <input type="text" class="form-control" placeholder="min"
-            name="luchador.Resistencia_min" @* value="@luchador.Resistencia_min" *@ >
+            name="luchador.Resistencia_min" id="mod-Resistencia_min" @* value="@luchador.Resistencia_min" *@ >
             <input type="text" class="form-control" placeholder="max"
-            name="luchador.Resistencia_max" @* value="@luchador.Resistencia_max" *@ >
+            name="luchador.Resistencia_max" id="mod-Resistencia_max" @* value="@luchador.Resistencia_max" *@ >
           </div>
 
           <div class="input-group mb-3">
             <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Battle IQ</span>
             <input type="text" class="form-control" placeholder="min"
-            name="luchador.BattleIQ_min" @* value="@luchador.BattleIQ_min" *@ >
+            name="luchador.BattleIQ_min" id="mod-BattleIQ_min" @* value="@luchador.BattleIQ_min" *@ >
             <input type="text" class="form-control" placeholder="max"
-            name="luchador.BattleIQ_max" @* value="@luchador.BattleIQ_max" *@ >
+            name="luchador.BattleIQ_max" id="mod-BattleIQ_max" @* value="@luchador.BattleIQ_max" *@ >
           </div>
 
           <div class="input-group mb-3">
             <span style="width: 9rem;" class="input-group-text" id="basic-addon1">PoderDestructivo</span>
             <input type="text" class="form-control" placeholder="min"
-            name="luchador.PoderDestructivo_min" @* value="@luchador.PoderDestructivo_min" *@ >
+            name="luchador.PoderDestructivo_min" id="mod-PoderDestructivo_min" @* value="@luchador.PoderDestructivo_min" *@ >
             <input type="text" class="form-control" placeholder="max"
-            name="luchador.PoderDestructivo_max" @* value="@luchador.PoderDestructivo_max" *@ >
+            name="luchador.PoderDestructivo_max" id="mod-PoderDestructivo_max" @* value="@luchador.PoderDestructivo_max" *@ >
           </div>
 
           <div class="input-group mb-3">
             <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Experiencia</span>
             <input type="text" class="form-control" placeholder="min"
-            name="luchador.Experiencia_min" @* value="@luchador.Experiencia_min" *@ >
+            name="luchador.Experiencia_min" id="mod-Experiencia_min" @* value="@luchador.Experiencia_min" *@ >
             <input type="text" class="form-control" placeholder="max"
-            name="luchador.Experiencia_max" @* value="@luchador.Experiencia_max" *@ >
+            name="luchador.Experiencia_max" id="mod-Experiencia_max" @* value="@luchador.Experiencia_max" *@ >
           </div>
 
           <div class="input-group mb-3">
             <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Transformaciones</span>
             <input type="text" class="form-control" placeholder="min"
-            name="luchador.Transformaciones_min" @* value="@luchador.Transformaciones_min" *@ >
+            name="luchador.Transformaciones_min" id="mod-Transformaciones_min" @* value="@luchador.Transformaciones_min" *@ >
             <input type="text" class="form-control" placeholder="max"
-            name="luchador.Transformaciones_max" @* value="@luchador.Transformaciones_max" *@ >
+            name="luchador.Transformaciones_max" id="mod-Transformaciones_max" @* value="@luchador.Transformaciones_max" *@ >
           </div>
 
         </div>

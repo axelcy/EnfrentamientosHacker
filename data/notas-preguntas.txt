@@ -2,26 +2,28 @@
 COSAS POR HACER:
 
 hacer los rings con queisis 
+hacer 10 rings, 1 por personaje. ej: por Jesús q haya un ring q sea el cielo (no sé si 10 pero veo)
 
-agregar 1 luchador inicial más para q sean 10
+agregar 1 luchador inicial más para q sean 10 - q sea emile zolá
 
-q no te deje crear si no está todo completo y q te salga el alert arriba del título "DATOS DEL LUCHADOR" en el mismo modal.
-o q se te recargue la página y q se abra el modal automáticamente y q no se guarde el luchador en la base de datos
+-------------- FORM DE LUCHADOR: --------------
 
 HACER Q AL ELIMINAR JUGADORES O REINICIAR, SE ELIMINEN LAS FOTOS GUARDADAS.
 
 dar la opción de subir imagen o link para la foto (una u la otra)
 
-poner un boton para llenar todas las stats de forma aleatoria (del 0 al 200), que sean múltiplos de 5 y q el min sea menor q el max
-sacar q por defecto aparezca 0 y q se vea el placeholder
+poner un boton para llenar todas las stats de forma aleatoria (del 0 al 200),
+que sean múltiplos de 5 y q el min sea menor q el max.
 
-hacer random cada estadística para los de la api
+q no te deje crear si no está todo completo y q te salga el alert arriba del título "DATOS DEL LUCHADOR" en el mismo modal.
+o q se te recargue la página y q se abra el modal automáticamente y q no se guarde el luchador en la base de datos
+
+------------------------------------------
+
+
 
 ---------------------------------------------------------------------
 
 PREGUNTAS:
 
-
-INSERT INTO Luchadores(
-    [Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max])
-    {luchador.Nombre}, {luchador.FechaNacimiento}, {luchador.Foto}, {luchador.Victorias}, {luchador.IQ_min}, {luchador.IQ_max}, {luchador.Fuerza_min}, {luchador.Fuerza_max}, {luchador.Velocidad_min}, {luchador.Velocidad_max}, {luchador.Resistencia_min}, {luchador.Resistencia_max}, {luchador.BattleIQ_min}, {luchador.BattleIQ_max}, {luchador.PoderDestructivo_min}, {luchador.PoderDestructivo_max}, {luchador.Experiencia_min}, {luchador.Experiencia_max}, {luchador.T
+está bien hacer todo en la función GuardarLuchador o es mejor llamar a una funcion de un modal para que lo haga?

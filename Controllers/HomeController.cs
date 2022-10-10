@@ -61,6 +61,11 @@ public class HomeController : Controller
     // ------------------------------------------------------------
     [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile)
     {
+        DateTime defaultDate = new DateTime(0001, 01, 01);
+        if(luchador.Nombre == null || luchador.FechaNacimiento == defaultDate){
+            return RedirectToAction("Index", new {mensaje = "Es obligatorio ingresar <b>nombre</b> y <b>fecha de nacimiento</b>!"});
+        }
+
         if(MyFile != null) luchador.Foto = MyFile.FileName;
         else luchador.Foto = "no_profile_picture.png";
 
