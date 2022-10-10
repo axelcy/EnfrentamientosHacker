@@ -1,5 +1,7 @@
 .
-COSAS POR HACER:
+------------------ COSAS POR HACER ------------------
+
+0. Index: En la lista de la derecha, hacer que los links se vean como los botones
 
 1. Agregar 1 luchador inicial más para q sean 10 - q sea emile zolá
 
@@ -13,10 +15,3 @@ que sean múltiplos de 5 y q el valor min sea menor q el max.
 5. HACER LA VIEW DE INICIAR ENFRENTAMIENTO
 
 6. hacer la acción de enfrentamiento
-
-
----------------------------------------------------------------------
-
-PREGUNTAS:
-
-está bien hacer todo en la función GuardarLuchador o es mejor llamar a una funcion de un modal para que lo haga?

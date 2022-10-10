@@ -1,3 +1,10 @@
+.
+------------------ COMANDOS GIT ------------------
+
+clone https://github.com/DarkApple55/EnfrentamientosHacker.git
+se usa SOLO la primera vez, sirve para colar el repositorio en la carpeta
+
+
 status              = ver estado
 
 add .               = hace un paquete

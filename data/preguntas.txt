@@ -1,0 +1,4 @@
+.
+------------------ PREGUNTAS ------------------
+
+está bien hacer todo en la función GuardarLuchador o es mejor llamar a una funcion de un modal para que lo haga?
