@@ -16,7 +16,11 @@ public class HomeController : Controller
     // ------------------------------------------------------------
     public IActionResult Index(string mensaje = "")
     {
-        ViewBag.ListaLuchadores = BD.ListarLuchadores(); // String.Empty
+        if(!Directory.Exists(this._environment.WebRootPath + @"\img\luchadores\"))
+        {
+            Directory.CreateDirectory(this._environment.WebRootPath + @"\img\luchadores");
+        }
+        ViewBag.ListaLuchadores = BD.ListarLuchadores();
         ViewBag.mensaje = mensaje;
         return View();
     }
@@ -72,7 +76,7 @@ public class HomeController : Controller
             item.Foto = newName;
             BD.ActualizarLuchador(item);
         }
-        
+
         return RedirectToAction("Index", new {mensaje = "Roster inicial duplicado con éxito!"});
     }
     public IActionResult EliminarLuchador(int IdLuchador)
