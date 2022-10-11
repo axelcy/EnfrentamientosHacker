@@ -6,7 +6,7 @@ namespace EnfrentamientosHacker.Models;
 public static class BD
 {
     // DESKTOP-8SGST9S\SQLEXPRESS | localhost
-    private static string _connectionString = @"Server=DESKTOP-8SGST9S\SQLEXPRESS;DataBase=BD-Enfrentamientos;Trusted_Connection=True";
+    private static string _connectionString = @"Server=localhost;DataBase=BD-Enfrentamientos;Trusted_Connection=True";
     // private static SqlConnection bd = new SqlConnection(_connectionString);
     public static int AgregarLuchador(Luchador luchador) // luchador.FechaNacimiento.ToShortDateString() = 23/10/2002 || CAST({luchador.FechaNacimiento.ToShortDateString()}' AS Date)
     {
@@ -20,7 +20,6 @@ public static class BD
         }
         return id;
         }
-    // TODAVÍA NO FUNCIONA | hacer el UPDATE - poner int id de parametro en vez de luchador
     public static void ActualizarLuchador(Luchador luchador)
     {
         string sql = $"UPDATE Luchadores SET Nombre = '{luchador.Nombre}', FechaNacimiento = @FechaNacimiento, Foto = '{luchador.Foto}', Victorias = {luchador.Victorias}, IQ_min = {luchador.IQ_min}, IQ_max = {luchador.IQ_max}, Fuerza_min = {luchador.Fuerza_min}, Fuerza_max = {luchador.Fuerza_max}, Velocidad_min = {luchador.Velocidad_min}, Velocidad_max = {luchador.Velocidad_max}, Resistencia_min = {luchador.Resistencia_min}, Resistencia_max = {luchador.Resistencia_max}, BattleIQ_min = {luchador.BattleIQ_min}, BattleIQ_max = {luchador.BattleIQ_max}, PoderDestructivo_min = {luchador.PoderDestructivo_min}, PoderDestructivo_max = {luchador.PoderDestructivo_max}, Experiencia_min = {luchador.Experiencia_min}, Experiencia_max = {luchador.Experiencia_max}, Transformaciones_min = {luchador.Transformaciones_min}, Transformaciones_max = {luchador.Transformaciones_max} WHERE IdLuchador = {luchador.IdLuchador}";
@@ -68,7 +67,6 @@ public static class BD
     public static void ReiniciarJuego()
     {
         string[] sql = new string[11];
-        // List<int> IDs = new List<int>();
         sql[0] = "truncate table Luchadores";
         sql[1] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Tilín', CAST(N'2014-03-07' AS Date), N'tilin.jfif', N'0', N'75', 90, 75, 90, 90, 140, 60, 80, 90, 125, 55, 65, 65, 75, 110, 170)";
         sql[2] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Osito Perú', CAST(N'1998-07-16' AS Date), N'osito_peru.jpeg', N'0', N'80', 90, 90, 110, 60, 75, 100, 120, 90, 105, 120, 150, 70, 80, 140, 190)";
@@ -101,11 +99,11 @@ public static class BD
         sql[6] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Wazaa', CAST(N'1992-01-30' AS Date), N'waza.jfif', N'0', N'40', 95, 70, 100, 70, 100, 70, 100, 75, 110, 70, 100, 95, 110, 100, 120)";
         sql[7] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Grom', CAST(N'2000-03-15' AS Date), N'grom.png', N'0', N'50', 90, 90, 110, 70, 80, 50, 75, 70, 120, 110, 140, 80, 90, 100, 125)";
         sql[8] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Among Us', CAST(N'2018-06-15' AS Date), N'amongus.png', N'0', N'80', 100, 70, 80, 55, 75, 50, 80, 50, 130, 55, 65, 60, 70, 90, 110)";
-        sql[10] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Emile Zola', CAST(N'1840-04-02' AS Date), N'emile_zola.png', N'0', N'90', 120, 70, 90, 70, 80, 50, 65, 80, 90, 40, 55, 80, 100, 80, 100)";
+        sql[9] = "INSERT [dbo].[Luchadores] ([IdLuchador], [Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (10, N'Emile Zola', CAST(N'1840-04-02' AS Date), N'emile_zola.png', N'0', N'90', 120, 70, 90, 70, 80, 50, 65, 80, 90, 40, 55, 80, 100, 80, 100)";
         using (SqlConnection bd = new SqlConnection(_connectionString))
         {
             bd.Execute(string.Join(";", sql));
-            sql[9] = $"select top 10 * from Luchadores order by IdLuchador desc";
+            sql[9] = $"select top 8 * from Luchadores order by IdLuchador desc";
             ListaLuchadores = bd.Query<Luchador>(sql[9]).ToList();
         }
         return ListaLuchadores;

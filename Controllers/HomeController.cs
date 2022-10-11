@@ -57,7 +57,7 @@ public class HomeController : Controller
         foreach (Luchador item in ListaLuchadores)
         {
             newName = item.IdLuchador + System.IO.Path.GetExtension(item.Foto);
-            System.IO.File.Copy(wwwRootPath + @"\img\luchadores_iniciales/" + item.Foto, wwwRootPath + @"\img\luchadores\" + newName);
+            System.IO.File.Copy(wwwRootPath + @"\img\luchadores_iniciales\" + item.Foto, wwwRootPath + @"\img\luchadores\" + newName);
             item.Foto = newName;
             BD.ActualizarLuchador(item);
         }
@@ -107,6 +107,10 @@ public class HomeController : Controller
         DateTime defaultDate = new DateTime(0001, 01, 01);
         if(luchador.Nombre == null || luchador.FechaNacimiento == defaultDate){
             return RedirectToAction("Index", new {mensaje = "Es obligatorio ingresar <b>nombre</b> y <b>fecha de nacimiento</b>!"});
+        }
+        DateTime minDate = new DateTime(1753, 01, 01), maxDate = new DateTime(9999, 12, 31);
+        if (luchador.FechaNacimiento > maxDate || luchador.FechaNacimiento < minDate){
+            return RedirectToAction("Index", new {mensaje = $"La fecha ingresada debe estar entre los valores <b>{minDate.ToShortDateString()}</b> y <b>{maxDate.ToShortDateString()}</b>!"});
         }
 
         if(MyFile != null) luchador.Foto = MyFile.FileName;
