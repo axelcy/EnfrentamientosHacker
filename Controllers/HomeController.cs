@@ -43,23 +43,51 @@ public class HomeController : Controller
     // ------------------------------------------------------------
     public IActionResult ReiniciarJuego()
     {
+        List<Luchador> ListaLuchadores = BD.ListarLuchadores();
+        string wwwRootPath = this._environment.WebRootPath;
+        foreach (Luchador item in ListaLuchadores) System.IO.File.Delete(wwwRootPath + @"\img\luchadores\" + item.Foto);
+
         BD.ReiniciarJuego();
+        ListaLuchadores = BD.ListarLuchadores();
+        string newName = String.Empty;
+        foreach (Luchador item in ListaLuchadores)
+        {
+            newName = item.IdLuchador + System.IO.Path.GetExtension(item.Foto);
+            System.IO.File.Copy(wwwRootPath + @"\img\luchadores_iniciales/" + item.Foto, wwwRootPath + @"\img\luchadores\" + newName);
+            item.Foto = newName;
+            BD.ActualizarLuchador(item);
+        }
+        
         return RedirectToAction("Index", new {mensaje = "Juego reiniciado con éxito!"});
     }
     public IActionResult DuplicarRoster()
     {
-        BD.DuplicarRoster();
+        List<Luchador> LuchadoresDuplicados = BD.DuplicarRoster();
+        string wwwRootPath = this._environment.WebRootPath;
+        string newName = String.Empty;
+        foreach (Luchador item in LuchadoresDuplicados)
+        {
+            newName = item.IdLuchador + System.IO.Path.GetExtension(item.Foto);
+            System.IO.File.Copy(wwwRootPath + @"\img\luchadores_iniciales/" + item.Foto, wwwRootPath + @"\img\luchadores\" + newName);
+            item.Foto = newName;
+            BD.ActualizarLuchador(item);
+        }
+        
         return RedirectToAction("Index", new {mensaje = "Roster inicial duplicado con éxito!"});
     }
     public IActionResult EliminarLuchador(int IdLuchador)
     {
         Luchador luchador = BD.VerInfoLuchador(IdLuchador);
+        System.IO.File.Delete(this._environment.WebRootPath + @"\img\luchadores\" + luchador.Foto);
         BD.EliminarLuchador(IdLuchador);
         return RedirectToAction("Index", new {mensaje = $"Luchador <b>{luchador.Nombre}</b> eliminado éxito!"});
     }
     
     public IActionResult ElimiarListaLuchadores()
     {
+        List<Luchador> ListaLuchadores = BD.ListarLuchadores();
+        string wwwRootPath = this._environment.WebRootPath;
+        foreach (Luchador item in ListaLuchadores) System.IO.File.Delete(wwwRootPath + @"\img\luchadores\" + item.Foto);
         BD.ElimiarListaLuchadores();
         return RedirectToAction("Index", new {mensaje = "Lista de luchadores eliminada con éxito!"});
     }
