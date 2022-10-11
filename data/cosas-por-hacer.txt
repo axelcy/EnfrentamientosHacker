@@ -1,9 +1,6 @@
 .
 ------------------ COSAS POR HACER ------------------
 
-0. Index: En la lista de la derecha, hacer que los links se vean como los botones
-
-1. Agregar 1 luchador inicial más para q sean 10 - q sea emile zolá
 
 2. Que se elimine el archivo de la foto de un jugador al eliminarlo de la BD
 

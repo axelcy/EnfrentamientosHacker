@@ -70,10 +70,9 @@
     </div>
     <!-- --------------------------------------- DERECHA --------------------------------------- -->
     <div class="col-4 contenedor1">
-
-      <a class="lista-vertical" href='@Url.Action("IniciarEnfrentamiento")'>Iniciar Enfrentamiento</a>
+      <button class="lista-vertical" type="submit" onclick="location.href='@Url.Action("IniciarEnfrentamiento")'">Iniciar Enfrentamiento</button>
       <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalFormLuchador" onclick="AgregarJugador()">Agregar Luchador</button>
-      <a class="lista-vertical" href='@Url.Action("Registros")'>Ver Registro de Luchas</a>
+      <button class="lista-vertical" type="submit" onclick="location.href='@Url.Action("Registros")'">Ver Registro de Luchas</button>
       <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalReiniciarJuego">Reiniciar Juego</button>
       <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalElimiarListaLuchadores">Eliminar Todos Los Luchadores</button>
     </div>

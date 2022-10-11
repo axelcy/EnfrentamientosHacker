@@ -27,10 +27,6 @@ public class Luchador
         _transformaciones_min = transformaciones_min;   _transformaciones_max = transformaciones_max;
     }
     public Luchador(){}
-    public Luchador(int idLuchador, string nombre, DateTime fechaNacimiento, string foto, int victorias)
-    {
-
-    }
     public int IdLuchador           { get{return _idLuchador;} set{_idLuchador = value;} }
     public string Nombre            { get{return _nombre;} set{_nombre = value;} }
     public DateTime FechaNacimiento { get{return _fechaNacimiento;} set{_fechaNacimiento = value;} }
