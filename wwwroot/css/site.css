@@ -109,3 +109,21 @@ body {
   position: absolute;
   bottom: 53px;
 }
+
+.form_enfrentamientos{
+  position: absolute;
+  left: 47%;
+  top: 60%;
+  transform: translateX(-33%) translateY(-65%);
+  border: none;
+  background: none;
+}
+
+.img_luchador1{
+  position: absolute;
+  left: 60%;
+  top: 60%;
+  transform: translateX(-33%) translateY(-65%);
+  border: none;
+  background: none;
+}

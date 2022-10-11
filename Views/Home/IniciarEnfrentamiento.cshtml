@@ -2,6 +2,26 @@
     ViewData["Title"] = "Home Page";
 }
 <body background="/img/fondo1.jpg">
+        <form class="form_enfrentamientos" method="post" enctype="multipart/form-data">
+            <div class="input-group mb-3">
+            <select class="form-control form-select form-select-lg">
+                <option value="-1"></option>
+                @foreach (Luchador l in ViewBag.ListaLuchadores)
+                {
+                    <option value="@l.IdLuchador">@l.Nombre</option>
+                    <img class="img_luchador1" src="/img/luchadores/9.png/">
 
+                }
+            </select>
+            <select class="form-control form-select form-select-lg">
+                <option  value="-1"></option>
+                @foreach (Luchador l in ViewBag.ListaLuchadores)
+                {
+                    <option value="@l.IdLuchador">@l.Nombre</option>
+                }
+            </select>
+          </div>
+    </form>
 </body>
+
 

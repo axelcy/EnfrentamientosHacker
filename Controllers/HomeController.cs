@@ -26,6 +26,7 @@ public class HomeController : Controller
     }
     public IActionResult IniciarEnfrentamiento(string mensaje = "")
     {
+        ViewBag.ListaLuchadores = BD.ListaLuchadores;
         ViewBag.mensaje = mensaje;
         return View();
     }
