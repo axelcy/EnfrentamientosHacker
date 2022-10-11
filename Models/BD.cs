@@ -68,7 +68,6 @@ public static class BD
     public static void ReiniciarJuego()
     {
         string[] sql = new string[10];
-        // List<int> IDs = new List<int>();
         sql[0] = "truncate table Luchadores";
         sql[1] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Tilín', CAST(N'2014-03-07' AS Date), N'tilin.jfif', N'0', N'75', 90, 75, 90, 90, 140, 60, 80, 90, 125, 55, 65, 65, 75, 110, 170)";
         sql[2] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Osito Perú', CAST(N'1998-07-16' AS Date), N'osito_peru.jpeg', N'0', N'80', 90, 90, 110, 60, 75, 100, 120, 90, 105, 120, 150, 70, 80, 140, 190)";
@@ -79,13 +78,7 @@ public static class BD
         sql[7] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Wazaa', CAST(N'1992-01-30' AS Date), N'waza.jfif', N'0', N'40', 95, 70, 100, 70, 100, 70, 100, 75, 110, 70, 100, 95, 110, 100, 120)";
         sql[8] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Grom', CAST(N'2000-03-15' AS Date), N'grom.png', N'0', N'50', 90, 90, 110, 70, 80, 50, 75, 70, 120, 110, 140, 80, 90, 100, 125)";
         sql[9] = "INSERT [dbo].[Luchadores] ([Nombre], [FechaNacimiento], [Foto], [Victorias], [IQ_min], [IQ_max], [Fuerza_min], [Fuerza_max], [Velocidad_min], [Velocidad_max], [Resistencia_min], [Resistencia_max], [BattleIQ_min], [BattleIQ_max], [PoderDestructivo_min], [PoderDestructivo_max], [Experiencia_min], [Experiencia_max], [Transformaciones_min], [Transformaciones_max]) VALUES (N'Among Us', CAST(N'2018-06-15' AS Date), N'amongus.png', N'0', N'80', 100, 70, 80, 55, 75, 50, 80, 50, 130, 55, 65, 60, 70, 90, 110)";
-        using (SqlConnection bd = new SqlConnection(_connectionString))
-        {
-            bd.Execute(string.Join(";", sql));
-            // sql[10] = $"select IdLuchador from Luchadores order by IdLuchador asc";
-            // IDs = bd.Query<int>(sql[10]).ToList();
-        }
-        // return IDs;
+        using (SqlConnection bd = new SqlConnection(_connectionString)) bd.Execute(string.Join(";", sql));
     }
     public static List<Luchador> DuplicarRoster()
     {
