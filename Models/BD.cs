@@ -5,8 +5,8 @@ namespace EnfrentamientosHacker.Models;
 
 public static class BD
 {
-    // Server=NombreMaquina\SQLEXPRESS;DataBase=NombreBase;Trusted_Connection=True
-    private static string _connectionString = @"Server=DESKTOP-8SGST9S\SQLEXPRESS;DataBase=BD-Enfrentamientos;Trusted_Connection=True";
+    // DESKTOP-8SGST9S\SQLEXPRESS | localhost
+    private static string _connectionString = @"Server=localhost;DataBase=BD-Enfrentamientos;Trusted_Connection=True";
     // private static SqlConnection bd = new SqlConnection(_connectionString);
     public static int AgregarLuchador(Luchador luchador) // luchador.FechaNacimiento.ToShortDateString() = 23/10/2002 || CAST({luchador.FechaNacimiento.ToShortDateString()}' AS Date)
     {
