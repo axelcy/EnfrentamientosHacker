@@ -1,9 +1,6 @@
 .
 ------------------ COSAS POR HACER ------------------
 
-
-2. Que se elimine el archivo de la foto de un jugador al eliminarlo de la BD
-
 3. poner un boton para llenar todas las stats de forma aleatoria en el form (del 0 al 250),
 que sean múltiplos de 5 y q el valor min sea menor q el max.
 

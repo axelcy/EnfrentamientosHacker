@@ -1,6 +1,6 @@
 namespace EnfrentamientosHacker.Models;
 
-public class Funciones
+public static class Funciones
 {
     
 }

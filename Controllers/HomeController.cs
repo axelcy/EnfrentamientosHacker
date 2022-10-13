@@ -26,8 +26,16 @@ public class HomeController : Controller
     }
     public IActionResult IniciarEnfrentamiento(string mensaje = "")
     {
+        List<string> ListaRings = new List<string>();
+        DirectoryInfo DirectorioRings = new DirectoryInfo(this._environment.WebRootPath + @"\img\rings\");
+        foreach (var file in DirectorioRings.GetFiles()) ListaRings.Add(file.Name); // foreach file in folder Add file.name
+
+        List<string> RingsTexto = new List<string>();
+        //foreach (var file in DirectorioRings.GetFiles()) RingsTexto.Add(System.IO.Path.GetFileNameWithoutExtension(file))
+        // esto para el nombre en el texto del carrusel
         ViewBag.ListaLuchadores = BD.ListarLuchadores();
         ViewBag.mensaje = mensaje;
+        ViewBag.Rings = ListaRings;
         return View();
     }
     public IActionResult Registros()
