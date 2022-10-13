@@ -31,11 +31,12 @@ public class HomeController : Controller
         foreach (var file in DirectorioRings.GetFiles()) ListaRings.Add(file.Name); // foreach file in folder Add file.name
 
         List<string> RingsTexto = new List<string>();
-        //foreach (var file in DirectorioRings.GetFiles()) RingsTexto.Add(System.IO.Path.GetFileNameWithoutExtension(file))
+        foreach (string item in ListaRings) RingsTexto.Add(item.Split('.')[0].Replace('-', ' '));
         // esto para el nombre en el texto del carrusel
         ViewBag.ListaLuchadores = BD.ListarLuchadores();
         ViewBag.mensaje = mensaje;
         ViewBag.Rings = ListaRings;
+        ViewBag.RingsTexto = RingsTexto;
         return View();
     }
     public IActionResult Registros()
