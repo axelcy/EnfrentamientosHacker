@@ -175,7 +175,7 @@
 
 <!-- --------------------------------------- MODAL AGREGAR LUCHADOR (no terminado) --------------------------------------- -->
 
-<form method="post" action='@Url.Action("GuardarLuchador", "Home")' enctype="multipart/form-data">
+<form method="post" action='@Url.Action("GuardarLuchador", "Home")' enctype="multipart/form-data" id="fj-form">
 <div class="modal fade" tabindex="-1" id="ModalFormLuchador">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
@@ -275,7 +275,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           <button type="submit" class="btn btn-success"
-          href='@Url.Action("GuardarLuchador", new {luchador=luchador})' data-bs-dismiss="modal">Crear</button>
+          href='@Url.Action("GuardarLuchador", new {luchador=luchador})' data-bs-dismiss="modal" id="fj-submit"></button>
         </div>
       
 

@@ -90,6 +90,10 @@ function ModificarJugador(IdLuchador)
                     $("#mod-Experiencia_max").attr("value", response.experiencia_max)
                     $("#mod-Transformaciones_min").attr("value", response.transformaciones_min)
                     $("#mod-Transformaciones_max").attr("value", response.transformaciones_max)
+
+                    $("#fj-submit").html("Actualizar");
+                    //$("#fj-form").attr("action", '@Url.Action("ActualizarLuchador", "Home", new {luchador=luchador})')
+                    //$("#fj-submit").attr("href", '@Url.Action("ActualizarLuchador", new {luchador=luchador})')
                 }
         }
     );
@@ -125,6 +129,10 @@ function AgregarJugador()
                     $("#mod-Experiencia_max").attr("value", null)
                     $("#mod-Transformaciones_min").attr("value", null)
                     $("#mod-Transformaciones_max").attr("value", null)
+
+                    $("#fj-submit").html("Crear");
+                    // $("#fj-form").attr("action", '@Url.Action("GuardarLuchador","Home")')
+                    // $("#fj-submit").attr("href", '@Url.Action("GuardarLuchador", new {luchador=luchador})')
                 }
         }
     );

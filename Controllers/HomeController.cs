@@ -13,7 +13,8 @@ public class HomeController : Controller
         _logger = logger;
         _environment = environment;
     }
-    // ------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------
     public IActionResult Index(string mensaje = "")
     {
         if(!Directory.Exists(this._environment.WebRootPath + @"\img\luchadores\"))
@@ -54,7 +55,8 @@ public class HomeController : Controller
         ViewBag.luchador2 = luchador2;
         return View();
     }
-    // ------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------
     public IActionResult ReiniciarJuego()
     {
         List<Luchador> ListaLuchadores = BD.ListarLuchadores();
@@ -105,13 +107,19 @@ public class HomeController : Controller
         BD.ElimiarListaLuchadores();
         return RedirectToAction("Index", new {mensaje = "Lista de luchadores eliminada con éxito!"});
     }
+    [HttpPost] public IActionResult ActualizarLuchador(Luchador luchador)
+    {
+        BD.ActualizarLuchador(luchador);
+        return RedirectToAction("Index", new {mensaje = "Luchador modificado con éxito!"});
+    }
     // ------------------------------------------------------------
     public Luchador DevolverLuchador(int IdLuchador)
     {
         Luchador luchador = BD.VerInfoLuchador(IdLuchador);
         return luchador;
     }
-    // ------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------
     [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile)
     {
         DateTime defaultDate = new DateTime(0001, 01, 01);
@@ -145,8 +153,8 @@ public class HomeController : Controller
         BD.ActualizarLuchador(luchador);
         return RedirectToAction("Index", new {mensaje = "Luchador agregado con éxito!"});
     }
-    // ------------------------------------------------------------------------------------------------------------
-    // ------------------------------------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
