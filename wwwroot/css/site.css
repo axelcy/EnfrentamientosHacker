@@ -127,3 +127,11 @@ body {
   border: none;
   background: none;
 }
+#div-form{
+  background-color: coral;
+  width: 100%;
+  height: 100%;
+}
+#form-iniciar{
+  margin: 1rem;
+}
