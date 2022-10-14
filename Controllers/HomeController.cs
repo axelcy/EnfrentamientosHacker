@@ -29,11 +29,11 @@ public class HomeController : Controller
     {
         List<string> ListaRings = new List<string>();
         DirectoryInfo DirectorioRings = new DirectoryInfo(this._environment.WebRootPath + @"\img\rings\");
-        foreach (var file in DirectorioRings.GetFiles()) ListaRings.Add(file.Name); // foreach file in folder Add file.name
+        foreach (var file in DirectorioRings.GetFiles()) ListaRings.Add(file.Name);
 
         List<string> RingsTexto = new List<string>();
         foreach (string item in ListaRings) RingsTexto.Add(item.Split('.')[0].Replace('-', ' '));
-        // esto para el nombre en el texto del carrusel
+
         ViewBag.ListaLuchadores = BD.ListarLuchadores();
         ViewBag.mensaje = mensaje;
         ViewBag.Rings = ListaRings;
@@ -96,9 +96,8 @@ public class HomeController : Controller
         Luchador luchador = BD.VerInfoLuchador(IdLuchador);
         System.IO.File.Delete(this._environment.WebRootPath + @"\img\luchadores\" + luchador.Foto);
         BD.EliminarLuchador(IdLuchador);
-        return RedirectToAction("Index", new {mensaje = $"Luchador <b>{luchador.Nombre}</b> eliminado éxito!"});
+        return RedirectToAction("Index", new {mensaje = $"Luchador <b>{luchador.Nombre}</b> eliminado con éxito!"});
     }
-    
     public IActionResult ElimiarListaLuchadores()
     {
         List<Luchador> ListaLuchadores = BD.ListarLuchadores();
@@ -106,6 +105,28 @@ public class HomeController : Controller
         foreach (Luchador item in ListaLuchadores) System.IO.File.Delete(wwwRootPath + @"\img\luchadores\" + item.Foto);
         BD.ElimiarListaLuchadores();
         return RedirectToAction("Index", new {mensaje = "Lista de luchadores eliminada con éxito!"});
+    }
+    public IActionResult EstadisticasRandom(Luchador luchador) // SIN HACER
+    {
+        Random random = new Random();
+        luchador.IQ_min = random.Next(0, 125);
+        luchador.IQ_max = random.Next(125, 250);
+        luchador.Fuerza_min = random.Next(0, 125);
+        luchador.Fuerza_max = random.Next(125, 250);
+        luchador.Velocidad_min = random.Next(0, 125);
+        luchador.Velocidad_max = random.Next(125, 250);
+        luchador.Resistencia_min = random.Next(0, 125);
+        luchador.Resistencia_max = random.Next(125, 250);
+        luchador.BattleIQ_min = random.Next(0, 125);
+        luchador.BattleIQ_max = random.Next(125, 250);
+        luchador.PoderDestructivo_min = random.Next(0, 125);
+        luchador.PoderDestructivo_max = random.Next(125, 250);
+        luchador.Experiencia_min = random.Next(0, 125);
+        luchador.Experiencia_max = random.Next(125, 250);
+        luchador.Transformaciones_min = random.Next(0, 125);
+        luchador.Transformaciones_max = random.Next(125, 250);
+
+        return RedirectToAction("GuardarLuchador", new {luchador = luchador});
     }
     // ------------------------------------------------------------
     public Luchador DevolverLuchador(int IdLuchador)
@@ -120,7 +141,7 @@ public class HomeController : Controller
         BD.ActualizarLuchador(luchador);
         return RedirectToAction("Index", new {mensaje = "Luchador modificado con éxito!"});
     }
-    [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile)
+    [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile, bool random = false) // FUNCIONA TODO MENOS Q EL BOOL SEA TRUE
     {
         DateTime defaultDate = new DateTime(0001, 01, 01);
         if(luchador.Nombre == null || luchador.FechaNacimiento == defaultDate){
@@ -134,6 +155,7 @@ public class HomeController : Controller
         if(MyFile != null) luchador.Foto = MyFile.FileName;
         else luchador.Foto = "no_profile_picture.png";
 
+        if(random) luchador = Funciones.EstadisticasRandom(luchador);
         int id = BD.AgregarLuchador(luchador);
 
         string wwwRootPath = this._environment.WebRootPath;
