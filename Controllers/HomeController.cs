@@ -106,28 +106,6 @@ public class HomeController : Controller
         BD.ElimiarListaLuchadores();
         return RedirectToAction("Index", new {mensaje = "Lista de luchadores eliminada con éxito!"});
     }
-    public IActionResult EstadisticasRandom(Luchador luchador) // SIN HACER
-    {
-        Random random = new Random();
-        luchador.IQ_min = random.Next(0, 125);
-        luchador.IQ_max = random.Next(125, 250);
-        luchador.Fuerza_min = random.Next(0, 125);
-        luchador.Fuerza_max = random.Next(125, 250);
-        luchador.Velocidad_min = random.Next(0, 125);
-        luchador.Velocidad_max = random.Next(125, 250);
-        luchador.Resistencia_min = random.Next(0, 125);
-        luchador.Resistencia_max = random.Next(125, 250);
-        luchador.BattleIQ_min = random.Next(0, 125);
-        luchador.BattleIQ_max = random.Next(125, 250);
-        luchador.PoderDestructivo_min = random.Next(0, 125);
-        luchador.PoderDestructivo_max = random.Next(125, 250);
-        luchador.Experiencia_min = random.Next(0, 125);
-        luchador.Experiencia_max = random.Next(125, 250);
-        luchador.Transformaciones_min = random.Next(0, 125);
-        luchador.Transformaciones_max = random.Next(125, 250);
-
-        return RedirectToAction("GuardarLuchador", new {luchador = luchador});
-    }
     // ------------------------------------------------------------
     public Luchador DevolverLuchador(int IdLuchador)
     {
@@ -136,8 +114,9 @@ public class HomeController : Controller
     }
     // -------------------------------------------------------------------------------------------
     // -------------------------------------------------------------------------------------------
-    [HttpPost] public IActionResult ActualizarLuchador(Luchador luchador)
+    [HttpPost] public IActionResult ActualizarLuchador(Luchador luchador, IFormFile MyFile)
     {
+        if(MyFile != null) luchador.Foto = MyFile.FileName;
         BD.ActualizarLuchador(luchador);
         return RedirectToAction("Index", new {mensaje = "Luchador modificado con éxito!"});
     }

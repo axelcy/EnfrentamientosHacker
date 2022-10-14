@@ -21,7 +21,7 @@ function DetalleLuchador(IdLuchador)
 
                     $("#Foto").attr("src", "/img/luchadores/" + response.foto)
                     $("#Victorias").html("Victorias - " + response.victorias)
-                    $("#FechaNacimiento").html("Fecha de Nacimiento: " + response.fechaNacimiento.substr(0, 10))
+                    $("#FechaNacimiento").html("Fecha de Nacimiento: " + response.fechaNacimiento.split("T")[0])
 
                     $("#IQ").html("<b>IQ:</b> " + response.iQ_min + " - " + response.iQ_max)
                     $("#Fuerza").html("<b>Fuerza:</b> " + response.fuerza_min + " - " + response.fuerza_max)
@@ -70,9 +70,11 @@ function ModificarJugador(IdLuchador)
             success:
                 function (response)
                 {
+                    $("#mod-id").attr("value", response.idLuchador);
+                    
                     $("#mod-title").html("<b>Podés modificar lo que quieras!</b>")
                     $("#mod-Nombre").attr("value", response.nombre)
-                    $("#mod-FechaNacimiento").attr("value", response.fechaNacimiento)
+                    $("#mod-FechaNacimiento").attr("value", response.fechaNacimiento.split("T")[0])
                     $("#mod-MyFile").attr("value", response.foto)
                     $("#mod-IQ_min").attr("value", response.iQ_min)
                     $("#mod-IQ_max").attr("value", response.iQ_max)
@@ -92,11 +94,8 @@ function ModificarJugador(IdLuchador)
                     $("#mod-Transformaciones_max").attr("value", response.transformaciones_max)
 
                     $("#fj-submit").html("Actualizar");
-                    let a = '@Url.Action("ActualizarLuchador", "Home")'
-                    console.log(a)
-                    console.log($("#fj-form").attr("action"))
-                    //$("#fj-form").attr("action", a)
-                    $("#fj-submit").attr("href", '@Url.Action("ActualizarLuchador", "Home", new {luchador=luchador, random=random})')
+                    $("#fj-form").attr("action", "/Home/ActualizarLuchador") 
+                    $("#fj-submit").attr("href", "/Home/ActualizarLuchador/?luchador=" + response) // '@Url.Action("ActualizarLuchador", "Home", new {luchador=luchador,})'
                 }
         }
     );
@@ -112,6 +111,8 @@ function AgregarJugador()
             success:
                 function (response)
                 {
+                    $("#mod-id").attr("value", null);
+
                     $("#mod-title").html("<b>A un paso de crear tu luchador personalizado!</b>")
                     $("#mod-Nombre").attr("value", null)
                     $("#mod-FechaNacimiento").attr("value", null)
@@ -133,9 +134,9 @@ function AgregarJugador()
                     $("#mod-Transformaciones_min").attr("value", null)
                     $("#mod-Transformaciones_max").attr("value", null)
 
-                    $("#fj-submit").html("Crear");
-                    //$("#fj-form").attr("action", '@Url.Action("GuardarLuchador", "Home")')
-                    $("#fj-submit").attr("href", '@Url.Action("GuardarLuchador", new {luchador=luchador, random=random})')
+                    $("#fj-submit").html("Crear"); 
+                    $("#fj-form").attr("action", "/Home/GuardarLuchador") // '@Url.Action("GuardarLuchador", "Home")'
+                    $("#fj-submit").attr("href", "/Home/GuardarLuchador/?luchador=" + response) // '@Url.Action("GuardarLuchador", new {luchador=luchador, random=random})'
                 }
         }
     );
