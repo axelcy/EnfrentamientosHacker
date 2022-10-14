@@ -84,7 +84,7 @@ public class HomeController : Controller
         foreach (Luchador item in LuchadoresDuplicados)
         {
             newName = item.IdLuchador + System.IO.Path.GetExtension(item.Foto);
-            System.IO.File.Copy(wwwRootPath + @"\img\luchadores_iniciales/" + item.Foto, wwwRootPath + @"\img\luchadores\" + newName);
+            System.IO.File.Copy(wwwRootPath + @"\img\luchadores_iniciales\" + item.Foto, wwwRootPath + @"\img\luchadores\" + newName);
             item.Foto = newName;
             BD.ActualizarLuchador(item);
         }
