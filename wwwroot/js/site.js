@@ -96,7 +96,7 @@ function ModificarJugador(IdLuchador)
                     console.log(a)
                     console.log($("#fj-form").attr("action"))
                     //$("#fj-form").attr("action", a)
-                    $("#fj-submit").attr("href", '@Url.Action("ActualizarLuchador", "Home", new {luchador=luchador})')
+                    $("#fj-submit").attr("href", '@Url.Action("ActualizarLuchador", "Home", new {luchador=luchador, random=random})')
                 }
         }
     );
@@ -135,7 +135,7 @@ function AgregarJugador()
 
                     $("#fj-submit").html("Crear");
                     //$("#fj-form").attr("action", '@Url.Action("GuardarLuchador", "Home")')
-                    $("#fj-submit").attr("href", '@Url.Action("GuardarLuchador", new {luchador=luchador})')
+                    $("#fj-submit").attr("href", '@Url.Action("GuardarLuchador", new {luchador=luchador, random=random})')
                 }
         }
     );

@@ -4,6 +4,7 @@
     string tablevh = "75vh";
     if(ViewBag.mensaje != String.Empty) tablevh = "65vh";
     Luchador luchador = new Luchador();
+    bool random = false;
 }
 <style>
   .tabla-luchadores{
@@ -206,6 +207,11 @@
             @* ----------------------------------- ESTADÍSTICAS ----------------------------------- *@
           <h4 style="text-align: center;">ESTADÍSTICAS</h4>
 
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="random">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Estadísticas aleatorias</label>
+          </div>
+
           <div class="input-group mb-3">
             <span style="width: 9rem;" class="input-group-text" id="basic-addon1">IQ</span>
             <input type="text" class="form-control" placeholder="min"
@@ -274,7 +280,6 @@
         
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-info" data-bs-dismiss="modal" href='@Url.Action("GuardarLuchador", new {luchador=luchador, random=true})'>Estadísticas Random</button>
           <button type="submit" class="btn btn-success"
            data-bs-dismiss="modal" id="fj-submit"></button> @* href='@Url.Action("GuardarLuchador", new {luchador=luchador})' *@
         </div>

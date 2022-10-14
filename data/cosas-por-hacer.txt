@@ -12,6 +12,9 @@ que sean múltiplos de 5 y q el valor min sea menor q el max.
 
 HACER Q FUNCIONE LO DE MODIFICAR LUCHADOR
 
+ABAJO DEL TITULO DE "ESTADISTICAS" EN EL FORM DEL JUGADOR:
+poner un coso para activar o desactivar q sea las stats random, y q si se puede las muestre en los value
+
 -------------------------------------------------------------------
 
 https://getbootstrap.com/docs/5.2/components/toasts/

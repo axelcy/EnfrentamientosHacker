@@ -141,7 +141,7 @@ public class HomeController : Controller
         BD.ActualizarLuchador(luchador);
         return RedirectToAction("Index", new {mensaje = "Luchador modificado con éxito!"});
     }
-    [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile, bool random = false) // FUNCIONA TODO MENOS Q EL BOOL SEA TRUE
+    [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile, bool random) // FUNCIONA TODO MENOS Q EL BOOL SEA TRUE
     {
         DateTime defaultDate = new DateTime(0001, 01, 01);
         if(luchador.Nombre == null || luchador.FechaNacimiento == defaultDate){
@@ -155,7 +155,7 @@ public class HomeController : Controller
         if(MyFile != null) luchador.Foto = MyFile.FileName;
         else luchador.Foto = "no_profile_picture.png";
 
-        if(random) luchador = Funciones.EstadisticasRandom(luchador);
+        // if(random) luchador = Funciones.EstadisticasRandom(luchador);
         int id = BD.AgregarLuchador(luchador);
 
         string wwwRootPath = this._environment.WebRootPath;
