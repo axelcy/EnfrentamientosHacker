@@ -31,9 +31,6 @@ function EstadisticasAleatorias() {
     $("#mod-Transformaciones_max").attr("value", randomIntFromInterval(antRandom, 250))
 }
 
-
-
-
 function DetalleLuchador(IdLuchador)
 {
     $.ajax(
@@ -45,7 +42,7 @@ function DetalleLuchador(IdLuchador)
             success:
                 function (response)
                 {
-                    $("#TituloDetalleLuchador").html(response.nombre);
+                    $("#TituloDetalleLuchador").html("Detalles - " + response.nombre);
 
                     $("#Foto").attr("src", "/img/luchadores/" + response.foto + "?" + Math.round(Math.random()*10000))
                     $("#Victorias").html("Victorias - " + response.victorias)
@@ -59,7 +56,6 @@ function DetalleLuchador(IdLuchador)
                     $("#PoderDestructivo").html("<b>Poder Destructivo:</b> " + response.poderDestructivo_min + " - " + response.poderDestructivo_max)
                     $("#Experiencia").html("<b>Experiencia:</b> " + response.experiencia_min + " - " + response.experiencia_max)
                     $("#Transformaciones").html("<b>Transformaciones:</b> " + response.transformaciones_min + " - " + response.transformaciones_max)
-                    
                 }
         }
     );

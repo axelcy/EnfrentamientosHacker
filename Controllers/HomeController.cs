@@ -146,7 +146,6 @@ public class HomeController : Controller
         if(MyFile != null) luchador.Foto = MyFile.FileName;
         else luchador.Foto = "no_profile_picture.png";
 
-        // if(random) luchador = Funciones.EstadisticasRandom(luchador);
         int id = BD.AgregarLuchador(luchador);
 
         string wwwRootPath = this._environment.WebRootPath;

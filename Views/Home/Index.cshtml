@@ -4,7 +4,6 @@
     string tablevh = "75vh";
     if(ViewBag.mensaje != String.Empty) tablevh = "65vh";
     Luchador luchador = new Luchador();
-    bool random = false;
 }
 <style>
   .tabla-luchadores{
@@ -208,12 +207,7 @@
             </div>
             @* ----------------------------------- ESTADÍSTICAS ----------------------------------- *@
           <h4 style="text-align: center;">ESTADÍSTICAS</h4>
-          @*
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="random">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Estadísticas aleatorias</label>
-          </div>
-          *@
+          
           <button type="button" class="btn btn-outline-success btn-sm" style="margin-bottom: 0.5rem;" onclick="EstadisticasAleatorias()">Estadísticas aleatorias</button>
 
           <div class="input-group mb-3">
