@@ -132,7 +132,7 @@ public class HomeController : Controller
         BD.ActualizarLuchador(luchador);
         return RedirectToAction("Index", new {mensaje = "Luchador modificado con éxito!"});
     }
-    [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile, bool random) // FUNCIONA TODO MENOS Q EL BOOL SEA TRUE
+    [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile)
     {
         DateTime defaultDate = new DateTime(0001, 01, 01);
         if(luchador.Nombre == null || luchador.FechaNacimiento == defaultDate){
