@@ -124,7 +124,7 @@ public class HomeController : Controller
             string newName = luchador.IdLuchador + System.IO.Path.GetExtension(MyFile.FileName); // = id.* = 12.png
 
             System.IO.File.Delete(wwwRootPath + @"\img\luchadores\" + luchadorViejo.Foto);
-            using (var stream = System.IO.File.Create(wwwRootPath + @"\img\luchadores\" + newName)) MyFile.CopyToAsync(stream);
+            using (var stream = System.IO.File.Create(wwwRootPath + @"\img\luchadores\" + newName)) MyFile.CopyTo(stream);
             
             luchador.Foto = newName;
         }
