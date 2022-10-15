@@ -5,9 +5,37 @@
 // substr(0, 10) - agarra los primeros 10 caracteres (1234-67-89)
 // document.getElementById('no-drag').setAttribute('draggable', false);
 
+var antRandom
+
+function randomIntFromInterval(min, max) { // min and max included 
+    antRandom = Math.floor(Math.random() * (max - min + 1) + min) 
+    return antRandom
+}
+
+function EstadisticasAleatorias() {
+    $("#mod-IQ_min").attr("value", randomIntFromInterval(0, 250))
+    $("#mod-IQ_max").attr("value", randomIntFromInterval(antRandom, 250))
+    $("#mod-Fuerza_min").attr("value", randomIntFromInterval(0, 250))
+    $("#mod-Fuerza_max").attr("value", randomIntFromInterval(antRandom, 250))
+    $("#mod-Velocidad_min").attr("value", randomIntFromInterval(0, 250))
+    $("#mod-Velocidad_max").attr("value", randomIntFromInterval(antRandom, 250))
+    $("#mod-Resistencia_min").attr("value", randomIntFromInterval(0, 250))
+    $("#mod-Resistencia_max").attr("value", randomIntFromInterval(antRandom, 250))
+    $("#mod-BattleIQ_min").attr("value", randomIntFromInterval(0, 250))
+    $("#mod-BattleIQ_max").attr("value", randomIntFromInterval(antRandom, 250))
+    $("#mod-PoderDestructivo_min").attr("value", randomIntFromInterval(0, 250))
+    $("#mod-PoderDestructivo_max").attr("value", randomIntFromInterval(antRandom, 250))
+    $("#mod-Experiencia_min").attr("value", randomIntFromInterval(0, 250))
+    $("#mod-Experiencia_max").attr("value", randomIntFromInterval(antRandom, 250))
+    $("#mod-Transformaciones_min").attr("value", randomIntFromInterval(0, 250))
+    $("#mod-Transformaciones_max").attr("value", randomIntFromInterval(antRandom, 250))
+}
+
+
+
+
 function DetalleLuchador(IdLuchador)
 {
-    
     $.ajax(
         {
             type:'POST',
@@ -19,7 +47,7 @@ function DetalleLuchador(IdLuchador)
                 {
                     $("#TituloDetalleLuchador").html(response.nombre);
 
-                    $("#Foto").attr("src", "/img/luchadores/" + response.foto)
+                    $("#Foto").attr("src", "/img/luchadores/" + response.foto + "?" + Math.round(Math.random()*10000))
                     $("#Victorias").html("Victorias - " + response.victorias)
                     $("#FechaNacimiento").html("Fecha de Nacimiento: " + response.fechaNacimiento.split("T")[0])
 

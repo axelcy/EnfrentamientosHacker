@@ -116,7 +116,19 @@ public class HomeController : Controller
     // -------------------------------------------------------------------------------------------
     [HttpPost] public IActionResult ActualizarLuchador(Luchador luchador, IFormFile MyFile)
     {
-        if(MyFile != null) luchador.Foto = MyFile.FileName;
+        if(MyFile != null)
+        {
+            Luchador luchadorViejo = BD.VerInfoLuchador(luchador.IdLuchador);
+            
+            string wwwRootPath = this._environment.WebRootPath;
+            string newName = luchador.IdLuchador + System.IO.Path.GetExtension(MyFile.FileName); // = id.* = 12.png
+
+            System.IO.File.Delete(wwwRootPath + @"\img\luchadores\" + luchadorViejo.Foto);
+            using (var stream = System.IO.File.Create(wwwRootPath + @"\img\luchadores\" + newName)) MyFile.CopyToAsync(stream);
+            
+            luchador.Foto = newName;
+        }
+        
         BD.ActualizarLuchador(luchador);
         return RedirectToAction("Index", new {mensaje = "Luchador modificado con éxito!"});
     }

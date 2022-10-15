@@ -24,9 +24,7 @@ public static class BD
     public static void ActualizarLuchador(Luchador luchador)
     {
         string sql = $"UPDATE Luchadores SET Nombre = '{luchador.Nombre}', FechaNacimiento = @FechaNacimiento, Foto = '{luchador.Foto}', Victorias = {luchador.Victorias}, IQ_min = {luchador.IQ_min}, IQ_max = {luchador.IQ_max}, Fuerza_min = {luchador.Fuerza_min}, Fuerza_max = {luchador.Fuerza_max}, Velocidad_min = {luchador.Velocidad_min}, Velocidad_max = {luchador.Velocidad_max}, Resistencia_min = {luchador.Resistencia_min}, Resistencia_max = {luchador.Resistencia_max}, BattleIQ_min = {luchador.BattleIQ_min}, BattleIQ_max = {luchador.BattleIQ_max}, PoderDestructivo_min = {luchador.PoderDestructivo_min}, PoderDestructivo_max = {luchador.PoderDestructivo_max}, Experiencia_min = {luchador.Experiencia_min}, Experiencia_max = {luchador.Experiencia_max}, Transformaciones_min = {luchador.Transformaciones_min}, Transformaciones_max = {luchador.Transformaciones_max} WHERE IdLuchador = {luchador.IdLuchador}";
-        if(luchador.Foto==null) {
-            sql = sql.Replace($"Foto = '{luchador.Foto}',", "");
-        }
+        if(luchador.Foto == null) sql = sql.Replace($"Foto = '{luchador.Foto}', ", String.Empty);
 
         using (SqlConnection bd = new SqlConnection(_connectionString)) bd.Execute(sql, new {FechaNacimiento = luchador.FechaNacimiento});
     }
