@@ -45,8 +45,11 @@ button.accept-policy {
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
-  background-color: rgba(216, 216, 216, 0.59);
+  background-color: rgba(216, 216, 216, 0.85);
   text-align: center;
+}
+.footer-text{
+  color:black;
 }
 
 .unselectable {

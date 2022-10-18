@@ -18,7 +18,14 @@ body {
 
   background-color: #bdcddb;
 }
-
+.body-default {
+  background: url('/img/fondo2.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-bottom: 60px;
+}
 .glow {
   font-size: 60px;
   color: rgb(0, 0, 0);
@@ -27,6 +34,18 @@ body {
   -moz-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;
 }
+.asd{
+  color: #ff7f50;
+}
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #dddddd, 0 0 20px #dddddd, 0 0 30px #5f5f5f, 0 0 40px #5f5f5f, 0 0 50px #5f5f5f, 0 0 60px #5f5f5f, 0 0 70px #5f5f5f;
+  }
+  to {
+    text-shadow: 0 0 20px #dddddd, 0 0 30px #5f5f5f, 0 0 40px #5f5f5f, 0 0 50px #5f5f5f, 0 0 60px #5f5f5f, 0 0 70px #5f5f5f, 0 0 80px #5f5f5f;
+  }
+}
+/*
 @-webkit-keyframes glow {
   from {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60000, 0 0 40px #e60000, 0 0 50px #e60000, 0 0 60px #e60000, 0 0 70px #e60000;
@@ -35,6 +54,7 @@ body {
     text-shadow: 0 0 20px #fff, 0 0 30px #564dff00, 0 0 40px #564dff00, 0 0 50px #564dff00, 0 0 60px #564dff00, 0 0 70px #564dff00, 0 0 80px #564dff00;
   }
 }
+*/
 
 .lista-vertical{
   width: 50%;
@@ -134,4 +154,11 @@ body {
 }
 #form-iniciar{
   margin: 1rem;
+}
+.titulo{
+  color:#d1d1d1
+}
+.texto-carrusel{
+  -webkit-text-stroke: 1px black;
+  color: white; 
 }

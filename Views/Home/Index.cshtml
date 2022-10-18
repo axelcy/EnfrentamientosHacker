@@ -5,6 +5,8 @@
     if(ViewBag.mensaje != String.Empty) tablevh = "65vh";
     Luchador luchador = new Luchador();
 }
+
+
 <style>
   .tabla-luchadores{
     max-height: @tablevh;
@@ -12,15 +14,21 @@
   }
 </style>
 
-<body background="/img/fondo1.jpg"> @* fondo1.jpg *@
+<body class="body-default"> @* background="/img/fondo3.jpg" *@
+@* d-none *@
+@if(ViewBag.mensaje != String.Empty){}
+
+<button class="btn btn-primary" id="btn-toast"></button>
+
+
 
 <div class="row"> 
-    <h1 class="display-4" style="text-align: center;">Bienvenido a: <span class="glow">Enfrentamientos "<b>El Hacker</b>"</span></h1>
+    <h1 class="display-4 titulo" style="text-align: center;">Bienvenido a: <span class="glow titulo">Enfrentamientos "<b>El Hacker</b>"</span></h1>
 </div>
 <div class="row">
     <div class="col-8 col-lista">
       <!-- --------------------------------------- IZQUIERDA --------------------------------------- -->
-        <h4 style="text-align: center;">Lista de Luchadores</h4>
+        <h4 style="text-align: center;" class="titulo">Lista de Luchadores</h4>
         <div class="tabla-luchadores">
           <table class="table table-success table-striped tabla-col-fijas">
             
@@ -288,3 +296,26 @@
 </div>
 
 </form>
+
+@* -------------------------------------------- TOAST -------------------------------------------- *@
+
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="toast-mensaje">
+  <div class="toast-header">
+    <img src="..." class="rounded me-2" alt="...">
+    <strong class="me-auto">Bootstrap</strong>
+    <small class="text-muted">11 mins ago</small>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    Hello, world! This is a toast message. @Html.Raw(ViewBag.mensaje)
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+    $("#btn-toast").click(function(){
+        $("#toast-mensaje").toast("show");
+    });
+});
+</script>

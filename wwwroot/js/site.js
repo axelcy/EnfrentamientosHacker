@@ -5,6 +5,11 @@
 // substr(0, 10) - agarra los primeros 10 caracteres (1234-67-89)
 // document.getElementById('no-drag').setAttribute('draggable', false);
 
+document.getElementById('btn-toast').click()
+
+
+
+
 var antRandom
 
 function randomIntFromInterval(min, max) { // min and max included 
