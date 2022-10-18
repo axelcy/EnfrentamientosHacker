@@ -36,7 +36,7 @@ public class HomeController : Controller
 
         ViewBag.ListaLuchadores = BD.ListarLuchadores();
         ViewBag.mensaje = mensaje;
-        ViewBag.Rings = ListaRings;
+        ViewBag.ListaRings = ListaRings;
         ViewBag.RingsTexto = RingsTexto;
         return View();
     }
@@ -45,11 +45,18 @@ public class HomeController : Controller
         ViewBag.ListaRegistros = BD.ListarRegistros();
         return View();
     }
-    public IActionResult Enfrentamiento(Luchador luchador1, Luchador luchador2, string ring = "Ring_1.png")
+    public IActionResult Enfrentamiento(Luchador luchador1, Luchador luchador2, string ring = "")
     {
         if(luchador1 == null || luchador2 == null){
-            return RedirectToAction("IniciarEnfrentamiento", new {mensaje = "Es obligatorio ingresar ambos luchadores!"});
+            return RedirectToAction("IniciarEnfrentamiento", new {mensaje = "Es obligatorio elegir ambos luchadores!"});
         }
+        if(luchador1 == luchador2){
+            return RedirectToAction("IniciarEnfrentamiento", new {mensaje = $"{luchador1.Nombre} no quiere enfrentarse a sí mismo..."});
+        }
+        if(ring == String.Empty){
+            return RedirectToAction("IniciarEnfrentamiento", new {mensaje = $"Es obligatorio elegir un ring!"});
+        }
+
         ViewBag.Ring = ring;
         ViewBag.luchador1 = luchador1;
         ViewBag.luchador2 = luchador2;

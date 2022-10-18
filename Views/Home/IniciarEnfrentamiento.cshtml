@@ -2,7 +2,70 @@
     ViewData["Title"] = "Iniciar Enfrentamiento";
 }
 <body class="body-default">
+
+@if(ViewBag.mensaje != String.Empty){
+<button class="d-none" id="btn-toast" onclick="MostrarMensaje()"></button>
+}
+
     <div class="row" style="margin-top: 1rem; margin-bottom: 1rem;">
+        
+        <div class="col-1"></div>
+        <div class="col-10">
+            <!-- --------------------- DIV FORM ---------------------------- -->
+            <div class="card"> @* id="div-form" *@
+                <form method="post" enctype="multipart/form-data" id="form-iniciar"> @* class="form_enfrentamientos" *@
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <div class="input-group mb-3">
+                            <select class="form-control form-select form-select-lg" style="font-size: 1.1rem; cursor: pointer;">
+                                <option value="-1"><span>Seleccione un ring</span></option> @* value="null" *@
+                                @for (int i = 0; i < ViewBag.ListaRings.Count; i++)
+                                {
+                                    <option value="@ViewBag.ListaRings[i]">@ViewBag.RingsTexto[i]</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+                <div class="row">
+                <div class="col-4" style="margin-top: 5vh;">
+                    <div class="input-group mb-3">
+                        <select class="form-control form-select form-select-lg" style="font-size: 1.1rem; cursor: pointer;">
+                            <option value="-1"><span>Seleccione un luchador</span></option> @* value="null" *@
+                            @foreach (Luchador l in ViewBag.ListaLuchadores)
+                            {
+                                <option value="@l.IdLuchador">@l.Nombre</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-4" style="display: flex; flex-direction:column">
+                    <img src="/img/versus.png" id="versus-img">
+                    <button class="btn btn-danger">¡Batalla!</button>
+                </div>
+
+                <div class="col-4" style="margin-top: 5vh;">
+                    <div class="input-group mb-3">
+                        <select class="form-control form-select form-select-lg" style="font-size: 1.1rem; cursor: pointer;">
+                            <option value="-1"><span>Seleccione un luchador</span></option> @* value="null" *@
+                            @foreach (Luchador l in ViewBag.ListaLuchadores)
+                            {
+                                <option value="@l.IdLuchador">@l.Nombre</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                </div>
+                </form>
+            </div>
+            <!-- ------------------------------------------------- -->
+        </div>
+        <div class="col-1"></div>
+    </div>
+    
+    <div class="row" style="margin-top: 2rem;">
         <div class="col-3"></div>
         <div class="col-6">
             <!-- ------------------- CARRUSEL ------------------- -->
@@ -10,24 +73,24 @@
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
-                        @for (int i = 1; i < ViewBag.Rings.Count; i++)
+                        @for (int i = 1; i < ViewBag.ListaRings.Count; i++)
                         {
                             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="@i" aria-label="Slide @i+1"></button>
                         }
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="/img/rings/@ViewBag.Rings[0]" class="d-block w-100" alt="..."
+                        <img src="/img/rings/@ViewBag.ListaRings[0]" class="d-block w-100" alt="..."
                             style="max-width: 100%; height: 18rem;">
                         <div class="carousel-caption d-none d-md-block">
                             <h3 class="texto-carrusel">@ViewBag.RingsTexto[0]</h3>
                             @* <p>Some representative placeholder content for the first slide.</p> *@
                         </div>
                     </div>
-                    @for (int i = 1; i < ViewBag.Rings.Count; i++)
+                    @for (int i = 1; i < ViewBag.ListaRings.Count; i++)
                     {
                         <div class="carousel-item">
-                            <img src="/img/rings/@ViewBag.Rings[i]" class="d-block w-100" alt="..."
+                            <img src="/img/rings/@ViewBag.ListaRings[i]" class="d-block w-100" alt="..."
                                 style="max-width: 100%; height: 18rem;">
                             <div class="carousel-caption d-none d-md-block">
                                 <h3 class="texto-carrusel">@ViewBag.RingsTexto[i]</h3>
@@ -51,34 +114,14 @@
         </div>
         <div class="col-3"></div>
     </div>
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
-            <!-- --------------------- DIV FORM ---------------------------- -->
-            <div id="div-form">
-                <form method="post" enctype="multipart/form-data" id="form-iniciar"> @* class="form_enfrentamientos" *@
-                    <div class="input-group mb-3">
-                        <select class="form-control form-select form-select-lg" style="font-size: 1.1rem;">
-                            <option value="-1"><span class="option_default">Seleccione un luchador</span></option>
-                            @foreach (Luchador l in ViewBag.ListaLuchadores)
-                            {
-                                <option value="@l.IdLuchador">@l.Nombre</option>
-                                <img class="img_luchador1" src="/img/luchadores/9.png/">
-
-                            }
-                        </select>
-                        <select class="form-control form-select form-select-lg" style="font-size: 1.1rem;">
-                            <option value="-1"><span>Seleccione un luchador</span></option>
-                            @foreach (Luchador l in ViewBag.ListaLuchadores)
-                            {
-                                <option value="@l.IdLuchador">@l.Nombre</option>
-                            }
-                        </select>
-                    </div>
-                </form>
-            </div>
-            <!-- ------------------------------------------------- -->
-        </div>
-        <div class="col-1"></div>
-    </div>
 </body>
+
+<div id="toast-mensaje" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true"
+style="position: absolute;">
+  <div class="d-flex">
+    <div class="toast-body">
+      @Html.Raw(ViewBag.mensaje)
+    </div>
+    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>

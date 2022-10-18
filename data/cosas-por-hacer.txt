@@ -1,10 +1,16 @@
 .
 ------------------ COSAS POR HACER ------------------
 
-1. Terminar la view Iniciar Enfrentamiento
+0. pensar con queisis cómo hacer para volver al index desde las otras views xd
+
+1. Hacer que funcione el botón de battala en Iniciar Enfrentamiento
 
 2. Hacer que funcione: https://getbootstrap.com/docs/5.2/components/tooltips/
 
 3. Usar: https://www.chartjs.org/docs/latest/getting-started/
 
 -------------------------------------------------------------------
+Links equisde:
+
+https://codepen.io/
+https://icons.getbootstrap.com/
