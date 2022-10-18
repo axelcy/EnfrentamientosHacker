@@ -5,10 +5,16 @@
 // substr(0, 10) - agarra los primeros 10 caracteres (1234-67-89)
 // document.getElementById('no-drag').setAttribute('draggable', false);
 
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
 document.getElementById('btn-toast').click()
 
-
-
+function MostrarMensaje(){
+    $(document).ready(function(){
+        $("#toast-mensaje").toast("show");
+    });
+}
 
 var antRandom
 

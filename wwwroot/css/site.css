@@ -129,6 +129,13 @@ body {
   position: absolute;
   bottom: 53px;
 }
+#toast-mensaje{
+  margin-top: 10px;
+  position: absolute;
+  bottom: 70px;
+  right: 50px;
+}
+
 
 .form_enfrentamientos{
   position: absolute;
@@ -161,4 +168,7 @@ body {
 .texto-carrusel{
   -webkit-text-stroke: 1px black;
   color: white; 
+}
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
 }

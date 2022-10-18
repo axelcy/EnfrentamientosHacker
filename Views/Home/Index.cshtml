@@ -2,10 +2,9 @@
     ViewData["Title"] = "Inicio";
     int i = 1;
     string tablevh = "75vh";
-    if(ViewBag.mensaje != String.Empty) tablevh = "65vh";
+    // if(ViewBag.mensaje != String.Empty) tablevh = "65vh";
     Luchador luchador = new Luchador();
 }
-
 
 <style>
   .tabla-luchadores{
@@ -15,10 +14,12 @@
 </style>
 
 <body class="body-default"> @* background="/img/fondo3.jpg" *@
-@* d-none *@
-@if(ViewBag.mensaje != String.Empty){}
 
-<button class="btn btn-primary" id="btn-toast"></button>
+@if(ViewBag.mensaje != String.Empty){
+<button class="btn btn-primary d-none" id="btn-toast" onclick="MostrarMensaje()"></button>
+}
+
+
 
 
 
@@ -50,7 +51,11 @@
                       <td>@item.Nombre</td>
                       <td>@item.FechaNacimiento.ToShortDateString()</td>
                       <td>
-                          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador" onclick="DetalleLuchador(@item.IdLuchador)"><i class="bi bi-person-fill"></i> Detalles</button>
+                          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador" onclick="DetalleLuchador(@item.IdLuchador)"
+                          data-bs-toggle="tooltip" data-bs-placement="top"
+                          data-bs-custom-class="custom-tooltip"
+                          data-bs-title="This top tooltip is themed via CSS variables.">
+                          <i class="bi bi-person-fill"></i> Detalles</button>
                           <button class="btn btn-info"    data-bs-toggle="modal" data-bs-target="#ModalFormLuchador" onclick="ModificarJugador(@item.IdLuchador)"><i class="bi bi-pencil-square"></i></button>
                           <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#ModalConfirmarEliminar" onclick="ConfirmarEliminar(@item.IdLuchador)"><i class="bi bi-trash"></i></button>
                       </td>
@@ -74,7 +79,7 @@
           </table>
           
         </div>
-        @if(ViewBag.mensaje != String.Empty){<div class="alert alert-warning" role="alert" id="MensajeAlerta">@Html.Raw(ViewBag.mensaje)</div>}
+        @* @if(ViewBag.mensaje != String.Empty){<div class="alert alert-warning" role="alert" id="MensajeAlerta">@Html.Raw(ViewBag.mensaje)</div>} *@
     </div>
     <!-- --------------------------------------- DERECHA --------------------------------------- -->
     <div class="col-4 contenedor1">
@@ -299,23 +304,14 @@
 
 @* -------------------------------------------- TOAST -------------------------------------------- *@
 
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="toast-mensaje">
-  <div class="toast-header">
-    <img src="..." class="rounded me-2" alt="...">
-    <strong class="me-auto">Bootstrap</strong>
-    <small class="text-muted">11 mins ago</small>
-    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-  </div>
-  <div class="toast-body">
-    Hello, world! This is a toast message. @Html.Raw(ViewBag.mensaje)
+@* @Html.Raw(ViewBag.mensaje) *@
+
+<div id="toast-mensaje" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true"
+style="position: absolute;">
+  <div class="d-flex">
+    <div class="toast-body">
+      @Html.Raw(ViewBag.mensaje)
+    </div>
+    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
 </div>
-
-
-<script>
-$(document).ready(function(){
-    $("#btn-toast").click(function(){
-        $("#toast-mensaje").toast("show");
-    });
-});
-</script>
