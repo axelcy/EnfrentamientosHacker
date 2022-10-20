@@ -1,6 +1,7 @@
 .
 ------------------ COSAS POR HACER ------------------
 
+0. HACER UN LOGO Y PONERLO EN EL MODAL DE INFO TP Y EN LA VIEW INDEX !!!!!!!!!!!!!!!! y de ícono del browser tmb si se puede
 
 1. Hacer que funcione el botón de battala en Iniciar Enfrentamiento
 

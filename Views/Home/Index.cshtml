@@ -6,18 +6,15 @@
     Luchador luchador = new Luchador();
 }
 
-<style>
-  .tabla-luchadores{
-    max-height: @tablevh;
-    overflow-y: scroll;
-  }
-</style>
+<style> .tabla-luchadores{ max-height: @tablevh; overflow-y: scroll; } </style>
 
 <body class="body-default"> @* background="/img/fondo3.jpg" *@
 
 @if(ViewBag.mensaje != String.Empty){
 <button class="d-none" id="btn-toast" onclick="MostrarMensaje()"></button>
 }
+
+<a class="btn btn-info back-button" data-bs-toggle="modal" data-bs-target="#ModalInfoTP">Info TP</a>
 
 <div class="row"> 
     <h1 class="display-4 titulo" style="text-align: center;">Bienvenido a: <span class="glow titulo">Enfrentamientos "<b>El Hacker</b>"</span></h1>
@@ -88,6 +85,29 @@
 </div>
 
 </body>
+
+<!-- --------------------------------------- MODAL INFO TP --------------------------------------- -->
+<div class="modal fade" tabindex="-1" id="ModalInfoTP">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Info del TP</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span><b>TP - Enfrentamientos "El Hacker"</b></span><br><br>
+        <span> @* style="color: grey;" *@
+        Integrantes: <i>Axel Cymerman - Sangiago Kasses</i><br>
+        Trabajo basado en <a href="https://vm.tiktok.com/ZMFMNEGR6/">este</a> video de tik tok.
+        </span>
+      </div>
+      <div class="modal-footer">
+        <span style="color: grey;">© 2022 - EnfrentamientosHacker</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- --------------------------------------- MODAL DETALLE LUCHADOR --------------------------------------- -->
 
