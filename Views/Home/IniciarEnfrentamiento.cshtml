@@ -1,5 +1,8 @@
 @{
     ViewData["Title"] = "Iniciar Enfrentamiento";
+    int idLuchador1 = -1;
+    int idLuchador2 = -1;
+    string ring = String.Empty;
 }
 <body class="body-default">
 
@@ -23,7 +26,7 @@
                                 <option value="-1"><span>Seleccione un ring</span></option> @* value="null" *@
                                 @for (int i = 0; i < ViewBag.ListaRings.Count; i++)
                                 {
-                                    <option value="@ViewBag.ListaRings[i]">@ViewBag.RingsTexto[i]</option>
+                                    <option value="@ViewBag.ListaRings[i]" name="ring">@ViewBag.RingsTexto[i]</option>
                                 }
                             </select>
                         </div>
@@ -37,7 +40,7 @@
                             <option value="-1"><span>Seleccione un luchador</span></option> @* value="null" *@
                             @foreach (Luchador l in ViewBag.ListaLuchadores)
                             {
-                                <option value="@l.IdLuchador">@l.Nombre</option>
+                                <option value="@l.IdLuchador" name="idLuchador1">@l.Nombre</option>
                             }
                         </select>
                     </div>
@@ -45,7 +48,7 @@
                 <!-- ----------------- VS ---------------- -->
                 <div class="col-4" style="display: flex; flex-direction:column">
                     <img src="/img/versus.png" id="versus-img" class="no-drag">
-                    <button class="btn btn-danger">¡Batalla!</button>
+                    <button class="btn btn-danger" type="submit" href='@Url.Action("Enfrentamiento", new {idLuchador1=idLuchador1, idLuchador2=idLuchador2, ring=ring})'>¡Batalla!</button>
                 </div>
 
                 <div class="col-4" style="margin-top: 5vh;">
@@ -54,7 +57,7 @@
                             <option value="-1"><span>Seleccione un luchador</span></option> @* value="null" *@
                             @foreach (Luchador l in ViewBag.ListaLuchadores)
                             {
-                                <option value="@l.IdLuchador">@l.Nombre</option>
+                                <option value="@l.IdLuchador" name="idLuchador2">@l.Nombre</option>
                             }
                         </select>
                     </div>

@@ -40,11 +40,6 @@ public class HomeController : Controller
         ViewBag.RingsTexto = RingsTexto;
         return View();
     }
-    public IActionResult Registros()
-    {
-        ViewBag.ListaRegistros = BD.ListarRegistros();
-        return View();
-    }
     public IActionResult Enfrentamiento(int idLuchador1, int idLuchador2, string ring = "")
     {
         if(idLuchador1 == -1 || idLuchador2 == -1){
@@ -62,6 +57,11 @@ public class HomeController : Controller
         ViewBag.Ring = ring;
         ViewBag.luchador1 = luchador1;
         ViewBag.luchador2 = luchador2;
+        return View();
+    }
+    public IActionResult Registros()
+    {
+        ViewBag.ListaRegistros = BD.ListarRegistros();
         return View();
     }
     // -------------------------------------------------------------------------------------------
