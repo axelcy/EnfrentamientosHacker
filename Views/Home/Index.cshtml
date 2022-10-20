@@ -106,6 +106,9 @@
             <b class="centrado">─────────────────────────────────────────</b>
             <u class="centrado">ESTADÍSTICAS</u>
         </span>
+          <div>
+            <canvas id="myChart"></canvas>
+          </div>
         <span id="IQ"></span><br>
         <span id="Fuerza"></span><br>
         <span id="Velocidad"></span><br>
@@ -311,3 +314,37 @@ style="position: absolute;">
     <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
 </div>
+
+<script>
+  const labels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [0, 10, 5, 2, 20, 30, 45],
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+</script>
+
+<script>
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>

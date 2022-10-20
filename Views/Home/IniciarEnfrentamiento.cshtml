@@ -1,8 +1,5 @@
 @{
     ViewData["Title"] = "Iniciar Enfrentamiento";
-    int idLuchador1 = -1;
-    int idLuchador2 = -1;
-    string ring = String.Empty;
 }
 <body class="body-default">
 
@@ -17,16 +14,16 @@
         <div class="col-10">
             <!-- -------------------- CARD -------------------- -->
             <div class="card"> @* id="div-form" *@
-                <form method="post" enctype="multipart/form-data" id="form-iniciar"> @* class="form_enfrentamientos" *@
+                <form method="post" enctype="multipart/form-data" id="form-iniciar" action='@Url.Action("Enfrentamiento")'> @* class="form_enfrentamientos" *@
                 <div class="row">
                     <div class="col-4"></div>
                     <div class="col-4">
                         <div class="input-group mb-3">
-                            <select class="form-control form-select form-select-lg" style="font-size: 1.1rem; cursor: pointer;">
+                            <select class="form-control form-select form-select-lg" style="font-size: 1.1rem; cursor: pointer;" name="ring">
                                 <option value="-1"><span>Seleccione un ring</span></option> @* value="null" *@
                                 @for (int i = 0; i < ViewBag.ListaRings.Count; i++)
                                 {
-                                    <option value="@ViewBag.ListaRings[i]" name="ring">@ViewBag.RingsTexto[i]</option>
+                                    <option value="@ViewBag.ListaRings[i]">@ViewBag.RingsTexto[i]</option>
                                 }
                             </select>
                         </div>
@@ -36,11 +33,11 @@
                 <div class="row">
                 <div class="col-4" style="margin-top: 5vh;">
                     <div class="input-group mb-3">
-                        <select class="form-control form-select form-select-lg" style="font-size: 1.1rem; cursor: pointer;">
+                        <select class="form-control form-select form-select-lg" style="font-size: 1.1rem; cursor: pointer;"  name="idLuchador1">
                             <option value="-1"><span>Seleccione un luchador</span></option> @* value="null" *@
                             @foreach (Luchador l in ViewBag.ListaLuchadores)
                             {
-                                <option value="@l.IdLuchador" name="idLuchador1">@l.Nombre</option>
+                                <option value="@l.IdLuchador">@l.Nombre</option>
                             }
                         </select>
                     </div>
@@ -48,16 +45,16 @@
                 <!-- ----------------- VS ---------------- -->
                 <div class="col-4" style="display: flex; flex-direction:column">
                     <img src="/img/versus.png" id="versus-img" class="no-drag">
-                    <button class="btn btn-danger" type="submit" href='@Url.Action("Enfrentamiento", new {idLuchador1=idLuchador1, idLuchador2=idLuchador2, ring=ring})'>¡Batalla!</button>
+                    <button class="btn btn-danger" type="submit">¡Batalla!</button>
                 </div>
 
                 <div class="col-4" style="margin-top: 5vh;">
                     <div class="input-group mb-3">
-                        <select class="form-control form-select form-select-lg" style="font-size: 1.1rem; cursor: pointer;">
-                            <option value="-1"><span>Seleccione un luchador</span></option> @* value="null" *@
+                        <select class="form-control form-select form-select-lg" style="font-size: 1.1rem; cursor: pointer;" name="idLuchador2">
+                            <option value="-1"><span>Seleccione un luchador</span></option>
                             @foreach (Luchador l in ViewBag.ListaLuchadores)
                             {
-                                <option value="@l.IdLuchador" name="idLuchador2">@l.Nombre</option>
+                                <option value="@l.IdLuchador">@l.Nombre</option>
                             }
                         </select>
                     </div>
