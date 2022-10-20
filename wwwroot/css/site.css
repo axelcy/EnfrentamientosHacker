@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
 
   background-color: #bdcddb;
 }
@@ -24,7 +24,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
 }
 .glow {
   font-size: 60px;
