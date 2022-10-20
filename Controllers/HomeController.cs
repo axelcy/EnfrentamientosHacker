@@ -40,6 +40,7 @@ public class HomeController : Controller
         ViewBag.RingsTexto = RingsTexto;
         return View();
     }
+    [HttpPost]
     public IActionResult Enfrentamiento(int idLuchador1, int idLuchador2, string ring = "")
     {
         if(idLuchador1 == -1 || idLuchador2 == -1){

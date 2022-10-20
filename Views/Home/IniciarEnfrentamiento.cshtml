@@ -10,6 +10,8 @@
 <button class="d-none" id="btn-toast" onclick="MostrarMensaje()"></button>
 }
 
+<button class="btn btn-primary back-button" type="submit" onclick="location.href='@Url.Action("Index")'" >Button</button>
+
 <!-- ------------------------------------- ARRIBA -------------------------------------------- -->
     <div class="row" style="margin-top: 1rem; margin-bottom: 1rem;">
         
@@ -48,7 +50,7 @@
                 <!-- ----------------- VS ---------------- -->
                 <div class="col-4" style="display: flex; flex-direction:column">
                     <img src="/img/versus.png" id="versus-img" class="no-drag">
-                    <button class="btn btn-danger" type="submit" href='@Url.Action("Enfrentamiento", new {idLuchador1=idLuchador1, idLuchador2=idLuchador2, ring=ring})'>¡Batalla!</button>
+                    <button class="btn btn-danger" type="post" href='@Url.Action("Enfrentamiento", new {idLuchador1=idLuchador1, idLuchador2=idLuchador2, ring=ring})'>¡Batalla!</button>
                 </div>
 
                 <div class="col-4" style="margin-top: 5vh;">
