@@ -41,7 +41,7 @@ public class HomeController : Controller
         return View();
     }
     [HttpPost]
-    public IActionResult Enfrentamiento(int idLuchador1, int idLuchador2, string ring = "")
+    public IActionResult Enfrentamiento(int idLuchador1, int idLuchador2, string ring)
     {
         if(idLuchador1 == -1 || idLuchador2 == -1){
             return RedirectToAction("IniciarEnfrentamiento", new {mensaje = "Es obligatorio elegir ambos luchadores!"});

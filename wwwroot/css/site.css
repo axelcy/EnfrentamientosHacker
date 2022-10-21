@@ -26,6 +26,12 @@ body {
   background-size: cover;
   /* margin-bottom: 60px; */
 }
+.body-ring{
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .glow {
   font-size: 60px;
   color: rgb(0, 0, 0);
