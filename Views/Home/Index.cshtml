@@ -44,11 +44,7 @@
                       <td>@item.Nombre</td>
                       <td>@item.FechaNacimiento.ToShortDateString()</td>
                       <td>
-                          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador" onclick="DetalleLuchador(@item.IdLuchador)"
-                          data-bs-toggle="tooltip" data-bs-placement="top"
-                          data-bs-custom-class="custom-tooltip"
-                          data-bs-title="This top tooltip is themed via CSS variables.">
-                          <i class="bi bi-person-fill"></i> Detalles</button>
+                          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador" onclick="DetalleLuchador(@item.IdLuchador)"><i class="bi bi-person-fill"></i> Detalles</button>
                           <button class="btn btn-info"    data-bs-toggle="modal" data-bs-target="#ModalFormLuchador" onclick="ModificarJugador(@item.IdLuchador)"><i class="bi bi-pencil-square"></i></button>
                           <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#ModalConfirmarEliminar" onclick="ConfirmarEliminar(@item.IdLuchador)"><i class="bi bi-trash"></i></button>
                       </td>
@@ -335,6 +331,7 @@ style="position: absolute;">
   </div>
 </div>
 
+@*
 <script>
   const labels = [
     'January',
@@ -362,9 +359,9 @@ style="position: absolute;">
   };
 </script>
 
-<script>
+ <script>
   const myChart = new Chart(
     document.getElementById('myChart'),
     config
   );
-</script>
+</script> *@

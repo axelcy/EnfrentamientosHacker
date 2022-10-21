@@ -1,11 +1,10 @@
-﻿//#region 
-// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-//#endregion
 
-//# substr(0, 10) - agarra los primeros 10 caracteres (1234-67-89)
+
+// substr(0, 10) - agarra los primeros 10 caracteres (1234-67-89)
 
 document.getElementById('versus-img')?.setAttribute('draggable', false);
 
@@ -16,19 +15,44 @@ document.getElementById('versus-img')?.setAttribute('draggable', false);
 // });
 
 
+const myChart = new Chart(document.getElementById('myChart'),config);
+const labels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [0, 10, 5, 2, 20, 30, 45],
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+// TOAST
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
 document.getElementById('btn-toast').click()
-
 function MostrarMensaje(){
     $(document).ready(function(){
         $("#toast-mensaje").toast("show");
     });
 }
 
+// RANDOM 
 var antRandom
-
 function randomIntFromInterval(min, max) { // min and max included 
     antRandom = Math.floor(Math.random() * (max - min + 1) + min) 
     return antRandom
