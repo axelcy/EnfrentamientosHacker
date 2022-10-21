@@ -9,7 +9,7 @@
 
 2. Hacer que funcione: https://getbootstrap.com/docs/5.2/components/tooltips/
 
-3. Usar: https://www.chartjs.org/docs/latest/getting-started/
+3. Usar: https://www.chartjs.org/docs/latest/charts/bar.html
 hacer q funcione el gráfico en la view Enfrentamiento tmb
 
 -------------------------------------------------------------------

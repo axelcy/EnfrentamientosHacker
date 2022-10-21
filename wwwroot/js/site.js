@@ -76,8 +76,7 @@ function DetalleLuchador(IdLuchador)
                     $("#Experiencia").html("<b>Experiencia:</b> " + response.experiencia_min + " - " + response.experiencia_max)
                     $("#Transformaciones").html("<b>Transformaciones:</b> " + response.transformaciones_min + " - " + response.transformaciones_max)
 
-                    
-                    const labels = [
+                    /*const labels = [
                         'January',
                         'February',
                         'March',
@@ -101,6 +100,55 @@ function DetalleLuchador(IdLuchador)
                         data: data,
                         options: {}
                     };
+                    const myChart = new Chart(document.getElementById('myChart'),config); */
+
+                    const labels = [
+                        'IQ',
+                        'Fuerza',
+                        'Velocidad',
+                        'Resistencia',
+                        'BattleIQ',
+                        'PoderDestructivo',
+                        'Experiencia',
+                        'Transformaciones',
+                    ];
+                    const data = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'My First Dataset',
+                        data: [Math.round((response.iQ_min + response.iQ_max) / 2), 59, 80, 81, 56, 55, 40],
+                        backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 1
+                    }]
+                    };
+                    const config = {
+                        type: 'bar',
+                        data: data,
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true
+                            }
+                          }
+                        },
+                      };
                     const myChart = new Chart(document.getElementById('myChart'),config);
                 }
         }
