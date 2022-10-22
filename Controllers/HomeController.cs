@@ -67,6 +67,7 @@ public class HomeController : Controller
     }
     // -------------------------------------------------------------------------------------------
     // -------------------------------------------------------------------------------------------
+    
     public IActionResult ReiniciarJuego()
     {
         List<Luchador> ListaLuchadores = BD.ListarLuchadores();
@@ -141,6 +142,19 @@ public class HomeController : Controller
         luchador = Funciones.LimitarEstadisticas(luchador, 250);
         BD.ActualizarLuchador(luchador);
         return RedirectToAction("Index", new {mensaje = "Luchador modificado con éxito!"});
+    }
+    public IActionResult LuchadorAutomatico()
+    {
+        string wwwRootPath = this._environment.WebRootPath;
+        Luchador luchador = Funciones.AñadirLuchadorAutomatico();
+        int id = BD.AgregarLuchador(luchador);
+        string newName = id + ".png";
+        System.IO.File.Copy(wwwRootPath + @"\img\no_profile_picture.png", wwwRootPath + @"\img\luchadores\" + newName);
+        luchador = BD.VerInfoLuchador(id);
+        luchador.Nombre = "Luchador aleatorio " + id;
+        luchador.Foto = newName;
+        BD.ActualizarLuchador(luchador);
+        return RedirectToAction("Index", new {mensaje = "Luchador Automático añadido con éxito!"});
     }
     [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile)
     {

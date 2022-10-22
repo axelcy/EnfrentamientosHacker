@@ -72,11 +72,14 @@
     </div>
     <!-- --------------------------------------- DERECHA --------------------------------------- -->
     <div class="col-4 contenedor1">
-      <button class="lista-vertical" type="submit" onclick="location.href='@Url.Action("IniciarEnfrentamiento")'">Iniciar Enfrentamiento</button>
+      
+      
       <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalFormLuchador" onclick="AgregarJugador()">Agregar Luchador</button>
+      <button class="lista-vertical" onclick="location.href='@Url.Action("LuchadorAutomatico")'">Agregar Luchador Automático</button>
+      <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalReiniciarJuego">Acciones</button>
+      @* <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalElimiarListaLuchadores">Eliminar Todos Los Luchadores</button> *@
       <button class="lista-vertical" type="submit" onclick="location.href='@Url.Action("Registros")'">Ver Registro de Luchas</button>
-      <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalReiniciarJuego">Reiniciar Juego</button>
-      <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalElimiarListaLuchadores">Eliminar Todos Los Luchadores</button>
+      <button class="lista-vertical" type="submit" onclick="location.href='@Url.Action("IniciarEnfrentamiento")'">Iniciar Enfrentamiento</button>
     </div>
 </div>
 
@@ -94,7 +97,8 @@
         <span><b>TP - Enfrentamientos "El Hacker"</b></span><br><br>
         <span> @* style="color: grey;" *@
         Integrantes: <i>Axel Cymerman - Sangiago Kasses</i><br>
-        Trabajo basado en <a href="https://vm.tiktok.com/ZMFMNEGR6/">este</a> video de tik tok.
+        Trabajo basado en <a href="https://vm.tiktok.com/ZMFMNEGR6/" target="_blank">este</a> video de tik tok.<br>
+        <ul><li><b>Importante</b>: Sacamos info de <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">acá</a>!</li></ul>
         </span>
       </div>
       <div class="modal-footer">
@@ -123,7 +127,7 @@
              <span class="centrado">Fecha de Nacimiento</span><span id="FechaNacimiento" class="centrado"></span>
           </div>
 
-          <div class="col-9" style="overflow-y: scroll; background-color: #e4e4e4; height: 100%">
+          <div class="col-9" style="overflow-y: scroll; background-color: #e4e4e4; height: 68vh">
             <span>
               @* <b class="centrado">─────────────────────────────────────────</b> *@
               <br><h5 class="centrado">ESTADÍSTICAS</h5>
@@ -131,9 +135,10 @@
             <div>
               <canvas id="myChart"></canvas>
             </div>
-            <a href="#" data-bs-toggle="tooltip" title="Tooltip">Avanzado</a>
+            @* <a onclick="MostrarInfoAvanzada()" href="#" data-bs-toggle="tooltip" title="Tooltip">Ver info avanzada</a> *@
+            <br><h6 class="centrado">Info Avanzada</h6>
             <br>
-            <div> @* poner todo el contenido de este div en el titple del tooltip de arriba *@
+            <div>
               <span id="IQ"></span><br>
               <span id="Fuerza"></span><br>
               <span id="Velocidad"></span><br>
@@ -142,12 +147,6 @@
               <span id="PoderDestructivo"></span><br>
               <span id="Experiencia"></span><br>
               <span id="Transformaciones"></span><br>
-              <span>asdasdasda</span><br>
-              <span>asdasdasda</span><br>
-              <span>asdasdasda</span><br>
-              <span>asdasdasda</span><br>
-              <span>asdasdasda</span><br>
-              <span>asdasdasda</span><br>
             </div>
           </div>
           
@@ -185,16 +184,30 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><b>¡Estás a punto de reiniciar el juego!</b></h5>
+        <h5 class="modal-title"><b>Acciones</b></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">Al reiniciar se perderán:<br> • Las Victorias<br> • Los Personajes creados por el usuario<br><br><u>No se perderán los registros</u><br><br>
-      También podés añadir los 10 luchadores del roster inicial a la lista de luchadores sin necesidad de perder nada.
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-5">
+            <a class="btn btn-danger centrado" style="margin-bottom: 1rem;" asp-area="" asp-controller="Home" asp-action="ElimiarListaLuchadores">Eliminar todos los luchadores</a>
+            <a class="btn btn-danger centrado" style="margin-bottom: 1rem;"      asp-area="" asp-controller="Home" asp-action="ReiniciarJuego">Reiniciar juego</a>
+            <a class="btn btn-warning centrado" style="margin-bottom: 1rem;"     asp-area="" asp-controller="Home" asp-action="DuplicarRoster">Añadir roster a la lista</a>
+          </div>
+          <div class="col-7">
+            Al <b>Eliminar luchadores</b>: <br> • ¡Se perderán todos los luchadores!<br><br>
+            Al <b>Reiniciar</b>: <br> • Se quedarán en la lista <u>solo</u> los 10 luchadores del roster.<br><br>
+            Al <b>Añadir roster</b>: <br> • No se perderá la lista de luchadores, solo se añadirán los 10 luchadores principales.
+
+            @* Al <b>añadir el roster</b> se añadirán:<br> • Las Victorias<br> • Los Personajes personalizados<br><br>
+            También podés añadir los 10 luchadores del roster inicial a la lista de luchadores sin necesidad de perder nada. *@
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <a class="btn btn-warning" asp-area="" asp-controller="Home" asp-action="DuplicarRoster">Añadir roster a la lista</a>
-        <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="ReiniciarJuego">Reiniciar</a>
+        @* <a class="btn btn-warning" asp-area="" asp-controller="Home" asp-action="DuplicarRoster">Añadir roster a la lista</a>
+        <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="ReiniciarJuego">Reiniciar</a> *@
       </div>
     </div>
   </div>
@@ -249,7 +262,7 @@
 
             <div class="mb-3">
               <label for="formFile" class="form-label centrado" style="margin-bottom: 1vh;"><b>Subí tu propia foto!</b></label>
-              <input type="file" class="form-control"
+              <input type="file" class="form-control" data-bs-toggle="tooltip" title="Opcional"
               name="MyFile" id="mod-MyFile" @* value="@luchador.Foto" *@ >
             </div>
             @* ----------------------------------- ESTADÍSTICAS ----------------------------------- *@
