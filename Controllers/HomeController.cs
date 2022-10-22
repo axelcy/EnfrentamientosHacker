@@ -43,15 +43,15 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Enfrentamiento(int idLuchador1, int idLuchador2, string ring)
     {
+        Luchador luchador1 = BD.VerInfoLuchador(idLuchador1);
+        Luchador luchador2 = BD.VerInfoLuchador(idLuchador2);
         if(idLuchador1 == -1 || idLuchador2 == -1){
             return RedirectToAction("IniciarEnfrentamiento", new {mensaje = "Es obligatorio elegir ambos luchadores!"});
         }
-        Luchador luchador1 = BD.VerInfoLuchador(idLuchador1);
-        Luchador luchador2 = BD.VerInfoLuchador(idLuchador2);
         if(idLuchador1 == idLuchador2){
             return RedirectToAction("IniciarEnfrentamiento", new {mensaje = $"<b>{luchador1.Nombre}</b> no quiere enfrentarse a sí mismo..."});
         }
-        if(ring == String.Empty){
+        if(ring == null){
             return RedirectToAction("IniciarEnfrentamiento", new {mensaje = $"Es obligatorio elegir un ring!"});
         }
 

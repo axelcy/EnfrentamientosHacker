@@ -22,7 +22,7 @@
                     <div class="col-4">
                         <div class="input-group mb-3">
                             <select class="form-control form-select form-select-lg" style="font-size: 1.1rem; cursor: pointer;" name="ring">
-                                <option value="-1"><span>Seleccione un ring</span></option> @* value="null" *@
+                                <option value=@null><span>Seleccione un ring</span></option> @* value="null" *@
                                 @for (int i = 0; i < ViewBag.ListaRings.Count; i++)
                                 {
                                     <option value="@ViewBag.ListaRings[i]">@ViewBag.RingsTexto[i]</option>

@@ -73,13 +73,12 @@
     <!-- --------------------------------------- DERECHA --------------------------------------- -->
     <div class="col-4 contenedor1">
       
-      
+      <button class="lista-vertical" type="submit" onclick="location.href='@Url.Action("IniciarEnfrentamiento")'">Iniciar Enfrentamiento</button>
       <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalFormLuchador" onclick="AgregarJugador()">Agregar Luchador</button>
       <button class="lista-vertical" onclick="location.href='@Url.Action("LuchadorAutomatico")'">Agregar Luchador Automático</button>
       <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalReiniciarJuego">Acciones</button>
       @* <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalElimiarListaLuchadores">Eliminar Todos Los Luchadores</button> *@
-      <button class="lista-vertical" type="submit" onclick="location.href='@Url.Action("Registros")'">Ver Registro de Luchas</button>
-      <button class="lista-vertical" type="submit" onclick="location.href='@Url.Action("IniciarEnfrentamiento")'">Iniciar Enfrentamiento</button>
+      <button class="lista-vertical" type="submit" onclick="location.href='@Url.Action("Registros")'">Ver Registros</button>
     </div>
 </div>
 
@@ -130,7 +129,7 @@
           <div class="col-9" style="overflow-y: scroll; background-color: #e4e4e4; height: 68vh">
             <span>
               @* <b class="centrado">─────────────────────────────────────────</b> *@
-              <br><h5 class="centrado">ESTADÍSTICAS</h5>
+              <br><h5 class="centrado">ESTADÍSTICAS</h5><span>
             </span>
             <div>
               <canvas id="myChart"></canvas>
@@ -267,9 +266,8 @@
             </div>
             @* ----------------------------------- ESTADÍSTICAS ----------------------------------- *@
           <h4 style="text-align: center;">ESTADÍSTICAS</h4>
-          
           <button type="button" class="btn btn-outline-success btn-sm" style="margin-bottom: 0.5rem;" onclick="EstadisticasAleatorias()">Estadísticas aleatorias (0-250)</button>
-          @* <span style="color: grey;">Entre 0 y 250</span> *@
+          @* <i class="bi bi-question-lg" data-bs-toggle="tooltip" title="Los ingresos se limitan a 250."></i> *@
 
           <div class="input-group mb-3">
             <span style="width: 9rem;" class="input-group-text" id="basic-addon1">IQ</span>
