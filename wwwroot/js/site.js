@@ -50,6 +50,7 @@ function EstadisticasAleatorias() {
     $("#mod-Transformaciones_max").attr("value", randomIntFromInterval(antRandom, 250))
 }
 
+var myChart 
 function DetalleLuchador(IdLuchador)
 {
     $.ajax(
@@ -64,8 +65,8 @@ function DetalleLuchador(IdLuchador)
                     $("#TituloDetalleLuchador").html("Detalles - " + response.nombre);
 
                     $("#Foto").attr("src", "/img/luchadores/" + response.foto + "?" + Math.round(Math.random()*10000))
-                    $("#Victorias").html("Victorias - " + response.victorias)
-                    $("#FechaNacimiento").html("Fecha de Nacimiento: " + response.fechaNacimiento.split("T")[0])
+                    $("#Victorias").html(response.victorias)
+                    $("#FechaNacimiento").html(response.fechaNacimiento.split("T")[0])
 
                     $("#IQ").html("<b>IQ:</b> " + response.iQ_min + " - " + response.iQ_max)
                     $("#Fuerza").html("<b>Fuerza:</b> " + response.fuerza_min + " - " + response.fuerza_max)
@@ -76,33 +77,7 @@ function DetalleLuchador(IdLuchador)
                     $("#Experiencia").html("<b>Experiencia:</b> " + response.experiencia_min + " - " + response.experiencia_max)
                     $("#Transformaciones").html("<b>Transformaciones:</b> " + response.transformaciones_min + " - " + response.transformaciones_max)
 
-                    /*const labels = [
-                        'January',
-                        'February',
-                        'March',
-                        'April',
-                        'May',
-                        'June',
-                    ];
-
-                    const data = {
-                        labels: labels,
-                        datasets: [{
-                        label: 'My First dataset',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: [0, 10, 5, 2, 20, 30, 45],
-                        }]
-                    };
-
-                    const config = {
-                        type: 'line',
-                        data: data,
-                        options: {}
-                    };
-                    const myChart = new Chart(document.getElementById('myChart'),config); */
-
-                    const labels = [
+                    var labels = [
                         'IQ',
                         'Fuerza',
                         'Velocidad',
@@ -112,49 +87,53 @@ function DetalleLuchador(IdLuchador)
                         'Experiencia',
                         'Transformaciones',
                     ];
-                    const data = {
+                    var data = {
                     labels: labels,
                     datasets: [{
-                        label: 'My First Dataset',
-                        data: [Math.round((response.iQ_min + response.iQ_max) / 2), 59, 80, 81, 56, 55, 40],
+                        label: 'Valor',
+                        data: [Math.round((response.iQ_min + response.iQ_max) / 2), Math.round((response.fuerza_min + response.fuerza_max) / 2), Math.round((response.velocidad_min + response.velocidad_max) / 2), Math.round((response.resistencia_min + response.resistencia_max) / 2), Math.round((response.battleIQ_min + response.battleIQ_max) / 2), Math.round((response.poderDestructivo_min + response.poderDestructivo_max) / 2), Math.round((response.experiencia_min + response.experiencia_max) / 2), Math.round((response.transformaciones_min + response.transformaciones_max) / 2), 250],
                         backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 205, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(201, 203, 207, 0.2)'
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(121, 235, 93, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 102, 235, 0.5)',
                         ],
                         borderColor: [
                         'rgb(255, 99, 132)',
                         'rgb(255, 159, 64)',
                         'rgb(255, 205, 86)',
+                        'rgb(121, 235, 93)',
                         'rgb(75, 192, 192)',
                         'rgb(54, 162, 235)',
                         'rgb(153, 102, 255)',
-                        'rgb(201, 203, 207)'
+                        'rgb(255, 102, 235)',
                         ],
                         borderWidth: 1
+                        
                     }]
                     };
-                    const config = {
+                    var config = {
                         type: 'bar',
                         data: data,
                         options: {
+                          indexAxis: 'x', // cambiar a 'y' para que se vea horizontal
                           scales: {
                             y: {
-                              beginAtZero: true
-                            }
+                                beginAtZero: true
+                            },
                           }
                         },
                       };
-                    const myChart = new Chart(document.getElementById('myChart'),config);
-                }
+                    if (myChart) myChart.destroy()
+                    myChart = new Chart(document.getElementById('myChart'),config);
+                } 
         }
     );
 }
-
 
 function ConfirmarEliminar(IdLuchador)
 {

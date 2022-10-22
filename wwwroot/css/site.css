@@ -129,6 +129,12 @@ body {
   justify-content: center;
   margin: auto;
 }
+.centrado-izq{
+  display: flex;
+  justify-content: right;
+  margin: auto;
+}
+
 
 #MensajeAlerta{
   margin-top: 10px;
@@ -289,3 +295,41 @@ body {
   padding: 10px;
   border: none;
 }
+
+
+.modal-ku {
+  width: 750px;
+  margin: auto;
+}
+/* las variables de css me superan completamente xd
+
+#ModalDetalleLuchador{
+  height: var(--heightModal);
+}
+
+.stats-modal{
+  height: var(--heightModal);
+} */
+.img-luchador{
+  max-width: 100%;
+  box-shadow: 5px 5px 5px;
+  border: 5px solid rgb(165, 210, 30);
+}
+
+
+
+
+
+
+.sdsadasd{
+  color: rgb(255, 99, 132);
+  color: rgb(255, 159, 64);
+  color: rgb(255, 205, 86);
+  color: rgb(121, 235, 93);
+  color: rgb(75, 192, 192);
+  color: rgb(54, 162, 235);
+  color: rgb(153, 102, 255);
+  color: rgb(255, 102, 235);
+  /* color: rgb(201, 203, 207); */
+}
+

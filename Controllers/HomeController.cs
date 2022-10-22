@@ -138,7 +138,7 @@ public class HomeController : Controller
             
             luchador.Foto = newName;
         }
-        
+        luchador = Funciones.LimitarEstadisticas(luchador, 250);
         BD.ActualizarLuchador(luchador);
         return RedirectToAction("Index", new {mensaje = "Luchador modificado con éxito!"});
     }
@@ -152,7 +152,7 @@ public class HomeController : Controller
         if (luchador.FechaNacimiento > maxDate || luchador.FechaNacimiento < minDate){
             return RedirectToAction("Index", new {mensaje = $"La fecha ingresada debe estar entre los valores <b>{minDate.ToShortDateString()}</b> y <b>{maxDate.ToShortDateString()}</b>!"});
         }
-
+        
         if(MyFile != null) luchador.Foto = MyFile.FileName;
         else luchador.Foto = "no_profile_picture.png";
 
@@ -169,10 +169,12 @@ public class HomeController : Controller
             newName = id + ".png";
             System.IO.File.Copy(wwwRootPath + @"\img\no_profile_picture.png", wwwRootPath + @"\img\luchadores\" + newName);
         }
+
         luchador = BD.VerInfoLuchador(id);
         luchador.Foto = newName;
-        
+        luchador = Funciones.LimitarEstadisticas(luchador, 250);
         BD.ActualizarLuchador(luchador);
+
         return RedirectToAction("Index", new {mensaje = "Luchador agregado con éxito!"});
     }
     // -------------------------------------------------------------------------------------------

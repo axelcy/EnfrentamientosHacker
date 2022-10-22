@@ -108,31 +108,50 @@
 <!-- --------------------------------------- MODAL DETALLE LUCHADOR --------------------------------------- -->
 
 <div class="modal fade" tabindex="-1" id="ModalDetalleLuchador">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg"> @* modal-dialog-scrollable *@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="TituloDetalleLuchador">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="Foto" style="max-width: 100%; height: 12rem;" class="centrado">
-        <span id="Victorias" class="centrado"></span>
-        <span id="FechaNacimiento"></span><br>
-        <span>
-            <b class="centrado">─────────────────────────────────────────</b>
-            <u class="centrado">ESTADÍSTICAS</u>
-        </span>
-          <div>
-            <canvas id="myChart"></canvas>
+
+        <div class="row">
+          <div class="col-3">
+            <img id="Foto" class="img-luchador" class="centrado">
+             <br><br><span class="centrado">Victorias</span><span id="Victorias" class="centrado"></span><br>
+             <span class="centrado">Fecha de Nacimiento</span><span id="FechaNacimiento" class="centrado"></span>
           </div>
-        <span id="IQ"></span><br>
-        <span id="Fuerza"></span><br>
-        <span id="Velocidad"></span><br>
-        <span id="Resistencia"></span><br>
-        <span id="BattleIQ"></span><br>
-        <span id="PoderDestructivo"></span><br>
-        <span id="Experiencia"></span><br>
-        <span id="Transformaciones"></span><br>
+
+          <div class="col-9" style="overflow-y: scroll; background-color: #e4e4e4; height: 100%">
+            <span>
+              @* <b class="centrado">─────────────────────────────────────────</b> *@
+              <br><h5 class="centrado">ESTADÍSTICAS</h5>
+            </span>
+            <div>
+              <canvas id="myChart"></canvas>
+            </div>
+            <a href="#" data-bs-toggle="tooltip" title="Tooltip">Avanzado</a>
+            <br>
+            <div> @* poner todo el contenido de este div en el titple del tooltip de arriba *@
+              <span id="IQ"></span><br>
+              <span id="Fuerza"></span><br>
+              <span id="Velocidad"></span><br>
+              <span id="Resistencia"></span><br>
+              <span id="BattleIQ"></span><br>
+              <span id="PoderDestructivo"></span><br>
+              <span id="Experiencia"></span><br>
+              <span id="Transformaciones"></span><br>
+              <span>asdasdasda</span><br>
+              <span>asdasdasda</span><br>
+              <span>asdasdasda</span><br>
+              <span>asdasdasda</span><br>
+              <span>asdasdasda</span><br>
+              <span>asdasdasda</span><br>
+            </div>
+          </div>
+          
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -236,7 +255,8 @@
             @* ----------------------------------- ESTADÍSTICAS ----------------------------------- *@
           <h4 style="text-align: center;">ESTADÍSTICAS</h4>
           
-          <button type="button" class="btn btn-outline-success btn-sm" style="margin-bottom: 0.5rem;" onclick="EstadisticasAleatorias()">Estadísticas aleatorias</button>
+          <button type="button" class="btn btn-outline-success btn-sm" style="margin-bottom: 0.5rem;" onclick="EstadisticasAleatorias()">Estadísticas aleatorias (0-250)</button>
+          @* <span style="color: grey;">Entre 0 y 250</span> *@
 
           <div class="input-group mb-3">
             <span style="width: 9rem;" class="input-group-text" id="basic-addon1">IQ</span>
