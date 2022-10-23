@@ -25,6 +25,11 @@ public class HomeController : Controller
         ViewBag.mensaje = mensaje;
         return View();
     }
+    public IActionResult Estadisticas()
+    {
+        ViewBag.ListaLuchadores = BD.ListarLuchadores();
+        return View();
+    }
     public IActionResult IniciarEnfrentamiento(string mensaje = "")
     {
         List<string> ListaRings = new List<string>();
@@ -122,6 +127,11 @@ public class HomeController : Controller
     {
         Luchador luchador = BD.VerInfoLuchador(IdLuchador);
         return luchador;
+    }
+    public List<Luchador> DevolverListaLuchadores()
+    {
+        List<Luchador> ListaLuchadores = BD.ListarLuchadores();
+        return ListaLuchadores;
     }
     // -------------------------------------------------------------------------------------------
     // -------------------------------------------------------------------------------------------

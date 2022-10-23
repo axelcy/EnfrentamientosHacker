@@ -1,0 +1,19 @@
+
+@{
+    ViewData["Title"] = "Estadísticas";
+}
+<body class="body-default">
+<button class="d-none" id="btn-toast" onclick="ListaLuchadores(@ViewBag.ListaLuchadores)"></button>
+<a class="btn btn-primary back-button" asp-controller="Home" asp-action="Index">Volver</a>
+<div class="row">
+    <div class="col-2"> @* Estadísticas cuando pases el cursor *@
+
+    </div>
+    <div class="col-10"> @* Gráfico *@
+        <canvas id="myChart2"></canvas>
+    </div> 
+</div>
+</body>
+
+
+data: [(response.iQ_min + response.iQ_max + response.fuerza_min + response.fuerza_max + response.velocidad_min + response.velocidad_max + response.resistencia_min + response.resistencia_max + response.battleIQ_min + response.battleIQ_max + response.poderDestructivo_min + response.poderDestructivo_max + response.experiencia_min + response.experiencia_max + response.transformaciones_min + response.transformaciones_max) / 16, 250*16],

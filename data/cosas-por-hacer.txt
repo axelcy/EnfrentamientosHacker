@@ -1,21 +1,15 @@
 .
 ------------------ COSAS POR HACER ------------------
 
--1. cambar los rings, ponerlos todos en la resolución 1920x1080 y en .png 
-
 0. HACER UN LOGO Y PONERLO EN EL MODAL DE INFO TP Y EN LA VIEW INDEX !!!!!!!!!!!!!!!! y de ícono del browser tmb si se puede
 
-1. Hacer que funcione el botón de battala en Iniciar Enfrentamiento
-
-2. Hacer que funcione: https://getbootstrap.com/docs/5.2/components/tooltips/
-
-3. Usar: https://www.chartjs.org/docs/latest/charts/bar.html
-hacer q funcione el gráfico en la view Enfrentamiento tmb
+3. Usar el gráfico en la view Enfrentamiento
 
 4. hacer una página donde muestre un gráfico (en horizontal) con 1 valor por personaje para ver el meta
 
 -------------------------------------------------------------------
 Links equisde:
 
+Gráfico: https://www.chartjs.org/docs/latest/charts/bar.html
 https://codepen.io/
 https://icons.getbootstrap.com/

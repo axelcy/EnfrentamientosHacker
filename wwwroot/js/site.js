@@ -239,3 +239,80 @@ function AgregarJugador()
         }
     );
 }
+
+
+
+
+var myChart2
+function ListaLuchadores(ListaLuchadores)
+{
+    $.ajax(
+        {
+            type:'POST',
+            dataType: 'json',
+            url: 'Home/DevolverListaLuchadores',
+            success:
+                function (response)
+                { 
+                    var labels;
+                    for (let i = 0; i < response.length; i++) {
+                        labels[i] = response[i].nombre
+                    }
+                    // var labels = [
+                    //     'IQ',
+                    //     'Fuerza',
+                    //     'Velocidad',
+                    //     'Resistencia',
+                    //     'BattleIQ',
+                    //     'PoderDestructivo',
+                    //     'Experiencia',
+                    //     'Transformaciones',
+                    // ];
+                    var data = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Valor',
+                        //for en el data
+                        data: [(response.iQ_min + response.iQ_max + response.fuerza_min + response.fuerza_max + response.velocidad_min + response.velocidad_max + response.resistencia_min + response.resistencia_max + response.battleIQ_min + response.battleIQ_max + response.poderDestructivo_min + response.poderDestructivo_max + response.experiencia_min + response.experiencia_max + response.transformaciones_min + response.transformaciones_max) / 16, 250*16],
+                        backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(121, 235, 93, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 102, 235, 0.5)',
+                        ],
+                        borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(121, 235, 93)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(255, 102, 235)',
+                        ],
+                        borderWidth: 1
+                        
+                    }]
+                    };
+                    var config = {
+                        type: 'bar',
+                        data: data,
+                        options: {
+                          indexAxis: 'x', // cambiar a 'y' para que se vea horizontal
+                          scales: {
+                            y: {
+                                beginAtZero: true
+                            },
+                          }
+                        },
+                      };
+                    if (myChart2) myChart2.destroy()
+                    myChart2 = new Chart(document.getElementById('myChart2'),config);
+                } 
+        }
+    );
+}
