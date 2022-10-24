@@ -244,7 +244,6 @@ function AgregarJugador()
 var myChart2
 function EstadisticasLuchadores()
 {
-    console.log("Zxcqwdqdq")
     $.ajax(
         {
             type:'POST',
@@ -253,20 +252,9 @@ function EstadisticasLuchadores()
             success:
                 function (response)
                 {
-                    console.log(response)
                     let labels = response.map(e=>e.nombre)
-                    // var labels = [
-                    //     'IQ',
-                    //     'Fuerza',
-                    //     'Velocidad',
-                    //     'Resistencia',
-                    //     'BattleIQ',
-                    //     'PoderDestructivo',
-                    //     'Experiencia',
-                    //     'Transformaciones',
-                    // ];
+
                     let datasets_data = []
-                    
                     for (let luchador of response) {
                         let total = 0, count = 0
                         for(let p in luchador) {
@@ -277,8 +265,8 @@ function EstadisticasLuchadores()
                         }
                         datasets_data.push(Math.round(total / count))
                     }
-                    
                     datasets_data.push(250)
+                    
                     let data = {
                     labels: labels,
                     datasets: [{
