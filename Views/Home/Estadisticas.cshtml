@@ -2,9 +2,10 @@
 @{
     ViewData["Title"] = "Estadísticas";
 }
+<button class="d-none" id="btn-toast" onclick="EstadisticasLuchadores()"></button>
 
 <body class="body-default">
-<button class="d-none" id="btn-toast" onclick="EstadisticasLuchadores()"></button>
+
 <a class="btn btn-primary back-button" asp-controller="Home" asp-action="Index">Volver</a>
 <div class="row">
     <div class="col-2"> @* Estadísticas cuando pases el cursor *@

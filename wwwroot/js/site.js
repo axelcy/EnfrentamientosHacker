@@ -266,7 +266,7 @@ function EstadisticasLuchadores()
                         datasets_data.push(Math.round(total / count))
                     }
                     datasets_data.push(250)
-                    
+
                     let data = {
                     labels: labels,
                     datasets: [{

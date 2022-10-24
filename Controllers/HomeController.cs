@@ -166,6 +166,11 @@ public class HomeController : Controller
         BD.ActualizarLuchador(luchador);
         return RedirectToAction("Index", new {mensaje = "Luchador Automático añadido con éxito!"});
     }
+    public IActionResult LuchadoresAutomaticos() // PROBAR A VER Q ONDA
+    {
+        for (int i = 0; i < 50; i++) LuchadorAutomatico();
+        return RedirectToAction("Index", new {mensaje = "Luchadores Automáticos añadidos con éxito!"});
+    }
     [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile)
     {
         DateTime defaultDate = new DateTime(0001, 01, 01);
