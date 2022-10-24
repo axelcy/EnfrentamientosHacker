@@ -166,10 +166,10 @@ public class HomeController : Controller
         BD.ActualizarLuchador(luchador);
         return RedirectToAction("Index", new {mensaje = "Luchador Automático añadido con éxito!"});
     }
-    public IActionResult LuchadoresAutomaticos() // PROBAR A VER Q ONDA
+    public IActionResult LuchadoresAutomaticos(int count) // PROBAR A VER Q ONDA
     {
-        for (int i = 0; i < 50; i++) LuchadorAutomatico();
-        return RedirectToAction("Index", new {mensaje = "Luchadores Automáticos añadidos con éxito!"});
+        for (int i = 0; i < count; i++) LuchadorAutomatico();
+        return RedirectToAction("Index", new {mensaje = $"<b>{count}</b> Luchadores Automáticos añadidos con éxito!"});
     }
     [HttpPost] public IActionResult GuardarLuchador(Luchador luchador, IFormFile MyFile)
     {

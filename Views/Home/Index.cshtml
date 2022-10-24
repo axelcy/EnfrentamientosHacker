@@ -193,7 +193,12 @@
             <a class="btn btn-danger centrado" style="margin-bottom: 1rem;" asp-area="" asp-controller="Home" asp-action="ElimiarListaLuchadores">Eliminar todos los luchadores</a>
             <a class="btn btn-danger centrado" style="margin-bottom: 1rem;"      asp-area="" asp-controller="Home" asp-action="ReiniciarJuego">Reiniciar juego</a>
             <a class="btn btn-warning centrado" style="margin-bottom: 1rem;"     asp-area="" asp-controller="Home" asp-action="DuplicarRoster">Añadir roster a la lista</a>
-            <a class="btn btn-primary centrado" style="margin-bottom: 1rem;"     asp-area="" asp-controller="Home" asp-action="LuchadoresAutomaticos">Añadir muchos luchadores</a>
+            <form method="post" enctype="multipart/form-data" action='@Url.Action("LuchadoresAutomaticos")'>
+              <label for="customRange2" class="form-label">Añadir luchadores(1-100)</label>
+              <input type="range" class="form-range" min="1" max="100" id="customRange2" name="count">
+              <button type="submit" class="btn btn-primary centrado" style="margin-bottom: 1rem;">Añadir</button>
+            </form>
+            @* <a class="btn btn-primary centrado" style="margin-bottom: 1rem;"     asp-area="" asp-controller="Home" asp-action="LuchadoresAutomaticos">Añadir muchos luchadores</a> *@
           </div>
           <div class="col-7">
             Al <b>Eliminar luchadores</b>: <br> • ¡Se perderán todos los luchadores!<br><br>

@@ -315,7 +315,9 @@ body {
   box-shadow: 5px 5px 5px;
   border: 5px solid rgb(165, 210, 30);
 }
-
+#stats-div{
+  background-color: #cbcbcb;
+}
 
 
 

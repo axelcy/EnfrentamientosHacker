@@ -8,6 +8,7 @@
 4. hacer una página donde muestre un gráfico (en horizontal) con 1 valor por personaje para ver el meta
 
 QUE ADEMÁS DEL VALOR Q ESTÉN LAS VICTORIAS EN LAS VIEW DE STATS!!!!!!!!!!!
+y q se pueda ver cada stat por separado si se puede tmb
 
 -------------------------------------------------------------------
 Links equisde:

@@ -4,14 +4,14 @@
 }
 <button class="d-none" id="btn-toast" onclick="EstadisticasLuchadores()"></button>
 
-<body class="body-default">
+<body class="body-default" style="margin-top: 1rem;">
 
 <a class="btn btn-primary back-button" asp-controller="Home" asp-action="Index">Volver</a>
 <div class="row">
     <div class="col-2"> @* Estadísticas cuando pases el cursor *@
 
     </div>
-    <div class="col-10"> @* Gráfico *@
+    <div class="col-10" id="stats-div"> @* Gráfico *@
         <canvas id="myChart2"></canvas>
     </div> 
 </div>
