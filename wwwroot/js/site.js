@@ -253,7 +253,7 @@ function EstadisticasLuchadores()
                 function (response)
                 {
                     let labels = response.map(e=>e.nombre)
-
+                    
                     let datasets_data = []
                     for (let luchador of response) {
                         let total = 0, count = 0
