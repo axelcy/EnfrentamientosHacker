@@ -266,12 +266,284 @@ function EstadisticasLuchadores()
                         datasets_data.push(Math.round(total / count))
                     }
                     datasets_data.push(250)
+                    // --------------------------------------
+                    let datasets_iQ = []
+                    for (let luchador of response) {
+                        let total = 0
+                        total = luchador.iQ_min + luchador.iQ_max
+                        datasets_iQ.push(Math.round(total / 2))
+                    }
+                    datasets_iQ.push(250)
 
+                    let datasets_fuerza = []
+                    for (let luchador of response) {
+                        let total = 0
+                        total = luchador.fuerza_min + luchador.fuerza_max
+                        datasets_fuerza.push(Math.round(total / 2))
+                    }
+                    datasets_fuerza.push(250)
+
+                    let datasets_velocidad = []
+                    for (let luchador of response) {
+                        let total = 0
+                        total = luchador.velocidad_min + luchador.velocidad_max
+                        datasets_velocidad.push(Math.round(total / 2))
+                    }
+                    datasets_velocidad.push(250)
+
+                    let datasets_resistencia = []
+                    for (let luchador of response) {
+                        let total = 0
+                        total = luchador.resistencia_min + luchador.resistencia_max
+                        datasets_resistencia.push(Math.round(total / 2))
+                    }
+                    datasets_resistencia.push(250)
+
+                    let datasets_battleIQ = []
+                    for (let luchador of response) {
+                        let total = 0
+                        total = luchador.battleIQ_min + luchador.battleIQ_max
+                        datasets_battleIQ.push(Math.round(total / 2))
+                    }
+                    datasets_battleIQ.push(250)
+
+                    let datasets_poderDestructivo = []
+                    for (let luchador of response) {
+                        let total = 0
+                        total = luchador.poderDestructivo_min + luchador.poderDestructivo_max
+                        datasets_poderDestructivo.push(Math.round(total / 2))
+                    }
+                    datasets_poderDestructivo.push(250)
+
+                    let datasets_experiencia = []
+                    for (let luchador of response) {
+                        let total = 0
+                        total = luchador.experiencia_min + luchador.experiencia_max
+                        datasets_experiencia.push(Math.round(total / 2))
+                    }
+                    datasets_experiencia.push(250)
+
+                    let datasets_transformaciones = []
+                    for (let luchador of response) {
+                        let total = 0
+                        total = luchador.transformaciones_min + luchador.transformaciones_max
+                        datasets_transformaciones.push(Math.round(total / 2))
+                    }
+                    datasets_transformaciones.push(250)
+                    // --------------------------------------
                     let data = {
                     labels: labels,
                     datasets: [{
                         label: 'Valor',
                         data: datasets_data,
+                        backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(121, 235, 93, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 102, 235, 0.5)',
+                        ],
+                        borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(121, 235, 93)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(255, 102, 235)',
+                        ],
+                        borderWidth: 1
+                
+                    },{
+                        label: 'IQ',
+                        hidden: true,
+                        data: datasets_iQ,
+                        backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(121, 235, 93, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 102, 235, 0.5)',
+                        ],
+                        borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(121, 235, 93)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(255, 102, 235)',
+                        ],
+                        borderWidth: 1
+                
+                    },{
+                        label: 'Fuerza',
+                        hidden: true,
+                        data: datasets_fuerza,
+                        backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(121, 235, 93, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 102, 235, 0.5)',
+                        ],
+                        borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(121, 235, 93)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(255, 102, 235)',
+                        ],
+                        borderWidth: 1
+                
+                    },{
+                        label: 'Velocidad',
+                        hidden: true,
+                        data: datasets_velocidad,
+                        backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(121, 235, 93, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 102, 235, 0.5)',
+                        ],
+                        borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(121, 235, 93)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(255, 102, 235)',
+                        ],
+                        borderWidth: 1
+                
+                    },{
+                        label: 'Resistencia',
+                        hidden: true,
+                        data: datasets_resistencia,
+                        backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(121, 235, 93, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 102, 235, 0.5)',
+                        ],
+                        borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(121, 235, 93)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(255, 102, 235)',
+                        ],
+                        borderWidth: 1
+                
+                    },{
+                        label: 'BattleIQ',
+                        hidden: true,
+                        data: datasets_battleIQ,
+                        backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(121, 235, 93, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 102, 235, 0.5)',
+                        ],
+                        borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(121, 235, 93)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(255, 102, 235)',
+                        ],
+                        borderWidth: 1
+                
+                    },{
+                        label: 'PoderDestructivo',
+                        hidden: true,
+                        data: datasets_poderDestructivo,
+                        backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(121, 235, 93, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 102, 235, 0.5)',
+                        ],
+                        borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(121, 235, 93)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(255, 102, 235)',
+                        ],
+                        borderWidth: 1
+                
+                    },{
+                        label: 'Experiencia',
+                        hidden: true,
+                        data: datasets_experiencia,
+                        backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(121, 235, 93, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 102, 235, 0.5)',
+                        ],
+                        borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(121, 235, 93)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(255, 102, 235)',
+                        ],
+                        borderWidth: 1
+                
+                    },{
+                        label: 'Transformaciones',
+                        hidden: true,
+                        data: datasets_transformaciones,
                         backgroundColor: [
                         'rgba(255, 99, 132, 0.5)',
                         'rgba(255, 159, 64, 0.5)',
@@ -317,3 +589,4 @@ function EstadisticasLuchadores()
         }
     );
 }
+
