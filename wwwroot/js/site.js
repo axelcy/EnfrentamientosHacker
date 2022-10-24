@@ -18,7 +18,10 @@ document.getElementById('versus-img')?.setAttribute('draggable', false);
 // TOAST
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-document.getElementById('btn-toast').click()
+
+//if (document.getElementById('btn-toast')) document.getElementById('btn-toast').click()
+document.getElementById('btn-toast')?.click()
+
 function MostrarMensaje(){
     $(document).ready(function(){
         $("#toast-mensaje").toast("show");
@@ -200,7 +203,6 @@ function ModificarJugador(IdLuchador)
 }
 function AgregarJugador()
 {
-    
     $.ajax(
         {
             type:'POST',
@@ -239,25 +241,20 @@ function AgregarJugador()
         }
     );
 }
-
-
-
-
 var myChart2
-function ListaLuchadores(ListaLuchadores)
+function EstadisticasLuchadores()
 {
+    console.log("Zxcqwdqdq")
     $.ajax(
         {
             type:'POST',
             dataType: 'json',
-            url: 'Home/DevolverListaLuchadores',
+            url: 'DevolverListaLuchadores',
             success:
                 function (response)
-                { 
-                    var labels;
-                    for (let i = 0; i < response.length; i++) {
-                        labels[i] = response[i].nombre
-                    }
+                {
+                    console.log(response)
+                    let labels = response.map(e=>e.nombre)
                     // var labels = [
                     //     'IQ',
                     //     'Fuerza',
@@ -268,12 +265,25 @@ function ListaLuchadores(ListaLuchadores)
                     //     'Experiencia',
                     //     'Transformaciones',
                     // ];
-                    var data = {
+                    let datasets_data = []
+                    
+                    for (let luchador of response) {
+                        let total = 0, count = 0
+                        for(let p in luchador) {
+                            if (p.includes("_min") || p.includes("_max")) {
+                                count++
+                                total+=luchador[p]
+                            }
+                        }
+                        datasets_data.push(Math.round(total / count))
+                    }
+                    
+                    datasets_data.push(250)
+                    let data = {
                     labels: labels,
                     datasets: [{
                         label: 'Valor',
-                        //for en el data
-                        data: [(response.iQ_min + response.iQ_max + response.fuerza_min + response.fuerza_max + response.velocidad_min + response.velocidad_max + response.resistencia_min + response.resistencia_max + response.battleIQ_min + response.battleIQ_max + response.poderDestructivo_min + response.poderDestructivo_max + response.experiencia_min + response.experiencia_max + response.transformaciones_min + response.transformaciones_max) / 16, 250*16],
+                        data: datasets_data,
                         backgroundColor: [
                         'rgba(255, 99, 132, 0.5)',
                         'rgba(255, 159, 64, 0.5)',
@@ -295,14 +305,14 @@ function ListaLuchadores(ListaLuchadores)
                         'rgb(255, 102, 235)',
                         ],
                         borderWidth: 1
-                        
+                
                     }]
                     };
-                    var config = {
+                    let config = {
                         type: 'bar',
                         data: data,
                         options: {
-                          indexAxis: 'x', // cambiar a 'y' para que se vea horizontal
+                          indexAxis: 'y', // cambiar a 'y' para que se vea horizontal
                           scales: {
                             y: {
                                 beginAtZero: true
@@ -312,7 +322,10 @@ function ListaLuchadores(ListaLuchadores)
                       };
                     if (myChart2) myChart2.destroy()
                     myChart2 = new Chart(document.getElementById('myChart2'),config);
-                } 
+                },
+                error : function(xhr, status){
+                    console.log(xhr, status)
+                }
         }
     );
 }
