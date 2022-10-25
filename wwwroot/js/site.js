@@ -266,7 +266,7 @@ function EstadisticasLuchadores()
         {
             type:'POST',
             dataType: 'json',
-            url: 'DevolverListaLuchadores',
+            url: '/Home/DevolverListaLuchadores',
             success:
                 function (response)
                 {

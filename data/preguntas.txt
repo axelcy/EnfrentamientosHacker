@@ -1,7 +1,2 @@
 .
 ------------------ PREGUNTAS ------------------
-
-home/home en la acción de ajax
-las viewbags en el tag </script>
-
-cómo arreglar el mensaje de añadir muchos luchadores (tal vez sea algo de hacerlo sincrónico)

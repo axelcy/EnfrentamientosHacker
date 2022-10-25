@@ -318,7 +318,10 @@ body {
 #stats-div{
   background-color: #cbcbcb;
 }
-
+.derecha{
+  display: flex;
+  justify-content: right;
+}
 
 
 
