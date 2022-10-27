@@ -66,21 +66,6 @@ function DetalleLuchador(IdLuchador)
             success:
                 function (response)
                 {
-                    $("#TituloDetalleLuchador").html("Detalles - " + response.nombre);
-
-                    $("#Foto").attr("src", "/img/luchadores/" + response.foto + "?" + Math.round(Math.random()*10000))
-                    $("#Victorias").html(response.victorias)
-                    $("#FechaNacimiento").html(response.fechaNacimiento.split("T")[0])
-
-                    $("#IQ").html("<b>IQ:</b> " + response.iQ_min + " - " + response.iQ_max)
-                    $("#Fuerza").html("<b>Fuerza:</b> " + response.fuerza_min + " - " + response.fuerza_max)
-                    $("#Velocidad").html("<b>Velocidad:</b> " + response.velocidad_min + " - " + response.velocidad_max)
-                    $("#Resistencia").html("<b>Resistencia:</b> " + response.resistencia_min + " - " + response.resistencia_max)
-                    $("#BattleIQ").html("<b>Battle IQ:</b> " + response.battleIQ_min + " - " + response.battleIQ_max)
-                    $("#PoderDestructivo").html("<b>Poder Destructivo:</b> " + response.poderDestructivo_min + " - " + response.poderDestructivo_max)
-                    $("#Experiencia").html("<b>Experiencia:</b> " + response.experiencia_min + " - " + response.experiencia_max)
-                    $("#Transformaciones").html("<b>Transformaciones:</b> " + response.transformaciones_min + " - " + response.transformaciones_max)
-
                     var labels = [
                         'IQ',
                         'Fuerza',
@@ -97,14 +82,7 @@ function DetalleLuchador(IdLuchador)
                         label: 'Estadísticas',
                         data: [Math.round((response.iQ_min + response.iQ_max) / 2), Math.round((response.fuerza_min + response.fuerza_max) / 2), Math.round((response.velocidad_min + response.velocidad_max) / 2), Math.round((response.resistencia_min + response.resistencia_max) / 2), Math.round((response.battleIQ_min + response.battleIQ_max) / 2), Math.round((response.poderDestructivo_min + response.poderDestructivo_max) / 2), Math.round((response.experiencia_min + response.experiencia_max) / 2), Math.round((response.transformaciones_min + response.transformaciones_max) / 2), 250],
                         backgroundColor: [
-                        //'rgba(255, 99, 132, 0.5)',
-                        //'rgba(255, 159, 64, 0.5)',
-                        //'rgba(255, 205, 86, 0.5)',
-                        //'rgba(121, 235, 93, 0.5)',
-                        //'rgba(75, 192, 192, 0.5)',
-                        //'rgba(54, 162, 235, 0.5)',
-                        //'rgba(153, 102, 255, 0.5)',
-                        //'rgba(255, 102, 235, 0.5)',
+
                         'rgba(75, 192, 192, 0.5)',
                         'rgba(54, 162, 235, 0.5)',
                         'rgba(70, 82, 255, 0.5)',
@@ -116,14 +94,6 @@ function DetalleLuchador(IdLuchador)
                         'rgba(121, 235, 93, 0.5)',
                         ],
                         borderColor: [
-                        //'rgb(255, 99, 132)',
-                        //'rgb(255, 159, 64)',
-                        //'rgb(255, 205, 86)',
-                        //'rgb(121, 235, 93)',
-                        //'rgb(75, 192, 192)',
-                        //'rgb(54, 162, 235)',
-                        //'rgb(153, 102, 255)',
-                        //'rgb(255, 102, 235)',
                         'rgb(75, 192, 192)',
                         'rgb(54, 162, 235)',
                         'rgb(70, 82, 255)',
@@ -468,3 +438,82 @@ function EstadisticasLuchadores()
     );
 }
 
+document.getElementById('btn-toast2')?.click()
+var myChart3
+var myChart4
+function DetalleLuchadorEnfrentamiento(IdLuchador, chartId)
+{
+    $.ajax(
+        {
+            type:'POST',
+            dataType: 'json',
+            url: 'DevolverLuchador',
+            data:{IdLuchador: IdLuchador},
+            success:
+                function (response)
+                {
+                    var labels = [
+                        'IQ',
+                        'Fuerza',
+                        'Velocidad',
+                        'Resistencia',
+                        'BattleIQ',
+                        'PoderDestructivo',
+                        'Experiencia',
+                        'Transformaciones',
+                    ];
+                    var data = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Estadísticas',
+                        data: [Math.round((response.iQ_min + response.iQ_max) / 2), Math.round((response.fuerza_min + response.fuerza_max) / 2), Math.round((response.velocidad_min + response.velocidad_max) / 2), Math.round((response.resistencia_min + response.resistencia_max) / 2), Math.round((response.battleIQ_min + response.battleIQ_max) / 2), Math.round((response.poderDestructivo_min + response.poderDestructivo_max) / 2), Math.round((response.experiencia_min + response.experiencia_max) / 2), Math.round((response.transformaciones_min + response.transformaciones_max) / 2), 250],
+                        backgroundColor: [
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(70, 82, 255, 0.8)',
+                        'rgba(153, 102, 255, 0.8)',
+                        'rgba(255, 102, 235, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(255, 159, 64, 0.8)',
+                        'rgba(255, 205, 86, 0.8)',
+                        'rgba(121, 235, 93, 0.8)',
+                        ],
+                        borderColor: [
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(70, 82, 255)',
+                        'rgb(153, 102, 255)',
+                        'rgb(255, 102, 235)',
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(121, 235, 93)',
+                        ],
+                        borderWidth: 1
+                        
+                    }]
+                    };
+                    var config = {
+                        type: 'bar',
+                        data: data,
+                        options: {
+                          indexAxis: 'y', // cambiar a 'y' para que se vea horizontal
+                          scales: {
+                            y: {
+                                beginAtZero: true
+                            },
+                          }
+                        },
+                      };
+                    if (chartId == 3){
+                        if (myChart3) myChart3.destroy()
+                        myChart3 = new Chart(document.getElementById('myChart3'), config);
+                    }
+                    if (chartId == 4){
+                        if (myChart4) myChart4.destroy()
+                        myChart4 = new Chart(document.getElementById('myChart4'), config);
+                    }
+                } 
+        }
+    );
+}

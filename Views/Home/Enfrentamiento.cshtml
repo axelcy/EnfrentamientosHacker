@@ -1,6 +1,8 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<button class="d-none" id="btn-toast" onclick="DetalleLuchadorEnfrentamiento(@ViewBag.luchador1.IdLuchador, 3)"></button>
+<button class="d-none" id="btn-toast2" onclick="DetalleLuchadorEnfrentamiento(@ViewBag.luchador2.IdLuchador, 4)"></button>
 <div class="container-fluid">
     <body style="background: url('/img/rings/@ViewBag.Ring') center no-repeat; background-size: cover;">
     <div class="row" style="margin-top: 1rem;">
@@ -15,10 +17,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-5"> @* GRÁFICO LUCHADOR 1 *@
-
+        <div class="col-4"> @* GRÁFICO LUCHADOR 1 *@
+            <div class="fondografico">
+              <div class="contenedorgrafico">
+                <canvas id="myChart3"></canvas>
+              </div>
+            </div>
         </div>
-        <div class="col-2"> @* TEXTO: SKILL(iq, fuerza, etc) Y PUNTUACIÓN(2-0) | SE VA   ACTUALIZANDO CADA X SEGS *@
+        <div class="col-4"> @* TEXTO: SKILL(iq, fuerza, etc) Y PUNTUACIÓN(2-0) | SE VA   ACTUALIZANDO CADA X SEGS *@
             <div class="row" style="color: red; text-align: center;">
                 <h1>SKILL</h1>
             </div>
@@ -26,8 +32,12 @@
                 <h1>PUNTOS</h1>
             </div>
         </div>
-        <div class="col-5"> @* GRÁFICO LUCHADOR 2 | ALINEAR A LA DERECHA!!! *@
-            
+        <div class="col-4"> @* GRÁFICO LUCHADOR 2 | ALINEAR A LA DERECHA!!! *@
+            <div class="fondografico">
+              <div class="contenedorgrafico">
+                <canvas id="myChart4"></canvas>
+              </div>
+            </div>
         </div>
     </div>
 

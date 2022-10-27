@@ -6,7 +6,7 @@ namespace EnfrentamientosHacker.Models;
 public static class BD
 {
     // DESKTOP-8SGST9S\SQLEXPRESS | localhost
-    private static string _connectionString = @"Server=A-PHZ2-CIDI-030;DataBase=BD-Enfrentamientos;Trusted_Connection=True";
+    private static string _connectionString = @"Server=A-PHZ2-CIDI-026;DataBase=BD-Enfrentamientos;Trusted_Connection=True";
     // private static SqlConnection bd = new SqlConnection(_connectionString);
     private static int cantLI = 10; // cantidad de luchadores iniciales
     public static int AgregarLuchador(Luchador luchador)
