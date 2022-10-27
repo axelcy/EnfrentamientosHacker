@@ -66,6 +66,21 @@ function DetalleLuchador(IdLuchador)
             success:
                 function (response)
                 {
+                    $("#TituloDetalleLuchador").html("Detalles - " + response.nombre);
+
+                    $("#Foto").attr("src", "/img/luchadores/" + response.foto + "?" + Math.round(Math.random()*10000))
+                    $("#Victorias").html(response.victorias)
+                    $("#FechaNacimiento").html(response.fechaNacimiento.split("T")[0])
+
+                    $("#IQ").html("<b>IQ:</b> " + response.iQ_min + " - " + response.iQ_max)
+                    $("#Fuerza").html("<b>Fuerza:</b> " + response.fuerza_min + " - " + response.fuerza_max)
+                    $("#Velocidad").html("<b>Velocidad:</b> " + response.velocidad_min + " - " + response.velocidad_max)
+                    $("#Resistencia").html("<b>Resistencia:</b> " + response.resistencia_min + " - " + response.resistencia_max)
+                    $("#BattleIQ").html("<b>Battle IQ:</b> " + response.battleIQ_min + " - " + response.battleIQ_max)
+                    $("#PoderDestructivo").html("<b>Poder Destructivo:</b> " + response.poderDestructivo_min + " - " + response.poderDestructivo_max)
+                    $("#Experiencia").html("<b>Experiencia:</b> " + response.experiencia_min + " - " + response.experiencia_max)
+                    $("#Transformaciones").html("<b>Transformaciones:</b> " + response.transformaciones_min + " - " + response.transformaciones_max)
+                    
                     var labels = [
                         'IQ',
                         'Fuerza',
