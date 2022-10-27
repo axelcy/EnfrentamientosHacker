@@ -517,3 +517,9 @@ function DetalleLuchadorEnfrentamiento(IdLuchador, chartId)
         }
     );
 }
+
+document.getElementById('btn-puntuacion')?.click()
+function Puntuacion(){ //luchador1, luchador2
+    let skillText = document.getElementById('skill-text')
+    skillText.innerHTML() = `<h1>" + " hola!" + "</h1>`
+}
