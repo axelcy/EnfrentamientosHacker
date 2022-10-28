@@ -75,7 +75,7 @@ function DetalleLuchador(IdLuchador)
 
                     $("#Foto").attr("src", "/img/luchadores/" + response.foto + "?" + Math.round(Math.random()*10000))
                     $("#Victorias").html(response.victorias)
-                    $("#FechaNacimiento").html(response.fechaNacimiento.split("T")[0])
+                    $("#FechaNacimiento").html(response.fechaNacimiento.split("T")[0].replace("-", "/").replace("-", "/"))
 
                     $("#IQ").html("<b>IQ:</b> " + response.iQ_min + " - " + response.iQ_max)
                     $("#Fuerza").html("<b>Fuerza:</b> " + response.fuerza_min + " - " + response.fuerza_max)
@@ -250,6 +250,7 @@ function AgregarJugador()
         }
     );
 }
+
 var myChart2
 function EstadisticasLuchadores()
 {
