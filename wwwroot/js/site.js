@@ -8,6 +8,11 @@
 
 document.getElementById('versus-img')?.setAttribute('draggable', false);
 
+
+document.getElementById('versus-img2')?.setAttribute('draggable', false);
+document.getElementById('imgl1')?.setAttribute('draggable', false);
+document.getElementById('imgl2')?.setAttribute('draggable', false);
+
 // TODAVÍA NO FUNCA
 // let noDragElements = document.getElementsByClassName('no-drag')
 // noDragElements.forEach(element => {
@@ -127,6 +132,7 @@ function DetalleLuchador(IdLuchador)
                         type: 'bar',
                         data: data,
                         options: {
+                            responsive: true,
                           indexAxis: 'x', // cambiar a 'y' para que se vea horizontal
                           scales: {
                             y: {
@@ -435,12 +441,13 @@ function EstadisticasLuchadores()
                         type: 'bar',
                         data: data,
                         options: {
-                          indexAxis: 'y', // cambiar a 'y' para que se vea horizontal
-                          scales: {
-                            y: {
-                                beginAtZero: true
-                            },
-                          }
+                            responsive: true,
+                            indexAxis: 'y', // cambiar a 'y' para que se vea horizontal
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                },
+                            }
                         },
                       };
                     if (myChart2) myChart2.destroy()
@@ -512,12 +519,17 @@ function DetalleLuchadorEnfrentamiento(IdLuchador, chartId)
                         type: 'bar',
                         data: data,
                         options: {
-                          indexAxis: 'y', // cambiar a 'y' para que se vea horizontal
-                          scales: {
-                            y: {
-                                beginAtZero: true
+                            responsive: true,
+                            indexAxis: 'y', // cambiar a 'y' para que se vea horizontal
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                },
                             },
-                          }
+                            animation: {
+                                duration: 10000,
+                            },
+
                         },
                       };
                     if (chartId == 3){
