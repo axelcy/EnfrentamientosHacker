@@ -550,7 +550,7 @@ function DetalleLuchadorEnfrentamiento(IdLuchador, chartId)
 
 function Enfrentar(ganadorNombre, ganadorImg){
     // MostrarConfeti() al final
-    document.getElementById('col-enfrentar').innerHTML = `<button class="btn btn-secondary" style="width: 50%;" onclick="location.href='/Home/Index/?mensaje=Enfrentamiento%20realizado%20con%20éxito!'" id="enfrentar"><b>Volver</b></button>`
+    document.getElementById('col-enfrentar').innerHTML = `<button class="btn btn-secondary" style="width: 50%;" onclick="location.href='/Home/IniciarEnfrentamiento/?mensaje=Enfrentamiento%20realizado%20con%20éxito!'" id="enfrentar"><b>Volver</b></button>`
     let muestraGanador = document.getElementById('ganador')
     muestraGanador.innerHTML = `
     <h1> GANADOR: ${ganadorNombre} </h1>
