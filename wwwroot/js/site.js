@@ -527,10 +527,6 @@ function DetalleLuchadorEnfrentamiento(IdLuchador, chartId)
                                     beginAtZero: true
                                 },
                             },
-                            animation: {
-                                duration: 10000,
-                            },
-
                         },
                       };
                     if (chartId == 3){
