@@ -63,6 +63,7 @@ public class HomeController : Controller
         ViewBag.Ring = ring;
         ViewBag.luchador1 = luchador1;
         ViewBag.luchador2 = luchador2;
+        ViewBag.ganador = Funciones.ElegirGanador(luchador1, luchador2);
         return View();
     }
     public IActionResult Registros()

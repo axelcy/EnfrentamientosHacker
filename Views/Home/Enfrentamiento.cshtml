@@ -27,13 +27,18 @@
             </div>
         </div>
         <div class="col-4"> @* TEXTO: SKILL(iq, fuerza, etc) Y PUNTUACIÓN(2-0) | SE VA   ACTUALIZANDO CADA X SEGS *@
-            <div class="row" style="color: red; text-align: center;">
-                <div class="skill-text"> 
+            @* <div class="row" style="color: red; text-align: center;">
+                <div> 
                     <h1>GANADOR:</h1>
                 </div>
+            </div> *@
+            <div class="row" id="ganador" style="color: red; text-align: center;">
+                @* <h1>NOMBRE + FOTO ABAJO</h1> *@
             </div>
-            <div class="row" style="color: red; text-align: center;">
-                <h1>NOMBRE + FOTO ABAJO</h1>
+            <div class="row fixed-bottom" style="margin-bottom: 2rem;">
+                <div class="col-3"></div>
+                <div class="col-6 col-enfrentar"><button class="btn btn-primary" style="width: 50%;" onclick="Enfrentar('@ViewBag.ganador.Nombre','@ViewBag.ganador.Foto')" id="enfrentar"><b>Enfrentar</b></button></div>
+                <div class="col-3"></div>
             </div>
         </div>
         <div class="col-4"> @* GRÁFICO LUCHADOR 2 | ALINEAR A LA DERECHA!!! *@

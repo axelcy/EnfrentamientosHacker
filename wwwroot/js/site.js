@@ -546,8 +546,15 @@ function DetalleLuchadorEnfrentamiento(IdLuchador, chartId)
     );
 }
 
-document.getElementById('btn-puntuacion')?.click()
-function Puntuacion(){ //luchador1, luchador2
-    let skillText = document.getElementById('skill-text')
-    skillText.innerHTML() = `<h1>" + " hola!" + "</h1>`
+
+
+function Enfrentar(ganadorNombre, ganadorImg){
+    // MostrarConfeti() al final
+    document.getElementById('enfrentar').click()
+
+    let muestraGanador = document.getElementById('ganador')
+    muestraGanador.innerHTML = `
+    <h1> GANADOR: ${ganadorNombre} </h1>
+    <img style="width: 18rem; margin: auto" src="/img/luchadores/${ganadorImg}">
+    `
 }
