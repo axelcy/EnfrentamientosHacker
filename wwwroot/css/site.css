@@ -330,7 +330,7 @@ body {
 .contenedorgrafico{
   margin: 1rem;
 }
-.col-enfrentar{
+#col-enfrentar{
   display: flex;
   justify-content: center;
 }
