@@ -545,16 +545,21 @@ function DetalleLuchadorEnfrentamiento(IdLuchador, chartId)
 
 
 function Enfrentar(ganadorNombre, ganadorImg){
-    // MostrarConfeti() al final
     document.getElementById('col-enfrentar').innerHTML = `<button class="btn btn-secondary" style="width: 50%;" onclick="location.href='/Home/IniciarEnfrentamiento/?mensaje=Enfrentamiento%20realizado%20con%20éxito!'" id="enfrentar"><b>Volver</b></button>`
     let muestraGanador = document.getElementById('ganador')
+    
+    var directorio = "/img/luchadores/"
+    if (ganadorImg == "foto_empate.jfif" && ganadorNombre == "Empate!") directorio = "/img/"
     muestraGanador.innerHTML = `
     <h1> GANADOR: ${ganadorNombre} </h1>
-    <img style="width: 18rem; margin: auto" src="/img/luchadores/${ganadorImg}">
+    <img style="width: 18rem; margin: auto" src="${directorio}${ganadorImg}">
     `
 
-    var end = Date.now() + (15 * 1000);
+    MostrarConfeti()
+}
 
+function MostrarConfeti(){
+    var end = Date.now() + (15 * 1000);
 
     var colors = ['#ffd60a', '#0a2472'];
 

@@ -69,25 +69,22 @@ public static class Funciones
     {
         int puntos1 = 0, puntos2 = 0;
         Random random = new Random();
-        if (random.Next(luchador1.IQ_min, luchador1.IQ_max) > random.Next(luchador2.IQ_min, luchador2.IQ_max)) puntos1++;
-        else puntos2++;
-        if (random.Next(luchador1.Fuerza_min, luchador1.Fuerza_max) > random.Next(luchador2.Fuerza_min, luchador2.Fuerza_max)) puntos1++;
-        else puntos2++;
-        if (random.Next(luchador1.Velocidad_min, luchador1.Velocidad_max) > random.Next(luchador2.Velocidad_min, luchador2.Velocidad_max)) puntos1++;
-        else puntos2++;
-        if (random.Next(luchador1.Resistencia_min, luchador1.Resistencia_max) > random.Next(luchador2.Resistencia_min, luchador2.Resistencia_max)) puntos1++;
-        else puntos2++;
-        if (random.Next(luchador1.BattleIQ_min, luchador1.BattleIQ_max) > random.Next(luchador2.BattleIQ_min, luchador2.BattleIQ_max)) puntos1++;
-        else puntos2++;
-        if (random.Next(luchador1.PoderDestructivo_min, luchador1.PoderDestructivo_max) > random.Next(luchador2.PoderDestructivo_min, luchador2.PoderDestructivo_max)) puntos1++;
-        else puntos2++;
-        if (random.Next(luchador1.Experiencia_min, luchador1.Experiencia_max) > random.Next(luchador2.Experiencia_min, luchador2.Experiencia_max)) puntos1++;
-        else puntos2++;
-        if (random.Next(luchador1.Transformaciones_min, luchador1.Transformaciones_max) > random.Next(luchador2.Transformaciones_min, luchador2.Transformaciones_max)) puntos1++;
-        else puntos2++;
-        if (random.Next(luchador1.Fuerza_min, luchador1.Fuerza_max) > random.Next(luchador2.Fuerza_min, luchador2.Fuerza_max)) puntos1++;
-        else puntos2++;
-
+        if      (random.Next(luchador1.IQ_min, luchador1.IQ_max)                              > random.Next(luchador2.IQ_min, luchador2.IQ_max)) puntos1++;
+        else if (random.Next(luchador1.IQ_min, luchador1.IQ_max)                              < random.Next(luchador2.IQ_min, luchador2.IQ_max)) puntos2++;
+        if      (random.Next(luchador1.Fuerza_min, luchador1.Fuerza_max)                      > random.Next(luchador2.Fuerza_min, luchador2.Fuerza_max)) puntos1++;
+        else if (random.Next(luchador1.Fuerza_min, luchador1.Fuerza_max)                      < random.Next(luchador2.Fuerza_min, luchador2.Fuerza_max)) puntos2++;
+        if      (random.Next(luchador1.Velocidad_min, luchador1.Velocidad_max)                > random.Next(luchador2.Velocidad_min, luchador2.Velocidad_max)) puntos1++;
+        else if (random.Next(luchador1.Velocidad_min, luchador1.Velocidad_max)                < random.Next(luchador2.Velocidad_min, luchador2.Velocidad_max)) puntos2++;
+        if      (random.Next(luchador1.Resistencia_min, luchador1.Resistencia_max)            > random.Next(luchador2.Resistencia_min, luchador2.Resistencia_max)) puntos1++;
+        else if (random.Next(luchador1.Resistencia_min, luchador1.Resistencia_max)            < random.Next(luchador2.Resistencia_min, luchador2.Resistencia_max)) puntos2++;
+        if      (random.Next(luchador1.BattleIQ_min, luchador1.BattleIQ_max)                  > random.Next(luchador2.BattleIQ_min, luchador2.BattleIQ_max)) puntos1++;
+        else if (random.Next(luchador1.BattleIQ_min, luchador1.BattleIQ_max)                  < random.Next(luchador2.BattleIQ_min, luchador2.BattleIQ_max)) puntos2++;
+        if      (random.Next(luchador1.PoderDestructivo_min, luchador1.PoderDestructivo_max)  > random.Next(luchador2.PoderDestructivo_min, luchador2.PoderDestructivo_max)) puntos1++;
+        else if (random.Next(luchador1.PoderDestructivo_min, luchador1.PoderDestructivo_max)  < random.Next(luchador2.PoderDestructivo_min, luchador2.PoderDestructivo_max)) puntos2++;
+        if      (random.Next(luchador1.Experiencia_min, luchador1.Experiencia_max)            > random.Next(luchador2.Experiencia_min, luchador2.Experiencia_max)) puntos1++;
+        else if (random.Next(luchador1.Experiencia_min, luchador1.Experiencia_max)            < random.Next(luchador2.Experiencia_min, luchador2.Experiencia_max)) puntos2++;
+        if      (random.Next(luchador1.Transformaciones_min, luchador1.Transformaciones_max)  > random.Next(luchador2.Transformaciones_min, luchador2.Transformaciones_max)) puntos1++;
+        else if (random.Next(luchador1.Transformaciones_min, luchador1.Transformaciones_max)  < random.Next(luchador2.Transformaciones_min, luchador2.Transformaciones_max)) puntos2++;
 
         if (puntos1 > puntos2) return luchador1;
         else if (puntos2 > puntos1) return luchador2;
