@@ -557,4 +557,35 @@ function Enfrentar(ganadorNombre, ganadorImg){
     <h1> GANADOR: ${ganadorNombre} </h1>
     <img style="width: 18rem; margin: auto" src="/img/luchadores/${ganadorImg}">
     `
+
+    var end = Date.now() + (15 * 1000);
+
+
+    var colors = ['#ffd60a', '#0a2472'];
+
+    confetti({
+        particleCount: 700,
+        angle: 60,
+        spread: 100,
+        origin: { x: 0 },
+        colors: colors
+    });
+    confetti({
+        particleCount: 700,
+        angle: 120,
+        spread: 100,
+        origin: { x: 1 },
+        colors: colors
+    });
+    confetti({
+        particleCount: 700,
+        angle: 90,
+        spread: 100,
+        origin: { x: 0.5 , y:1},
+        colors: colors
+    });
+
+    if (Date.now() < end) {
+        requestAnimationFrame(frame);
+    }
 }
