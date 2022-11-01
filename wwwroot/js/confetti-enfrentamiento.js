@@ -1,7 +1,7 @@
 var end = Date.now() + (15 * 1000);
 
 // go Buckeyes!
-var colors = ['#bb0000', '#ffffff'];
+var colors = ['#ffd60a', '#0a2472'];
 
 (function frame() {
   confetti({
