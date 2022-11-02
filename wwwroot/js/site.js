@@ -544,18 +544,42 @@ function DetalleLuchadorEnfrentamiento(IdLuchador, chartId)
 
 
 
-function Enfrentar(ganadorNombre, ganadorImg){
-    document.getElementById('col-enfrentar').innerHTML = `<button class="btn btn-secondary" style="width: 50%;" onclick="location.href='/Home/IniciarEnfrentamiento/?mensaje=Enfrentamiento%20realizado%20con%20éxito!'" id="enfrentar"><b>Volver</b></button>`
-    let muestraGanador = document.getElementById('ganador')
-    
-    var directorio = "/img/luchadores/"
-    if (ganadorImg == "foto_empate.jfif" && ganadorNombre == "Empate!") directorio = "/img/"
-    muestraGanador.innerHTML = `
-    <h1> GANADOR: ${ganadorNombre} </h1>
-    <img style="width: 18rem; margin: auto" src="${directorio}${ganadorImg}">
-    `
+function Enfrentar(IdLuchador){
+    $.ajax(
+        {
+            type:'POST',
+            dataType: 'json',
+            url: 'DevolverLuchador',
+            data:{IdLuchador: IdLuchador},
+            success:
+                function (response)
+                {
+                    document.getElementById('col-enfrentar').innerHTML = `<button class="btn btn-secondary" style="width: 50%;" onclick="location.href='/Home/IniciarEnfrentamiento/?mensaje=Enfrentamiento%20realizado%20con%20éxito!'" id="enfrentar"><b>Volver</b></button>`
+                    let muestraGanador = document.getElementById('ganador')
+                    
+                    var directorio = "/img/luchadores/"
+                    if (response.foto == "foto_empate.jfif" && response.nombre == "Empate!") directorio = "/img/"
+                    muestraGanador.innerHTML = `
+                    <h1> GANADOR: ${response.nombre} </h1>
+                    <img style="width: 18rem; margin: auto" src="${directorio}${response.foto}">
+                    `
 
-    MostrarConfeti()
+                    MostrarConfeti()
+                    SumarVictoria(response.idLuchador)
+                } 
+        }
+    );
+}
+
+function SumarVictoria(IdLuchador){
+    $.ajax(
+        {
+            type:'POST',
+            dataType: 'json',
+            url: 'SumarVictoria',
+            data:{IdLuchador: IdLuchador}
+        }
+    );
 }
 
 function MostrarConfeti(){
@@ -585,7 +609,8 @@ function MostrarConfeti(){
         colors: colors
     });
 
-    if (Date.now() < end) {
-        requestAnimationFrame(frame);
-    }
+    // if (Date.now() < end) {
+    //     requestAnimationFrame(frame);
+    // }
 }
+

@@ -73,7 +73,12 @@ public class HomeController : Controller
     }
     // -------------------------------------------------------------------------------------------
     // -------------------------------------------------------------------------------------------
-    
+    public void SumarVictoria(int IdLuchador)
+    {
+        Luchador luchador = BD.VerInfoLuchador(IdLuchador);
+        luchador.Victorias++;
+        BD.ActualizarLuchador(luchador);
+    }
     public IActionResult ReiniciarJuego()
     {
         List<Luchador> ListaLuchadores = BD.ListarLuchadores();
