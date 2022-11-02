@@ -276,6 +276,12 @@ function EstadisticasLuchadores()
                         datasets_data.push(Math.round(total / count))
                     }
                     datasets_data.push(250)
+
+                    let datasets_victorias = []
+                    for (let luchador of response) {
+                        datasets_victorias.push(luchador.victorias)
+                    }
+                    datasets_victorias.push(5)
                     // --------------------------------------
                     let datasets_iQ = []
                     for (let luchador of response) {
@@ -367,6 +373,18 @@ function EstadisticasLuchadores()
                         'rgb(255, 159, 64)',
                         'rgb(255, 205, 86)',
                         'rgb(121, 235, 93)',
+                        ],
+                        borderWidth: 1
+                
+                    },{
+                        label: 'VICTORIAS',
+                        hidden: true,
+                        data: datasets_victorias,
+                        backgroundColor: [
+                        'rgba(255, 217, 0, 0.5)',
+                        ],
+                        borderColor: [
+                        'rgb(255, 217, 0)',
                         ],
                         borderWidth: 1
                 
