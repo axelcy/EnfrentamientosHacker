@@ -73,12 +73,44 @@ public class HomeController : Controller
     }
     // -------------------------------------------------------------------------------------------
     // -------------------------------------------------------------------------------------------
+    public IActionResult AñadirRegistro(string nombre1, int puntos1, string nombre2, int puntos2, int diff, DateTime fecha)
+    {
+        Registro registro = new Registro();
+        registro.Luchador1 = nombre1; registro.Luchador2 = nombre2;
+        registro.Puntuacion1 = puntos1; registro.Puntuacion2 = puntos2; 
+        registro.Fecha = DateTime.Today;
+        
+        string nombreGanador;
+        int puntosGanador = 0, puntosPerdedor = 0;
+        if (puntos1 > puntos2)
+        {
+            nombreGanador = nombre1;
+            puntosGanador = puntos1;
+            puntosPerdedor = puntos2;
+        }
+        else if (puntos1 < puntos2)
+        {
+            nombreGanador = nombre2;
+            puntosGanador = puntos2;
+            puntosPerdedor = puntos1;
+        }
+        else nombreGanador = "Empate";
+
+        if (puntosGanador - puntosPerdedor == 0) registro.Diff = "0";
+        else if (puntosGanador - puntosPerdedor == 1) registro.Diff = "1";
+        else if (puntosGanador - puntosPerdedor <= 3) registro.Diff = "2";
+        else registro.Diff = "3";
+
+        BD.AñadirRegistro(registro);
+        return RedirectToAction("IniciarEnfrentamiento", new {mensaje = $"Enfrentamiento realizado con éxito! Ganador: <b>{nombreGanador}</b>"});
+    }
     public void SumarVictoria(int IdLuchador)
     {
         Luchador luchador = BD.VerInfoLuchador(IdLuchador);
         luchador.Victorias++;
         BD.ActualizarLuchador(luchador);
     }
+    // -------------------------------------------------------------------------------------------
     public IActionResult ReiniciarJuego()
     {
         List<Luchador> ListaLuchadores = BD.ListarLuchadores();

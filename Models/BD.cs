@@ -6,7 +6,7 @@ namespace EnfrentamientosHacker.Models;
 public static class BD
 {
     // DESKTOP-8SGST9S\SQLEXPRESS | localhost
-    private static string _connectionString = @"Server=A-PHZ2-CIDI-029;DataBase=BD-Enfrentamientos;Trusted_Connection=True";
+    private static string _connectionString = @"Server=A-PHZ2-CIDI-026;DataBase=BD-Enfrentamientos;Trusted_Connection=True";
     // private static SqlConnection bd = new SqlConnection(_connectionString);
     private static int cantLI = 10; // cantidad de luchadores iniciales
     public static int AgregarLuchador(Luchador luchador)
@@ -92,6 +92,11 @@ public static class BD
         return ListaRegistros;
     }
     public static void ActualizarRegistro(Registro registro)
+    {
+        string sql = $"INSERT INTO Luchadores([IdLuchador1], [Luchador1], [Puntuacion1], [IdLuchador2], [Luchador2], [Puntuacion2], [Diff], [Fecha]) VALUES('{registro.Luchador1}', '{registro.Puntuacion1}', {registro.Luchador2}, {registro.Puntuacion2}, {registro.Diff}, @Fecha)";
+        using (SqlConnection bd = new SqlConnection(_connectionString)) bd.Execute(sql, new {Fecha = registro.Fecha});
+    }
+    public static void AñadirRegistro(Registro registro)
     {
         string sql = $"UPDATE Registros SET IdLuchador1 = {registro.IdLuchador1}, Luchador1 = {registro.Luchador1}, Puntuacion1 = {registro.Puntuacion1}, IdLuchador2 = {registro.IdLuchador2}, Luchador2 = {registro.Luchador2}, Puntuacion2 = {registro.Puntuacion2}, Diff = {registro.Diff}, Fecha = @Fecha WHERE IdRegistro = {registro.IdRegistro}";
         using (SqlConnection bd = new SqlConnection(_connectionString)) bd.Execute(sql, new {Fecha = registro.Fecha});

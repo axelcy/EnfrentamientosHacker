@@ -562,7 +562,7 @@ function DetalleLuchadorEnfrentamiento(IdLuchador, chartId)
 
 
 
-function Enfrentar(IdLuchador){
+function Enfrentar(IdLuchador, IdPerdedor){
     $.ajax(
         {
             type:'POST',
@@ -572,7 +572,7 @@ function Enfrentar(IdLuchador){
             success:
                 function (response)
                 {
-                    document.getElementById('col-enfrentar').innerHTML = `<button class="btn btn-secondary" style="width: 50%;" onclick="location.href='/Home/IniciarEnfrentamiento/?mensaje=Enfrentamiento%20realizado%20con%20éxito!'" id="enfrentar"><b>Volver</b></button>`
+                    document.getElementById('col-enfrentar').innerHTML = `<button class="btn btn-secondary" style="width: 50%;" id="enfrentar" onclick="location.href='@Url.Action("AñadirRegistro", new{nombre1 = nombre1, puntos1 = puntos1, nombre2 = nombre2, puntos2 = puntos2})'"><b>Volver</b></button>`
                     let muestraGanador = document.getElementById('ganador')
                     
                     var directorio = "/img/luchadores/"
