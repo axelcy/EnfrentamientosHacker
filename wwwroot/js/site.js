@@ -578,6 +578,7 @@ function Enfrentar(IdLuchador, IdPerdedor){
                     var directorio = "/img/luchadores/"
                     if (response.foto == "foto_empate.jfif" && response.nombre == "Empate!") directorio = "/img/"
                     muestraGanador.innerHTML = `
+                    <img style="width: 30rem; margin: auto" src="/img/Victoria.png">
                     <h1> GANADOR: ${response.nombre} </h1>
                     <img style="width: 18rem; margin: auto" src="${directorio}${response.foto}">
                     `
