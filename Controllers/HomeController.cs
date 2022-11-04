@@ -116,6 +116,12 @@ public class HomeController : Controller
         BD.ActualizarLuchador(luchador);
     }
     // -------------------------------------------------------------------------------------------
+    public IActionResult EliminarRegistro(int idRegistro)
+    {
+        BD.EliminarRegistro(idRegistro);
+        return RedirectToAction("Registros", new {mensaje = "Registro eliminado con éxito!"});
+    }
+    // -------------------------------------------------------------------------------------------
     public IActionResult ReiniciarJuego()
     {
         List<Luchador> ListaLuchadores = BD.ListarLuchadores();

@@ -3,19 +3,6 @@
 
 0. HACER UN LOGO Y PONERLO EN EL MODAL DE INFO TP Y EN LA VIEW INDEX !!!!!!!!!!!!!!!! y de ícono del browser tmb si se puede
 
-QUE ADEMÁS DEL VALOR Q ESTÉN LAS VICTORIAS EN LAS VIEW DE STATS!!!!!!!!!!!
-
-
-ENFRENTAMIENTO:
-
-la animación del gráfico debería tardar unos 3 segundos por skill
-en esos 3 segundos debería aparecer en el centro la skill por la que se está luchando
-al finalizar los segundos, debería actualizarse el texto que dice la puntuación.
-
-cuando termine el enfrentamiento:
-que se abra un modal mostrando al ganador o resumen del enfrentamiento
-mostrar los confetis de la prueba de septiembre
-
  - Extra: Poner las canciones de tik tok en los enfrentamientos (recortar los audios para que terminen cuando termina la pelea)
 
 
