@@ -65,7 +65,7 @@ public static class Funciones
 
         return luchador;
     }
-    public static Luchador ElegirGanador(Luchador luchador1, Luchador luchador2)
+    public static Luchador ElegirGanador(Luchador luchador1, Luchador luchador2, ref int puntosGanador, ref int puntosPerdedor)
     {
         int puntos1 = 0, puntos2 = 0;
         Random random = new Random();
@@ -86,8 +86,21 @@ public static class Funciones
         if      (random.Next(luchador1.Transformaciones_min, luchador1.Transformaciones_max)  > random.Next(luchador2.Transformaciones_min, luchador2.Transformaciones_max)) puntos1++;
         else if (random.Next(luchador1.Transformaciones_min, luchador1.Transformaciones_max)  < random.Next(luchador2.Transformaciones_min, luchador2.Transformaciones_max)) puntos2++;
 
-        if (puntos1 > puntos2) return luchador1;
-        else if (puntos2 > puntos1) return luchador2;
+        if (puntos1 > puntos2)
+        {
+            puntosGanador = puntos1;
+            puntosPerdedor = puntos2;
+            return luchador1;
+        }
+        else if (puntos2 > puntos1)
+        {
+            puntosGanador = puntos2;
+            puntosPerdedor = puntos1;
+            return luchador2;
+        }
+
+        puntosGanador = puntos1;
+        puntosPerdedor = puntos1;
 
         Luchador luchadorEmpate = new Luchador();
         luchadorEmpate.Nombre = "Empate!";

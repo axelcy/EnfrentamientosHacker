@@ -562,41 +562,30 @@ function DetalleLuchadorEnfrentamiento(IdLuchador, chartId)
 
 
 
-function Enfrentar(IdLuchador, IdPerdedor){
+function Enfrentar(IdGanador, IdPerdedor, puntosGanador, puntosPerdedor){
     $.ajax(
         {
             type:'POST',
             dataType: 'json',
-            url: 'DevolverLuchador',
-            data:{IdLuchador: IdLuchador},
+            url: 'DevolverGanadorPerdedor',
+            data:{IdGanador: IdGanador, IdPerdedor: IdPerdedor},
             success:
                 function (response)
                 {
-                    document.getElementById('col-enfrentar').innerHTML = `<button class="btn btn-secondary" style="width: 50%;" id="enfrentar" onclick="location.href='@Url.Action("AñadirRegistro", new{nombre1 = nombre1, puntos1 = puntos1, nombre2 = nombre2, puntos2 = puntos2})'"><b>Volver</b></button>`
+                    // @Url.Action("AñadirRegistro", new{ganador = ${response[0]}, perdedor = ${response[1]}, puntosGanador = ${puntosGanador}, puntosPerdedor = ${puntosPerdedor}}
+                    document.getElementById('col-enfrentar').innerHTML = `<button class="btn btn-secondary" style="width: 50%;" id="enfrentar" onclick="location.href='/Home/AñadirRegistro?IdGanador=${response[0].idLuchador}&IdPerdedor=${response[1].idLuchador}&puntosGanador=${puntosGanador}&puntosPerdedor=${puntosPerdedor}'"><b>Volver y guardar registro</b></button>`
                     let muestraGanador = document.getElementById('ganador')
-                    
+
                     var directorio = "/img/luchadores/"
-                    if (response.foto == "foto_empate.jfif" && response.nombre == "Empate!") directorio = "/img/"
+                    if (response[0].foto == "foto_empate.jfif" && response[0].nombre == "Empate!") directorio = "/img/"
+
                     muestraGanador.innerHTML = `
                     <img style="width: 30rem; margin: auto" src="/img/Victoria.png">
-                    <h1> GANADOR: ${response.nombre} </h1>
-                    <img style="width: 18rem; margin: auto" src="${directorio}${response.foto}">
-                    `
+                    <h1> GANADOR: ${response[0].nombre} </h1>
+                    <img style="width: 18rem; margin: auto" src="${directorio}${response[0].foto}">`
 
                     MostrarConfeti()
-                    SumarVictoria(response.idLuchador)
                 } 
-        }
-    );
-}
-
-function SumarVictoria(IdLuchador){
-    $.ajax(
-        {
-            type:'POST',
-            dataType: 'json',
-            url: 'SumarVictoria',
-            data:{IdLuchador: IdLuchador}
         }
     );
 }

@@ -60,10 +60,20 @@ public class HomeController : Controller
             return RedirectToAction("IniciarEnfrentamiento", new {mensaje = $"Es obligatorio elegir un ring!"});
         }
 
+        int puntosGanador = 0, puntosPerdedor = 0;
+        Luchador ganador = Funciones.ElegirGanador(luchador1, luchador2, ref puntosGanador, ref puntosPerdedor);
+        Luchador perdedor = new Luchador();
+        if (ganador == luchador1) perdedor = luchador2;
+        else if (ganador == luchador2) perdedor = luchador1;
+        else perdedor = ganador;
+
         ViewBag.Ring = ring;
         ViewBag.luchador1 = luchador1;
         ViewBag.luchador2 = luchador2;
-        ViewBag.ganador = Funciones.ElegirGanador(luchador1, luchador2);
+        ViewBag.ganador = ganador;
+        ViewBag.perdedor = perdedor;
+        ViewBag.puntosGanador = puntosGanador;
+        ViewBag.puntosPerdedor = puntosPerdedor;
         return View();
     }
     public IActionResult Registros()
@@ -73,36 +83,31 @@ public class HomeController : Controller
     }
     // -------------------------------------------------------------------------------------------
     // -------------------------------------------------------------------------------------------
-    public IActionResult AñadirRegistro(string nombre1, int puntos1, string nombre2, int puntos2, int diff, DateTime fecha)
+    public IActionResult AñadirRegistro(int IdGanador, int IdPerdedor, int puntosGanador, int puntosPerdedor)
     {
-        Registro registro = new Registro();
-        registro.Luchador1 = nombre1; registro.Luchador2 = nombre2;
-        registro.Puntuacion1 = puntos1; registro.Puntuacion2 = puntos2; 
-        registro.Fecha = DateTime.Today;
+        Luchador ganador = BD.VerInfoLuchador(IdGanador);
+        Luchador perdedor = BD.VerInfoLuchador(IdPerdedor);
         
-        string nombreGanador;
-        int puntosGanador = 0, puntosPerdedor = 0;
-        if (puntos1 > puntos2)
-        {
-            nombreGanador = nombre1;
-            puntosGanador = puntos1;
-            puntosPerdedor = puntos2;
-        }
-        else if (puntos1 < puntos2)
-        {
-            nombreGanador = nombre2;
-            puntosGanador = puntos2;
-            puntosPerdedor = puntos1;
-        }
-        else nombreGanador = "Empate";
+        Registro registro = new Registro();
+        registro.Luchador1 = ganador.Nombre; registro.Luchador2 = perdedor.Nombre;
+        registro.Puntuacion1 = puntosGanador; registro.Puntuacion2 = puntosPerdedor; 
+        registro.Fecha = DateTime.Today;
 
         if (puntosGanador - puntosPerdedor == 0) registro.Diff = "0";
         else if (puntosGanador - puntosPerdedor == 1) registro.Diff = "1";
         else if (puntosGanador - puntosPerdedor <= 3) registro.Diff = "2";
         else registro.Diff = "3";
 
+        string mensaje = "Enfrentamiento realizado con éxito! ";
+        if (registro.Diff != "0")
+        {
+            mensaje += $"Ganador: <b>{ganador.Nombre}</b>";
+            SumarVictoria(ganador.IdLuchador);
+        }
+        else mensaje += $"Fué un <b>Empate</b>!";
+
         BD.AñadirRegistro(registro);
-        return RedirectToAction("IniciarEnfrentamiento", new {mensaje = $"Enfrentamiento realizado con éxito! Ganador: <b>{nombreGanador}</b>"});
+        return RedirectToAction("IniciarEnfrentamiento", new {mensaje = mensaje});
     }
     public void SumarVictoria(int IdLuchador)
     {
@@ -165,6 +170,13 @@ public class HomeController : Controller
     {
         Luchador luchador = BD.VerInfoLuchador(IdLuchador);
         return luchador;
+    }
+    public Luchador[] DevolverGanadorPerdedor(int IdGanador, int IdPerdedor)
+    {
+        Luchador[] GanadorPerdedor = new Luchador[2];
+        GanadorPerdedor[0] = BD.VerInfoLuchador(IdGanador);
+        GanadorPerdedor[1] = BD.VerInfoLuchador(IdPerdedor);
+        return GanadorPerdedor;
     }
     public List<Luchador> DevolverListaLuchadores()
     {
