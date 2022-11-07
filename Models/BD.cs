@@ -6,7 +6,7 @@ namespace EnfrentamientosHacker.Models;
 public static class BD
 {
     // DESKTOP-8SGST9S\SQLEXPRESS | localhost
-    private static string _connectionString = @"Server=localhost;DataBase=BD-Enfrentamientos;Trusted_Connection=True";
+    private static string _connectionString = @"Server=A-PHZ2-CEO-019;DataBase=BD-Enfrentamientos;Trusted_Connection=True";
     private static int cantLI = 10; // cantidad de luchadores iniciales
     public static int AgregarLuchador(Luchador luchador)
     {
@@ -67,6 +67,13 @@ public static class BD
         string sql = $"SELECT * FROM Luchadores WHERE IdLuchador = {idLuchador}";
         using (SqlConnection bd = new SqlConnection(_connectionString)) luchador = bd.QueryFirstOrDefault<Luchador>(sql);
         return luchador;
+    }
+    public static Registro VerInfoRegistro(int idRegistro)
+    {
+        Registro registro;
+        string sql = $"SELECT * FROM Registros WHERE IdRegistro = {idRegistro}";
+        using (SqlConnection bd = new SqlConnection(_connectionString)) registro = bd.QueryFirstOrDefault<Registro>(sql);
+        return registro;
     }
     public static List<Luchador> ListarLuchadores()
     {

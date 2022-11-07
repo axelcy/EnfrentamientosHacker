@@ -168,6 +168,26 @@ function ConfirmarEliminar(IdLuchador)
         }
     );
 }
+function ConfirmarEliminarRegistro(IdRegistro)
+{
+    
+    $.ajax(
+        {
+            type:'POST',
+            dataType: 'json',
+            url: 'DevolverRegistro',
+            data:{IdRegistro: IdRegistro},
+            success:
+                function (response)
+                {
+                    $("#ce-titulo").html("<b>¡Está a punto de eliminar un registro!<b>");
+                    $("#ce-body").html("¿Está seguro de que quiere eliminar al registro #<b>" + IdRegistro + "</b>?");
+                    $("#ConfirmarEliminar").attr("href", "/Home/EliminarRegistro/?IdRegistro=" + response.idRegistro)
+                    
+                }
+        }
+    );
+}
 function ModificarJugador(IdLuchador)
 {
     

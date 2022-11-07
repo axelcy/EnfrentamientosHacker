@@ -116,11 +116,6 @@ public class HomeController : Controller
         BD.ActualizarLuchador(luchador);
     }
     // -------------------------------------------------------------------------------------------
-    public IActionResult EliminarRegistro(int idRegistro)
-    {
-        BD.EliminarRegistro(idRegistro);
-        return RedirectToAction("Registros", new {mensaje = "Registro eliminado con éxito!"});
-    }
     // -------------------------------------------------------------------------------------------
     public IActionResult ReiniciarJuego()
     {
@@ -163,6 +158,11 @@ public class HomeController : Controller
         BD.EliminarLuchador(IdLuchador);
         return RedirectToAction("Index", new {mensaje = $"Luchador <b>{luchador.Nombre}</b> eliminado con éxito!"});
     }
+    public IActionResult EliminarRegistro(int IdRegistro)
+    {
+        BD.EliminarRegistro(IdRegistro);
+        return RedirectToAction("Registros", new {mensaje = $"Registro #<b>{IdRegistro}</b> eliminado con éxito!"});
+    }
     public IActionResult ElimiarListaLuchadores()
     {
         List<Luchador> ListaLuchadores = BD.ListarLuchadores();
@@ -176,6 +176,11 @@ public class HomeController : Controller
     {
         Luchador luchador = BD.VerInfoLuchador(IdLuchador);
         return luchador;
+    }
+    public Registro DevolverRegistro(int IdRegistro)
+    {
+        Registro registro = BD.VerInfoRegistro(IdRegistro);
+        return registro;
     }
     public Luchador[] DevolverGanadorPerdedor(int IdGanador, int IdPerdedor)
     {
