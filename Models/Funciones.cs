@@ -107,4 +107,48 @@ public static class Funciones
         luchadorEmpate.Foto = "foto_empate.jfif";
         return luchadorEmpate;
     }
+    public static void ActualizarRegistroDeModificacion(int idLuchador, bool eliminado = false)
+    {
+        List<Registro> ListaRegistros = BD.ListarRegistros();
+
+        if (eliminado)
+        {
+            foreach (Registro item in ListaRegistros)
+            {
+                bool cambios = false;
+                if (item.IdLuchador1 == idLuchador)
+                {
+                    item.Luchador1 = "Eliminado.";
+                    item.IdLuchador1 = -1;
+                    cambios = true;
+                }
+                else if (item.IdLuchador2 == idLuchador)
+                {
+                    item.Luchador2 = "Eliminado.";
+                    item.IdLuchador2 = -1;
+                    cambios = true;
+                }
+                if (cambios) BD.ActualizarRegistro(item);
+            }
+            return;
+        }
+
+        Luchador luchador = BD.VerInfoLuchador(idLuchador);
+
+        foreach (Registro item in ListaRegistros)
+        {
+            bool cambios = false;
+            if (item.IdLuchador1 == luchador.IdLuchador)
+            {
+                item.Luchador1 = luchador.Nombre;
+                cambios = true;
+            }
+            else if (item.IdLuchador2 == luchador.IdLuchador)
+            {
+                item.Luchador2 = luchador.Nombre;
+                cambios = true;
+            }
+            if (cambios) BD.ActualizarRegistro(item);
+        }
+    }
 }

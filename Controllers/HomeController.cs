@@ -156,6 +156,7 @@ public class HomeController : Controller
         Luchador luchador = BD.VerInfoLuchador(IdLuchador);
         System.IO.File.Delete(this._environment.WebRootPath + @"\img\luchadores\" + luchador.Foto);
         BD.EliminarLuchador(IdLuchador);
+        Funciones.ActualizarRegistroDeModificacion(luchador.IdLuchador, true);
         return RedirectToAction("Index", new {mensaje = $"Luchador <b>{luchador.Nombre}</b> eliminado con éxito!"});
     }
     public IActionResult EliminarRegistro(int IdRegistro)
@@ -212,6 +213,7 @@ public class HomeController : Controller
         }
         luchador = Funciones.LimitarEstadisticas(luchador, 250);
         BD.ActualizarLuchador(luchador);
+        Funciones.ActualizarRegistroDeModificacion(luchador.IdLuchador);
         return RedirectToAction("Index", new {mensaje = "Luchador modificado con éxito!"});
     }
     public IActionResult LuchadorAutomatico()
