@@ -22,8 +22,10 @@ public class HomeController : Controller
             Directory.CreateDirectory(this._environment.WebRootPath + @"\img\luchadores");
         }
         ViewBag.ListaLuchadores = BD.ListarLuchadores();
+        ViewBag.ListaRegistros = BD.ListarRegistros();
+        
         ViewBag.mensaje = mensaje;
-        return View();
+        return View("Index2");
     }
     public IActionResult Estadisticas()
     {

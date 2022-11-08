@@ -1,0 +1,518 @@
+﻿@{
+  ViewData["Title"] = "Inicio";
+  int i = 1;
+  string tablevh = "75vh";
+  // if(ViewBag.mensaje != String.Empty) tablevh = "65vh";
+  Luchador luchador = new Luchador();
+}
+
+<style>
+  .tabla-luchadores {
+    max-height: @tablevh;
+    overflow-y: scroll;
+  }
+</style>
+
+<body class="body-default" id="body-index"> @* background="/img/fondo3.jpg" *@
+  <button class="d-none" id="btn-click" onclick="EstadisticasLuchadores()"></button>
+  @if (ViewBag.mensaje != String.Empty)
+  {
+    <button class="d-none" id="btn-toast" onclick="MostrarMensaje()"></button>
+  }
+
+  @* <a class="btn btn-info back-button" data-bs-toggle="modal" data-bs-target="#ModalInfoTP">Info TP</a> *@
+
+  <div class="row">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="padding: 0;">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/img/img-carrusel1.png" class="d-block w-100 img-carrusel-index" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="/img/img-carrusel1.png" class="d-block w-100 img-carrusel-index" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="/img/img-carrusel1.png" class="d-block w-100 img-carrusel-index" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    @* <h1 class="display-4 titulo" style="text-align: center;">Bienvenido a: <span class="glow titulo">Enfrentamientos
+      "<b>El Hacker</b>"</span></h1> *@
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="contenedor2">
+
+        <button class="lista-vertical2" data-bs-toggle="modal"
+          data-bs-target="#ModalReiniciarJuego">Acciones(temporal)</button>
+        <button class="lista-vertical2" type="submit" onclick="location.href='@Url.Action("Registros")'">Ver
+          Registros</button>
+        <button class="lista-vertical2 lista-especial" type="submit"
+          onclick="location.href='@Url.Action("IniciarEnfrentamiento")'">Iniciar Enfrentamiento</button>
+        <button class="lista-vertical2" type="submit" onclick="location.href='@Url.Action("Estadisticas")'">Ver
+          Estadísticas</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-6 col-lista">
+      <!-- --------------------------------------- IZQUIERDA --------------------------------------- -->
+      <h4 style="text-align: center;" class="titulo">Lista de Luchadores</h4>
+      <div class="tabla-luchadores" style="max-height: 90%;">
+        <table class="table table-success table-striped tabla-col-fijas">
+
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Fecha Nacimiento</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            @foreach (Luchador item in ViewBag.ListaLuchadores)
+            {
+              <tr class="tr1">
+                <th scope="row">@i</th>
+                <td>@item.Nombre</td>
+                <td>@item.FechaNacimiento.ToShortDateString()</td>
+                <td>
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalDetalleLuchador"
+                  onclick="DetalleLuchador(@item.IdLuchador)"><i class="bi bi-person-fill"></i> Detalles</button>
+                  <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#ModalFormLuchador"
+                  onclick="ModificarJugador(@item.IdLuchador)"><i class="bi bi-pencil-square"></i></button>
+                  <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalConfirmarEliminar"
+                  onclick="ConfirmarEliminar(@item.IdLuchador)"><i class="bi bi-trash"></i></button>
+                </td>
+              </tr>
+              i += 1;
+            }
+            @if (ViewBag.ListaLuchadores.Count == 0)
+            {
+              <tr class="tr1">
+                <th scope="row">0</th>
+                <td><b>No hay luchadores!</b></td>
+                <td><b>-</b></td>
+                <td>
+                  <button class="btn btn-primary disabled"><i class="bi bi-person-fill"></i> Detalles</button>
+                  <button class="btn btn-info disabled"><i class="bi bi-pencil-square"></i></button>
+                  <button class="btn btn-danger disabled"><i class="bi bi-trash"></i></button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+
+      </div>
+      @* @if(ViewBag.mensaje != String.Empty){<div class="alert alert-warning" role="alert"
+        id="MensajeAlerta">@Html.Raw(ViewBag.mensaje)</div>} *@
+    </div>
+    <!-- --------------------------------------- DERECHA --------------------------------------- -->
+    <div class="col-4 contenedor1">
+
+      <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalFormLuchador"
+        onclick="AgregarJugador()">Agregar Luchador</button>
+      <button class="lista-vertical" onclick="location.href='@Url.Action("LuchadorAutomatico")'">Agregar Luchador
+        Automático</button>
+      <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalFormLuchador"
+        onclick="AgregarJugador()">Eliminar Lista Luchadores</button>
+      <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalFormLuchador"
+        onclick="AgregarJugador()">Añadir luchadores 1-100</button>
+      @* <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalElimiarListaLuchadores">Eliminar
+        Todos Los Luchadores</button> *@
+    </div>
+    <div class="col-1"></div>
+  </div>
+
+  <div class="row row-registros">
+    <div class="col-2"></div>
+    <div class="col-8 col-lista">
+      <h4 style="text-align: center;" class="titulo">Registros de Peleas</h4>
+      <div style="max-height: 600px; overflow-y: scroll;">
+        <table class="table table-success table-striped tabla-col-fijas">
+
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Luchador 1</th>
+              <th scope="col">Puntuación</th>
+              <th scope="col">Luchador 2</th>
+              <th scope="col">Puntuación</th>
+              <th scope="col">Diff</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            @foreach (Registro item in ViewBag.ListaRegistros)
+            {
+              <tr class="tr1">
+                <th scope="row">ID: @item.IdRegistro</th>
+                <td>@item.Luchador1</td>
+                <td>@item.Puntuacion1</td>
+                <td>@item.Luchador2</td>
+                <td>@item.Puntuacion2</td>
+                <td>@item.Diff</td>
+                <td>@item.Fecha.ToShortDateString()</td>
+                <td>
+                  <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalConfirmarEliminar"
+                  onclick="ConfirmarEliminarRegistro(@item.IdRegistro)"><i class="bi bi-trash"></i></button>
+                </td>
+              </tr>
+            }
+            @if (ViewBag.ListaRegistros.Count == 0)
+            {
+              <tr class="tr1">
+                <th scope="row">No hay Registros aún!</th>
+                <td><b>-</b></td>
+                <td><b>-</b></td>
+                <td><b>-</b></td>
+                <td><b>-</b></td>
+                <td><b>-</b></td>
+                <td><b>-</b></td>
+                <td><button class="btn btn-danger disabled" disabled><i class="bi bi-trash"></i></button></td>
+
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <div class="col-2"></div>
+    </div>
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-6 stats-div">
+        <canvas id="myChart2" class="grafico"></canvas>
+    </div>
+
+    <div class="col-6 stats-div">
+        <canvas id="myChartVictorias" class="grafico"></canvas>
+    </div>
+
+  </div>
+  </div>
+  </div>
+  <footer class="border-top footer text-muted">
+    <div class="container footer-text">
+      &copy; 2022 - EnfrentamientosHacker | Axel Cymerman - Sangiago Kasses
+    </div>
+  </footer>
+</body>
+
+<!-- --------------------------------------- MODAL INFO TP --------------------------------------- -->
+<div class="modal fade" tabindex="-1" id="ModalInfoTP">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Info del TP</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span><b>TP - Enfrentamientos "El Hacker"</b></span><br><br>
+        <span> @* style="color: grey;" *@
+          Integrantes: <i>Axel Cymerman - Santiago Kasses</i><br>
+          Trabajo basado en <a href="https://vm.tiktok.com/ZMFMNEGR6/" target="_blank">este</a> video de tik tok.<br>
+          <ul>
+            <li><b>Importante</b>: Sacamos info de <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                target="_blank">acá</a>!</li>
+          </ul>
+        </span>
+        <br>¿Listo para combatir a partir de las estadísticas y el azar?
+      </div>
+      <div class="modal-footer">
+        <span style="color: grey;">© 2022 - EnfrentamientosHacker</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- --------------------------------------- MODAL DETALLE LUCHADOR --------------------------------------- -->
+
+<div class="modal fade" tabindex="-1" id="ModalDetalleLuchador">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg"> @* modal-dialog-scrollable *@
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloDetalleLuchador">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+          <div class="col-3">
+            <img id="Foto" class="img-luchador" class="centrado" style="margin: auto; display:flex; width: 100%;">
+            <br><span class="centrado">Victorias</span><span id="Victorias" class="centrado"></span><br>
+            <span class="centrado">Fecha de Nacimiento</span><span id="FechaNacimiento" class="centrado"></span>
+          </div>
+
+          <div class="col-9" style="overflow-y: scroll; background-color: #e4e4e4; height: 68vh">
+            <span>
+              @* <b class="centrado">─────────────────────────────────────────</b> *@
+              <br>
+              <h5 class="centrado">ESTADÍSTICAS</h5><span>
+              </span>
+              <div>
+                <canvas id="myChart"></canvas>
+              </div>
+              @* <a onclick="MostrarInfoAvanzada()" href="#" data-bs-toggle="tooltip" title="Tooltip">Ver info
+                avanzada</a> *@
+              <br>
+              <h6 class="centrado">Info Avanzada</h6>
+              <br>
+              <div>
+                <span id="IQ"></span><br>
+                <span id="Fuerza"></span><br>
+                <span id="Velocidad"></span><br>
+                <span id="Resistencia"></span><br>
+                <span id="BattleIQ"></span><br>
+                <span id="PoderDestructivo"></span><br>
+                <span id="Experiencia"></span><br>
+                <span id="Transformaciones"></span><br>
+              </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- --------------------------------------- MODAL CONFIRMAR ELIMINAR --------------------------------------- -->
+
+<div class="modal fade" tabindex="-1" id="ModalConfirmarEliminar">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ce-titulo">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="ce-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <a class="btn btn-danger" id="ConfirmarEliminar">Eliminar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- --------------------------------------- MODAL REINICIAR JUEGO --------------------------------------- -->
+
+<div class="modal fade" tabindex="-1" id="ModalReiniciarJuego">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><b>Acciones</b></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-5">
+            <a class="btn btn-danger centrado" style="margin-bottom: 1rem;" asp-area="" asp-controller="Home"
+              asp-action="ElimiarListaLuchadores">Eliminar todos los luchadores</a>
+            <a class="btn btn-danger centrado" style="margin-bottom: 1rem;" asp-area="" asp-controller="Home"
+              asp-action="ReiniciarJuego">Reiniciar juego</a>
+            <a class="btn btn-warning centrado" style="margin-bottom: 1rem;" asp-area="" asp-controller="Home"
+              asp-action="DuplicarRoster">Añadir roster a la lista</a>
+            <form method="post" enctype="multipart/form-data" action='@Url.Action("LuchadoresAutomaticos")'>
+              <label for="customRange2" class="form-label">Añadir luchadores(1-100)</label>
+              <input type="range" class="form-range" min="1" max="100" id="customRange2" name="count">
+              <button type="submit" class="btn btn-primary centrado" style="margin-bottom: 1rem;">Añadir</button>
+            </form>
+            @* <a class="btn btn-primary centrado" style="margin-bottom: 1rem;" asp-area="" asp-controller="Home"
+              asp-action="LuchadoresAutomaticos">Añadir muchos luchadores</a> *@
+          </div>
+          <div class="col-7">
+            Al <b>Eliminar luchadores</b>: <br> • ¡Se perderán todos los luchadores!<br><br>
+            Al <b>Reiniciar</b>: <br> • Se quedarán en la lista <u>solo</u> los 10 luchadores del roster.<br><br>
+            Al <b>Añadir roster</b>: <br> • No se perderá la lista de luchadores, solo se añadirán los 10 luchadores
+            principales.
+
+            @* Al <b>añadir el roster</b> se añadirán:<br> • Las Victorias<br> • Los Personajes personalizados<br><br>
+              También podés añadir los 10 luchadores del roster inicial a la lista de luchadores sin necesidad de perder
+              nada. *@
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        @* <a class="btn btn-warning" asp-area="" asp-controller="Home" asp-action="DuplicarRoster">Añadir roster a la
+          lista</a>
+          <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="ReiniciarJuego">Reiniciar</a> *@
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- --------------------------------------- MODAL ELIMINAR LISTA LUCHADORES --------------------------------------- -->
+
+<div class="modal fade" tabindex="-1" id="ModalElimiarListaLuchadores">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><b>¡Estás a punto de eliminar todos los luchadores!</b></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Seguro que quiere elimiar toda la lista de luchadores?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="ElimiarListaLuchadores">Eliminar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- --------------------------------------- MODAL AGREGAR LUCHADOR (no terminado) --------------------------------------- -->
+
+<form method="post" enctype="multipart/form-data" id="fj-form"> @* action='@Url.Action("GuardarLuchador", "Home")' *@
+  <div class="modal fade" tabindex="-1" id="ModalFormLuchador">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="mod-title"> @* <b>A un paso de crear tu luchador personalizado!</b> *@ </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="background-color: #e4e4e4;">
+          @* ----------------------------------- DATOS DEL LUCHADOR ----------------------------------- *@
+          <h4 style="text-align: center;">DATOS DEL LUCHADOR</h4>
+          <div class="input-group mb-3">
+            <span style="width: 11rem;" class="input-group-text" id="basic-addon1">Nombre</span>
+            <input type="text" class="form-control" placeholder="axel1234" name="luchador.Nombre" id="mod-Nombre" @*
+                value="@luchador.Nombre" *@>
+          </div>
+
+          <input type="text" class="form-control d-none" name="luchador.IdLuchador" id="mod-id"> @* d-none *@
+
+          <div class="input-group mb-3">
+            <span style="width: 11rem;" class="input-group-text" id="basic-addon1">Fecha de Nacimiento</span>
+            <input type="Date" class="form-control" name="luchador.FechaNacimiento" id="mod-FechaNacimiento" @*
+                value="@luchador.FechaNacimiento" *@>
+          </div>
+
+          <div class="mb-3">
+            <label for="formFile" class="form-label centrado" style="margin-bottom: 1vh;"><b>Subí tu propia
+                foto!</b></label>
+            <input type="file" class="form-control" data-bs-toggle="tooltip" title="Opcional" name="MyFile"
+              id="mod-MyFile" @* value="@luchador.Foto" *@>
+          </div>
+          @* ----------------------------------- ESTADÍSTICAS ----------------------------------- *@
+          <h4 style="text-align: center;">ESTADÍSTICAS</h4>
+          <button type="button" class="btn btn-outline-success btn-sm" style="margin-bottom: 0.5rem;"
+            onclick="EstadisticasAleatorias()">Estadísticas aleatorias (0-250)</button>
+          @* <i class="bi bi-question-lg" data-bs-toggle="tooltip" title="Los ingresos se limitan a 250."></i> *@
+
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">IQ</span>
+            <input type="text" class="form-control" placeholder="min" name="luchador.IQ_min" id="mod-IQ_min" @*
+                value="@luchador.IQ_min" *@>
+            <input type="text" class="form-control" placeholder="max" name="luchador.IQ_max" id="mod-IQ_max" @*
+                value="@luchador.IQ_max" *@>
+          </div>
+
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Fuerza</span>
+            <input type="text" class="form-control" placeholder="min" name="luchador.Fuerza_min" id="mod-Fuerza_min" @*
+                value="@luchador.Fuerza_min" *@>
+            <input type="text" class="form-control" placeholder="max" name="luchador.Fuerza_max" id="mod-Fuerza_max" @*
+                value="@luchador.Fuerza_max" *@>
+          </div>
+
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Velocidad</span>
+            <input type="text" class="form-control" placeholder="min" name="luchador.Velocidad_min"
+              id="mod-Velocidad_min" @* value="@luchador.Velocidad_min" *@>
+            <input type="text" class="form-control" placeholder="max" name="luchador.Velocidad_max"
+              id="mod-Velocidad_max" @* value="@luchador.Velocidad_max" *@>
+          </div>
+
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Resistencia</span>
+            <input type="text" class="form-control" placeholder="min" name="luchador.Resistencia_min"
+              id="mod-Resistencia_min" @* value="@luchador.Resistencia_min" *@>
+            <input type="text" class="form-control" placeholder="max" name="luchador.Resistencia_max"
+              id="mod-Resistencia_max" @* value="@luchador.Resistencia_max" *@>
+          </div>
+
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Battle IQ</span>
+            <input type="text" class="form-control" placeholder="min" name="luchador.BattleIQ_min" id="mod-BattleIQ_min"
+              @* value="@luchador.BattleIQ_min" *@>
+            <input type="text" class="form-control" placeholder="max" name="luchador.BattleIQ_max" id="mod-BattleIQ_max"
+              @* value="@luchador.BattleIQ_max" *@>
+          </div>
+
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">PoderDestructivo</span>
+            <input type="text" class="form-control" placeholder="min" name="luchador.PoderDestructivo_min"
+              id="mod-PoderDestructivo_min" @* value="@luchador.PoderDestructivo_min" *@>
+            <input type="text" class="form-control" placeholder="max" name="luchador.PoderDestructivo_max"
+              id="mod-PoderDestructivo_max" @* value="@luchador.PoderDestructivo_max" *@>
+          </div>
+
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Experiencia</span>
+            <input type="text" class="form-control" placeholder="min" name="luchador.Experiencia_min"
+              id="mod-Experiencia_min" @* value="@luchador.Experiencia_min" *@>
+            <input type="text" class="form-control" placeholder="max" name="luchador.Experiencia_max"
+              id="mod-Experiencia_max" @* value="@luchador.Experiencia_max" *@>
+          </div>
+
+          <div class="input-group mb-3">
+            <span style="width: 9rem;" class="input-group-text" id="basic-addon1">Transformaciones</span>
+            <input type="text" class="form-control" placeholder="min" name="luchador.Transformaciones_min"
+              id="mod-Transformaciones_min" @* value="@luchador.Transformaciones_min" *@>
+            <input type="text" class="form-control" placeholder="max" name="luchador.Transformaciones_max"
+              id="mod-Transformaciones_max" @* value="@luchador.Transformaciones_max" *@>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-success" data-bs-dismiss="modal" id="fj-submit"></button> @*
+            href='@Url.Action("GuardarLuchador", new {luchador=luchador})' *@
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</form>
+
+@* -------------------------------------------- TOAST -------------------------------------------- *@
+
+<div id="toast-mensaje" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true"
+  style="position: absolute;">
+  <div class="d-flex">
+    <div class="toast-body">
+      @Html.Raw(ViewBag.mensaje)
+    </div>
+    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>

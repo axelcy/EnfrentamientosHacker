@@ -26,7 +26,7 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 
 //if (document.getElementById('btn-toast')) document.getElementById('btn-toast').click()
 document.getElementById('btn-toast')?.click()
-
+document.getElementById('btn-click')?.click()
 function MostrarMensaje(){
     $(document).ready(function(){
         $("#toast-mensaje").toast("show");
@@ -272,6 +272,7 @@ function AgregarJugador()
 }
 
 var myChart2
+var myChartVictorias
 function EstadisticasLuchadores()
 {
     $.ajax(
@@ -296,12 +297,6 @@ function EstadisticasLuchadores()
                         datasets_data.push(Math.round(total / count))
                     }
                     datasets_data.push(250)
-
-                    let datasets_victorias = []
-                    for (let luchador of response) {
-                        datasets_victorias.push(luchador.victorias)
-                    }
-                    datasets_victorias.push(5)
                     // --------------------------------------
                     let datasets_iQ = []
                     for (let luchador of response) {
@@ -397,18 +392,6 @@ function EstadisticasLuchadores()
                         borderWidth: 1
                 
                     },{
-                        label: 'VICTORIAS',
-                        hidden: true,
-                        data: datasets_victorias,
-                        backgroundColor: [
-                        'rgba(255, 217, 0, 0.5)',
-                        ],
-                        borderColor: [
-                        'rgb(255, 217, 0)',
-                        ],
-                        borderWidth: 1
-                
-                    },{
                         label: 'IQ',
                         hidden: true,
                         data: datasets_iQ,
@@ -491,6 +474,46 @@ function EstadisticasLuchadores()
                       };
                     if (myChart2) myChart2.destroy()
                     myChart2 = new Chart(document.getElementById('myChart2'),config);
+
+                    let datasets_victorias = []
+                    for (let luchador of response) {
+                        datasets_victorias.push(luchador.victorias)
+                    }
+                    datasets_victorias.push(10)
+
+                    var dataVictorias = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'VICTORIAS',
+                        hidden: false,
+                        data: datasets_victorias,
+                        backgroundColor: [
+                        'rgba(255, 217, 0, 0.5)',
+                        ],
+                        borderColor: [
+                        'rgb(255, 217, 0)',
+                        ],
+                        borderWidth: 1
+                    }]
+                    };
+                    var configVictorias = {
+                        type: 'bar',
+                        data: dataVictorias,
+                        options: {
+                            responsive: true,
+                            stepSize: 1,
+                          indexAxis: 'y', // cambiar a 'y' para que se vea horizontal
+                          scales: {
+                            y: {
+                                beginAtZero: true
+                            },
+                          }
+                        },
+                      };
+                    if (myChartVictorias) myChartVictorias.destroy()
+                    myChartVictorias = new Chart(document.getElementById('myChartVictorias'),configVictorias);
+
+
                 },
                 error : function(xhr, status){
                     console.log(xhr, status)

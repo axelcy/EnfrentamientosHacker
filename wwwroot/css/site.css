@@ -313,7 +313,7 @@ body {
   box-shadow: 5px 5px 5px;
   border: 5px solid rgb(165, 210, 30);
 }
-#stats-div{
+.stats-div{
   background-color: #cbcbcb;
 }
 .derecha{
@@ -332,9 +332,14 @@ body {
   display: flex;
   justify-content: center;
 }
+.grafico{
+}
+.stats-div{
+}
 
 
 .sdsadasd{
+  
   color: rgb(255, 99, 132);
   color: rgb(255, 159, 64);
   color: rgb(255, 205, 86);
@@ -348,4 +353,49 @@ body {
   color: rgb(255, 217, 0);
   /* color: rgb(201, 203, 207); */
 }
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: -webkit-fill-available;
+  white-space: nowrap;
+  line-height: 60px;
+  background-color: rgba(216, 216, 216, 0.85);
+  text-align: center;
+  left: 0;
+}
+.footer-text{
+  color:black;
+}
 
+.img-carrusel-index{
+  height: 18rem;
+}
+
+#body-index{
+  margin-bottom: 60px;
+}
+
+
+.lista-vertical2{
+  width: 50%;
+  height: 10vh;
+  min-height: 10vh;
+  max-height: 10vh;
+  background-color: coral;
+  border-radius: 5px;
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.lista-vertical2:hover {filter: saturate(180%);}
+
+.contenedor2{
+  display: flex;
+  align-items: center;
+}
+
+.lista-especial{
+  background-color:rgb(80, 200, 255);
+}
