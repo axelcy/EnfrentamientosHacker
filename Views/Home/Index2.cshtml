@@ -21,7 +21,10 @@
   }
 
   @* <a class="btn btn-info back-button" data-bs-toggle="modal" data-bs-target="#ModalInfoTP">Info TP</a> *@
-
+<div class="row"> 
+    <h1 class="display-4 titulo" style="text-align: center;">Bienvenido a: <span class="glow titulo">Enfrentamientos "<b>El Hacker</b>"</span></h1>
+</div>
+@*
   <div class="row">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="padding: 0;">
       <div class="carousel-inner">
@@ -46,9 +49,8 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    @* <h1 class="display-4 titulo" style="text-align: center;">Bienvenido a: <span class="glow titulo">Enfrentamientos
-      "<b>El Hacker</b>"</span></h1> *@
   </div>
+*@
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -130,6 +132,10 @@
         Automático</button>
       <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalReiniciarJuegoVerdadero">Reiniciar Juego</button>
       <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalReiniciarJuego">Otros</button>
+      @* <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="button">Button</button>
+        <button class="btn btn-primary" type="button">Button</button>
+      </div> ALTERNATIVA BOOTSTRAP *@
       @* <button class="lista-vertical" data-bs-toggle="modal" data-bs-target="#ModalElimiarListaLuchadores">Eliminar
         Todos Los Luchadores</button> *@
     </div>
@@ -523,8 +529,8 @@
 
 @* -------------------------------------------- TOAST -------------------------------------------- *@
 
-<div id="toast-mensaje" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true"
-  style="position: absolute;">
+<div id="toast-mensaje" class="toast align-items-center top-0 end-1" role="alert" aria-live="assertive" aria-atomic="true"
+@* style="position: absolute;" *@ style="max-height: 50px; width: 400px;">
   <div class="d-flex">
     <div class="toast-body">
       @Html.Raw(ViewBag.mensaje)
