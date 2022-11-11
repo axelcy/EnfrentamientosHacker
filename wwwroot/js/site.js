@@ -175,7 +175,7 @@ function ConfirmarEliminarRegistro(IdRegistro)
         {
             type:'POST',
             dataType: 'json',
-            url: 'DevolverRegistro',
+            url: '/Home/DevolverRegistro',
             data:{IdRegistro: IdRegistro},
             success:
                 function (response)

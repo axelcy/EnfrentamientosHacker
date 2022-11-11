@@ -164,7 +164,7 @@ public class HomeController : Controller
     public IActionResult EliminarRegistro(int IdRegistro)
     {
         BD.EliminarRegistro(IdRegistro);
-        return RedirectToAction("Registros", new {mensaje = $"Registro #<b>{IdRegistro}</b> eliminado con éxito!"});
+        return RedirectToAction("Index", new {mensaje = $"Registro #<b>{IdRegistro}</b> eliminado con éxito!"});
     }
     public IActionResult ElimiarListaLuchadores()
     {
